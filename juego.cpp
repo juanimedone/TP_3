@@ -69,9 +69,11 @@ void Juego::cicloPrincipal() {
 
     while ( !terminado() ) {
 
+        tablero.mostrar();
         jugador1.jugar(tablero);
         pausar();
 
+        tablero.mostrar();
         jugador2.jugar(tablero);
         pausar();
     }

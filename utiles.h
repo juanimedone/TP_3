@@ -6,6 +6,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <array>
 #include <cctype>
 
 using namespace std;
@@ -31,12 +32,17 @@ const int RANGO_VIDA = VIDA_MAXIMA - VIDA_MINIMA + 1;
 const int ENERGIA_MINIMA = 0;
 const int ENERGIA_MAXIMA = 20;
 const int RANGO_ENERGIA = ENERGIA_MAXIMA - ENERGIA_MINIMA + 1;
+const array<int,2> COORD_INVALIDA = {-1,-1};
 
 // constantes de los elementos
 const int CANT_MAX_PLANCTON = 3;
 const int ENERGIA_PLANCTON = 10;
 const int ENERGIA_HIERBAS = 8;
 const int VIDA_MADERA = 15;
+const string COD_TIERRA = "tierra";
+const string COD_FUEGO = "fuego";
+const string COD_AIRE = "aire";
+const string COD_AGUA = "agua";
 
 // constantes de cargarPersonajes
 const int MOSTRAR_DETALLE = 1;
