@@ -6,13 +6,14 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include <array>
 #include <cctype>
+#include <array>
+#include <algorithm>
 
 using namespace std;
 
-// constante de Archivo
-const string PATH_ARCHIVO = "personajes.csv";
+// constante de ArchivoPersonajes
+const string PATH_ARCHIVO_PERSONAJES = "personajes.csv";
 
 // constantes de Menu
 const int AGREGAR_PERSONAJE = 1;
@@ -38,11 +39,9 @@ const array<int,2> COORD_INVALIDA = {-1,-1};
 const int CANT_MAX_PLANCTON = 3;
 const int ENERGIA_PLANCTON = 10;
 const int ENERGIA_HIERBAS = 8;
-const int VIDA_MADERA = 15;
-const string COD_TIERRA = "tierra";
-const string COD_FUEGO = "fuego";
-const string COD_AIRE = "aire";
-const string COD_AGUA = "agua";
+const int VIDA_MADERA = 5;
+const int ENERGIA_MADERA = 10;
+const int ENERGIA_TURNO_AIRE = 5;
 
 // constantes de cargarPersonajes
 const int MOSTRAR_DETALLE = 1;
@@ -63,5 +62,38 @@ const int MIN_FILA = 1;
 const int MAX_FILA = 8;
 const int MIN_COLUMNA = 1;
 const int MAX_COLUMNA = 8;
+
+// constantes de la defensa
+const int ENERGIA_DEF_FUEGO = 10;
+const int RECUP_DEF_FUEGO = 10;
+const int ENERGIA_DEF_AGUA = 12;
+const int RECUP_DEF_AGUA = 50;
+const int CURA_DEF_AGUA = 10;
+const int ENERGIA_DEF_AIRE = 15;
+const int ENERGIA_DEF_TIERRA = 5;
+const int ESCUDO_DEF_TIERRA = 2;
+
+const float MOD_ESCUDO = 0.1;
+const float MOD_DEF_TIERRA = 0.8;
+
+// constantes del ataque
+const int ENERGIA_ATK_FUEGO = 5;
+const int ENERGIA_ATK_AIRE = 8;
+const int ENERGIA_ATK_TIERRA = 6;
+const int ENERGIA_ATK_AGUA = 5;
+const int ATK_BASE_FUEGO = 20;
+const int MOD_ATK_FUEGO = 10;
+const int ATK_BASE_AIRE = 15;
+const int MOD_ATK_AIRE = 5;
+const int ATK_BASE_TIERRA = 10;
+const int MOD_ATK_TIERRA = 20;
+const int ATK_BASE_AGUA = 20;
+const int MOD_ATK_AGUA = 10;
+
+// codigos de elemento
+const string COD_TIERRA = "tierra";
+const string COD_FUEGO = "fuego";
+const string COD_AIRE = "aire";
+const string COD_AGUA = "agua";
 
 #endif //TP_3_UTILES_H

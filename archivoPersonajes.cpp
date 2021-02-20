@@ -2,7 +2,7 @@
 
 ArchivoPersonajes::ArchivoPersonajes() {
 
-    archivo.open(PATH_ARCHIVO);
+    archivo.open(PATH_ARCHIVO_PERSONAJES);
 
 }
 
