@@ -83,6 +83,14 @@ protected:
 
     // PRE:
     // POS:
+    array<int,2> pedirCoordenadas();
+
+    // PRE:
+    // POS:
+    bool esValida(string& fila, string& columna);
+
+    // PRE:
+    // POS:
     void restarVida(Personaje*& enemigo);
 
 };

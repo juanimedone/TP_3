@@ -50,18 +50,6 @@ private:
     // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
     bool energiaMaxima();
 
-    // PRE: -
-    // POS: pide al usuario dos coordenadas y devuelve un arreglo que las contiene en orden de entrada
-    array<int,2> pedirPosicionAtaque();
-
-    // PRE:
-    // POS:
-    void pedirCoordenadas(string& fila, string& columna);
-
-    // PRE:
-    // POS:
-    void validarCoordenadas(string& fila, string& columna);
-
     // PRE:
     // POS:
     void curarAliado(Personaje* aliado);

@@ -48,7 +48,8 @@ void Agua::atacar(array<Personaje*,3> enemigos) {
 
     else {
 
-        input = this->pedirPosicionAtaque();
+        cout << "\nInserte las coordenadas a las que desea atacar." << endl;
+        input = pedirCoordenadas();
 
         energia -= ENERGIA_ATK_AGUA;
 
@@ -180,51 +181,6 @@ bool Agua::energiaMaxima() {
         return true;
 
     return false;
-
-}
-
-
-array<int,2> Agua::pedirPosicionAtaque() {
-
-    static array<int,2> coords;
-
-    string fila;
-    string columna;
-
-    pedirCoordenadas(fila, columna);
-
-    coords[0] = stoi(fila);
-    coords[1] = stoi(columna);
-
-    return coords;
-
-}
-
-
-void Agua::pedirCoordenadas(string& fila, string& columna) {
-
-    cout << "\nInserte las coordenadas a las que desea atacar." << endl;
-    cout << "\nFila: ";
-    getline(cin, fila);
-    cout << "\nColumna: ";
-    getline(cin, columna);
-
-    validarCoordenadas(fila, columna);
-
-}
-
-
-void Agua::validarCoordenadas(string& fila, string& columna) {
-
-    bool filaEsNumero = all_of(fila.begin(), fila.end(), ::isdigit);
-    bool columnaEsNumero = all_of(columna.begin(), columna.end(), ::isdigit);
-
-    while (!filaEsNumero || !columnaEsNumero || stoi(fila) > MAX_FILA || stoi(columna) > MAX_COLUMNA || stoi(fila) < MIN_FILA || stoi(columna) < MIN_COLUMNA) {
-
-        cout << "\n\nValores invalidos. Ingrese solo numeros enteros entre 0 y 8." << endl;
-        pedirCoordenadas(fila, columna);
-
-    }
 
 }
 

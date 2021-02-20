@@ -66,6 +66,45 @@ void Personaje::mostrarAtributos() {
 
 }
 
+
+array<int,2> Personaje::pedirCoordenadas() {
+
+    static array<int,2> coords;
+    string fila, columna;
+
+    cout << "\nFila: ";
+    getline(cin, fila);
+    cout << "\nColumna: ";
+    getline(cin, columna);
+
+    while ( !esValida(fila, columna) ) {
+
+        cout << "\n\nValores invalidos. Ingrese solo numeros enteros entre 0 y 8." << endl;
+
+        cout << "\nFila: ";
+        getline(cin, fila);
+        cout << "\nColumna: ";
+        getline(cin, columna);
+    }
+
+    coords[0] = stoi(fila);
+    coords[1] = stoi(columna);
+
+    return coords;
+
+}
+
+
+bool Personaje::esValida(string& fila, string& columna) {
+
+    bool filaEsNumero = all_of(fila.begin(), fila.end(), ::isdigit);
+    bool columnaEsNumero = all_of(columna.begin(), columna.end(), ::isdigit);
+
+    return (filaEsNumero && columnaEsNumero && stoi(fila) <= MAX_FILA && stoi(fila) >= MIN_FILA && stoi(columna) <= MAX_COLUMNA && stoi(columna) >= MIN_COLUMNA);
+
+}
+
+
 void Personaje::restarVida(Personaje*& enemigo) {
 
     int vidaPerdida, vidaActual;

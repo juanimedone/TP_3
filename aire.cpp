@@ -46,7 +46,8 @@ void Aire::defender(array<Personaje*, 3> aliados) {
 
     else {
 
-        posNueva = this->pedirPosicionDefensa();    //----
+        cout << "\nInserte las coordenadas a las que desea volar." << endl;
+        posNueva = pedirCoordenadas();    //----
 
         energia -= ENERGIA_DEF_AIRE;
 
@@ -84,30 +85,11 @@ void Aire::alimentar() {
 array<int,2> Aire::pedirPosicionDefensa() {
 
     static array<int,2> coords;
-
-    string fila;
-    string columna;
+    string fila, columna;
 
     cout << "\nInserte las coordenadas a las que desea volar." << endl;
-    cout << "\nFila: ";
-    getline(cin, fila);
-    cout << "\nColumna: ";
-    getline(cin, columna);
+    pedirCoordenadas(fila, columna);
 
-    bool filaEsNumero = all_of(fila.begin(), fila.end(), ::isdigit);
-    bool columnaEsNumero = all_of(columna.begin(), columna.end(), ::isdigit);
-
-    if(!filaEsNumero || !columnaEsNumero) {
-
-        cout << "\n\nValores invalidos. Ingrese solo numeros enteros entre 0 y 8." << endl;
-        return COORD_INVALIDA;
-
-    }else if(stoi(fila) > 8 || stoi(columna) > 8 || stoi(fila) < 0 || stoi(columna) < 0){
-
-        cout << "\n\nValores invalidos. Ingrese solo numeros enteros entre 0 y 8." << endl;
-        return COORD_INVALIDA;
-
-    }
     coords[0] = stoi(fila);
     coords[1] = stoi(columna);
 

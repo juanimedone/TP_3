@@ -42,12 +42,6 @@ public:
     // POS:
     int calcularAtkEntrante(Personaje* enemigo) override;
 
-private:
-    // PRE: -
-    // POS: devuelve una coordenada valida ingresada por el usuario, o COORD_INVALIDA en caso de un ingreso invalido
-    //      (si el usuario ingresa no enteros, o enteros mayores a 8/menores a 0)
-    array<int,2> pedirPosicionDefensa();
-
 };
 
 
