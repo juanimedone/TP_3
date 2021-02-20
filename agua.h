@@ -17,7 +17,7 @@ public:
     Agua(string nombre) : Personaje(nombre) {};
 
     // PRE: -
-    // POS: Devuelve COD_AGUA
+    // POS: devuelve COD_AGUA
     string obtenerElemento() override;
 
     // PRE: -
@@ -61,10 +61,6 @@ private:
     // PRE:
     // POS:
     void validarCoordenadas(string& fila, string& columna);
-
-    // PRE:
-    // POS:
-    void restarVida(Personaje*& enemigo);
 
     // PRE:
     // POS:

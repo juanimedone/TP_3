@@ -76,10 +76,14 @@ public:
 
 
 protected:
-    // metodo interno comun para todas las clases hijas
+    // metodos internos comunes para todas las clases hijas
     // PRE: -
     // POS: imprime por pantalla todos los atributos del personaje
     void mostrarAtributos();
+
+    // PRE:
+    // POS:
+    void restarVida(Personaje*& enemigo);
 
 };
 

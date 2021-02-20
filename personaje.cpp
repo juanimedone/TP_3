@@ -66,3 +66,23 @@ void Personaje::mostrarAtributos() {
 
 }
 
+void Personaje::restarVida(Personaje*& enemigo) {
+
+    int vidaPerdida, vidaActual;
+
+    vidaPerdida = enemigo->calcularAtkEntrante(this);
+    vidaActual = enemigo->obtenerVida();
+
+    if((vidaActual-vidaPerdida) < VIDA_MINIMA)
+
+        enemigo->asignarVida(VIDA_MINIMA);
+
+    enemigo->asignarVida(vidaActual-vidaPerdida);
+
+    cout << "\nEl enemigo '" << enemigo->obtenerNombre() << "' fue atacado y sufrio " << vidaPerdida << " puntos de daño";
+
+    cout << "\nVida anterior: " << vidaActual - vidaPerdida << " -----> Vida actual: " << enemigo->obtenerVida() << "\n\n";
+
+
+}
+

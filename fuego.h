@@ -5,9 +5,6 @@
 
 class Fuego : public Personaje {
 
-    // atributos
-private:
-
     // metodos
 public:
     // constructor

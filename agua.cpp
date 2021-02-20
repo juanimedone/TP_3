@@ -39,7 +39,7 @@ void Agua::alimentar() {
 
 void Agua::atacar(array<Personaje*,3> enemigos) {
 
-    array<int,2> posEnemigo, input;
+    array<int,2> posEnemigo{}, input{};
     bool hayEnemigos = false;
 
     if (energia < ENERGIA_ATK_AGUA)
@@ -225,24 +225,6 @@ void Agua::validarCoordenadas(string& fila, string& columna) {
         pedirCoordenadas(fila, columna);
 
     }
-
-}
-
-
-void Agua::restarVida(Personaje*& enemigo) {
-
-    int vidaPerdida, vidaActual;
-
-    vidaPerdida = enemigo->calcularAtkEntrante(this);
-    vidaActual = enemigo->obtenerVida();
-
-    if ( (vidaActual - vidaPerdida) < VIDA_MINIMA )
-        enemigo->asignarVida(VIDA_MINIMA);
-
-    enemigo->asignarVida(vidaActual - vidaPerdida);
-
-    cout << "\nEl enemigo '" << enemigo->obtenerNombre() << "' fue atacado y sufrio " << vidaPerdida << " puntos de vida";
-    cout << "\nVida anterior: " << vidaActual << " -----> Vida actual: " << enemigo->obtenerVida() << "\n\n";
 
 }
 
