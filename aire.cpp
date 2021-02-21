@@ -4,7 +4,8 @@
 void Aire::energiaPorTurno() {
 
     energia += ENERGIA_TURNO_AIRE;
-    if(energia>ENERGIA_MAXIMA)
+
+    if (energia > ENERGIA_MAXIMA)
         energia = ENERGIA_MAXIMA;
 
 }
@@ -17,7 +18,7 @@ string Aire::obtenerElemento() {
 }
 
 
-void Aire::atacar(array<Personaje*, 3> enemigos) {
+void Aire::atacar(array<Personaje*,3> enemigos) {
 
     if (energia < ENERGIA_ATK_AIRE)
 
@@ -27,7 +28,7 @@ void Aire::atacar(array<Personaje*, 3> enemigos) {
 
         energia -= ENERGIA_ATK_AIRE;
 
-        for(int i=0; i<MAX_PERSONAJES; i++)
+        for(int i = 0; i < MAX_PERSONAJES; i++)
 
             restarVida(enemigos[i]);
 
@@ -36,7 +37,7 @@ void Aire::atacar(array<Personaje*, 3> enemigos) {
 }
 
 
-void Aire::defender(array<Personaje*, 3> aliados) {
+void Aire::defender(array<Personaje*,3> aliados) {
 
     array<int,2> posNueva{};
 
@@ -54,15 +55,16 @@ void Aire::defender(array<Personaje*, 3> aliados) {
         //acceder a grafo, chequear si posNueva esta vacia
         //eliminar pje de pos actual
 
-        this->asignarPosicion(posNueva[0], posNueva[1]);
+        asignarPosicion(posNueva[0], posNueva[1]);
 
-        //ubicar pje en el grafo en pos nueva
+        //ubicar pje en el grafo en pos nueva  ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
 
         cout << "\n\n'" << nombre << "' ha utilizado " << ENERGIA_DEF_AIRE << "puntos de energía para volar a [" << posNueva[0] << "," << posNueva[1] << "]" << endl;
 
     }
 
 }
+
 
 void Aire::mostrar() {
 
