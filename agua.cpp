@@ -135,14 +135,15 @@ int Agua::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_TIERRA;
 
-        if(distanciaFila <= 2 && distanciaColumna <= 2){
+        if (distanciaFila <= 2 && distanciaColumna <= 2)
 
             danio *= 3;
 
-        }else if(distanciaFila <= 4 && distanciaColumna <= 4){
+        else if (distanciaFila <= 4 && distanciaColumna <= 4)
 
             danio *= 2;
-        }
+
+
         danio += MOD_ATK_TIERRA;
     }
 
@@ -171,16 +172,6 @@ void Agua::aumentarEnergia() {
          << " Recuerde que el plancton es muy dificil de conseguir, por lo que solo se lo puede alimentar " << CANT_MAX_PLANCTON << " veces en total (queda/n " << CANT_MAX_PLANCTON - vecesAlimentado << ")" << endl;
 
     cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
-
-}
-
-
-bool Agua::energiaMaxima() {
-
-    if (energia == ENERGIA_MAXIMA)
-        return true;
-
-    return false;
 
 }
 

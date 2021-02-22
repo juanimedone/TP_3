@@ -13,10 +13,6 @@ public:
     Aire(string nombre) : Personaje(nombre) {};
 
     // PRE: -
-    // POS: suma 5 puntos de energia
-    void energiaPorTurno();
-
-    // PRE: -
     // POS: devuelve COD_AIRE
     string obtenerElemento() override;
 
@@ -41,6 +37,10 @@ public:
     // PRE: -
     // POS:
     int calcularAtkEntrante(Personaje* enemigo) override;
+
+    // PRE:
+    // POS:
+    void aumentarEnergia() override;
 
 };
 

@@ -125,3 +125,12 @@ void Personaje::restarVida(Personaje*& enemigo) {
 
 }
 
+
+bool Personaje::energiaMaxima() {
+
+    if (energia == ENERGIA_MAXIMA)
+        return true;
+
+    return false;
+
+}

@@ -1,14 +1,6 @@
 #include "aire.h"
 
 
-void Aire::energiaPorTurno() {
-
-    energia += ENERGIA_TURNO_AIRE;
-
-    if (energia > ENERGIA_MAXIMA)
-        energia = ENERGIA_MAXIMA;
-
-}
 
 
 string Aire::obtenerElemento() {
@@ -43,24 +35,27 @@ void Aire::defender(array<Personaje*,3> aliados) {
 
     if (energia < ENERGIA_DEF_AIRE)
 
-        cout << "\n\nLa energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_AIRE << endl;
+        cout << "\n\n La energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_AIRE << endl;
 
     else {
 
-        cout << "\nInserte las coordenadas a las que desea volar." << endl;
-        posNueva = pedirCoordenadas();    //----
+        cout << "\n Inserte las coordenadas a las que desea volar." << endl;
+        posNueva = pedirCoordenadas();
 
-        energia -= ENERGIA_DEF_AIRE;
+        while ( !tablero.estaVacia(posNueva) ) {  // acceder a grafo, chequear si posNueva esta vacia
 
-        //acceder a grafo, chequear si posNueva esta vacia
-        //eliminar pje de pos actual
+            cout << "\n\n La posicion esta ocupada. Reingrese las coordenadas " ;
+            posNueva = pedirCoordenadas();
+        }
+
+        tablero.eliminar(posActual);        // eliminar pje de pos actual
+        tablero.posicionar(this, posNueva);     // ubicar pje en el grafo en pos nueva
 
         asignarPosicion(posNueva[0], posNueva[1]);
 
-        //ubicar pje en el grafo en pos nueva  ¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
-
         cout << "\n\n'" << nombre << "' ha utilizado " << ENERGIA_DEF_AIRE << "puntos de energía para volar a [" << posNueva[0] << "," << posNueva[1] << "]" << endl;
 
+        energia -= ENERGIA_DEF_AIRE;
     }
 
 }
@@ -84,18 +79,38 @@ void Aire::alimentar() {
 }
 
 
-array<int,2> Aire::pedirPosicionDefensa() {
+int Aire::calcularAtkEntrante(Personaje* enemigo) {
 
-    static array<int,2> coords;
-    string fila, columna;
+    int danio;
+    string elemento = enemigo->obtenerElemento();
 
-    cout << "\nInserte las coordenadas a las que desea volar." << endl;
-    pedirCoordenadas(fila, columna);
+    if (elemento == COD_AGUA)
 
-    coords[0] = stoi(fila);
-    coords[1] = stoi(columna);
+        danio = ATK_BASE_AGUA;
 
-    return coords;
+    else if (elemento == COD_AIRE)
+
+        danio = ATK_BASE_AIRE;
+
+    else if (elemento == COD_FUEGO)
+
+        danio = ATK_BASE_FUEGO + MOD_ATK_FUEGO;
+
+    else if (elemento == COD_TIERRA)
+
+        danio = ATK_BASE_TIERRA;
+
+
+    return (int) ( danio - danio * (MOD_ESCUDO * escudo) );
 
 }
 
+
+void Aire::aumentarEnergia() {
+
+    energia += ENERGIA_TURNO_AIRE;
+
+    if (energia > ENERGIA_MAXIMA)
+        energia = ENERGIA_MAXIMA;
+
+}

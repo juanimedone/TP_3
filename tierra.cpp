@@ -1,6 +1,21 @@
 #include "tierra.h"
 
 
+void Tierra::desactivarDefensa() {
+
+	escudo -= ESCUDO_DEF_TIERRA;
+	defensaActiva = false;
+
+}
+
+
+string Tierra::obtenerElemento() {
+
+    return COD_TIERRA;
+
+}
+
+
 void Tierra::mostrar() {
 
     cout << "\n\n Elemento: Tierra" << endl;
@@ -21,6 +36,89 @@ void Tierra::alimentar() {
     else
         aumentarEnergia();
 
+
+}
+
+
+void Tierra::atacar(array<Personaje*,3> enemigos) {
+
+    if (energia < ENERGIA_ATK_TIERRA)
+
+        cout << "\n\nLa energia actual es insuficiente para atacar. Valor requerido: " << ENERGIA_ATK_TIERRA << endl;
+
+    else
+
+        for (short int i = 0; i < MAX_PERSONAJES; i++)
+
+            restarVida(enemigos[i]);
+
+}
+
+
+void Tierra::defender(array<Personaje*,3> aliados) {
+
+    if (energia < ENERGIA_DEF_TIERRA)
+
+        cout << "\n\nLa energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_TIERRA << endl;
+
+    else {
+
+        escudo += ESCUDO_DEF_TIERRA;
+
+        if (escudo > ESCUDO_MAXIMO)
+            defensaActiva = true;
+
+        energia -= ENERGIA_DEF_TIERRA;
+    }
+
+}
+
+
+int Tierra::calcularAtkEntrante(Personaje* enemigo) {
+
+    int danio;
+    string elemento = enemigo->obtenerElemento();
+
+    if (elemento == COD_AGUA)
+
+        danio = ATK_BASE_AGUA - MOD_ATK_AGUA;
+
+    else if (elemento == COD_AIRE)
+
+        danio = ATK_BASE_AIRE + MOD_ATK_AIRE;
+
+    else if (elemento == COD_FUEGO)
+
+        danio = ATK_BASE_FUEGO;
+
+    else if (elemento == COD_TIERRA) {
+
+        array<int,2> posEnemigo = enemigo->obtenerPosicion();
+
+        int distanciaFila = abs(this->posicion[0] - posEnemigo[0]);
+        int distanciaColumna = abs(this->posicion[1] - posEnemigo[1]);
+
+        danio = ATK_BASE_TIERRA;
+
+        if (distanciaFila <= 2 && distanciaColumna <= 2)
+
+            danio *= 3;
+
+        else if (distanciaFila <= 4 && distanciaColumna <= 4)
+
+            danio *= 2;
+
+    }
+
+    if (defensaActiva)
+
+        danio -= danio * MOD_DEF_TIERRA;
+
+    else
+        danio -= danio * (MOD_ESCUDO * escudo);
+
+
+    return (int) danio;
 
 }
 

@@ -56,6 +56,10 @@ public:
     // POS: modifica la energia o la vida (o no hace nada) segun el elemento del personaje
     virtual void alimentar() = 0;
 
+    // PRE:
+    // POS:
+    virtual void aumentarEnergia() = 0;
+
     // PRE: el vector enemigos contiene tres personajes
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
     virtual void atacar(array<Personaje*,3> enemigos) = 0;
@@ -74,7 +78,6 @@ public:
     // POS: libera el espacio de memoria que corresponda segun el elemento del personaje
     virtual ~Personaje() = default;
 
-
 protected:
     // metodos internos comunes para todas las clases hijas
     // PRE: -
@@ -92,6 +95,12 @@ protected:
     // PRE:
     // POS:
     void restarVida(Personaje*& enemigo);
+
+    // PRE: -
+    // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
+    bool energiaMaxima();
+
+
 
 };
 

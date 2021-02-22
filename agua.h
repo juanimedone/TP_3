@@ -44,11 +44,7 @@ public:
 private:
     // PRE: el personaje no debe tener su energia al maximo y no haber alcanzado el limite de vecesAlimentado
     // POS: aumenta la cantidad de energia que corresponda, lo muestra por pantalla e incrementa vecesAlimentado en 1
-    void aumentarEnergia();
-
-    // PRE: -
-    // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
-    bool energiaMaxima();
+    void aumentarEnergia() override;
 
     // PRE:
     // POS:
