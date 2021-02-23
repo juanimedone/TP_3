@@ -29,7 +29,7 @@ public:
 
     // PRE:
     // POS:
-    void posicionarPersonaje(short int i);
+    void posicionarPersonaje(Grafo& tablero, short int i);
 
     // PRE:
     // POS:
@@ -51,10 +51,6 @@ private:
     // PRE:
     // POS:
     void moverPersonaje(Personaje*& personaje, Grafo& tablero);
-
-    // PRE:
-    // POS:
-    void pedirCoordenadas(short int& fila, short int& columna);
 
     // PRE:
     // POS:

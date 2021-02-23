@@ -93,8 +93,7 @@ array<int,2> Personaje::pedirCoordenadas() {
         getline(cin, columna);
     }
 
-    coords[0] = stoi(fila);
-    coords[1] = stoi(columna);
+    coords = {stoi(fila), stoi(columna)};
 
     return coords;
 

@@ -24,40 +24,23 @@ void Jugador::asignarPersonaje(Personaje* personaje) {
 }
 
 
-void Jugador::posicionarPersonaje(short int i) {
+void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
 
-    short int fila, columna;
+    array<int,2> posicion{};
 
     cout << " Personaje: " << personajes[i]->obtenerNombre() << "\n\n" ;
 
-    pedirCoordenadas(fila, columna);
+    posicion = personajes[i]->pedirCoordenadas();
 
-    // verificar si las coordenadas en el tablero no estan ocupadas
+    while ( !tablero.estaVacio(posicion) ) {
 
-    personajes[i]->asignarPosicion(fila, columna);
+        cout << "\n La posicion [" << posicion[0] << "," << posicion[1] << "] esta ocupada por " <<
+        tablero.obtenerPersonaje(posicion)->obtenerNombre() << "\n Vuelva a ingresar las coordenadas \n" ;
 
-}
-
-
-void Jugador::pedirCoordenadas(short int& fila, short int& columna) {
-
-    cout << " Ingrese la fila: " ;
-    cin >> fila;
-
-    while (fila < MIN_FILA || fila > MAX_FILA) {
-        cout << " Fila invalida. Reingrese la fila: " ;
-        cin >> fila;
+        posicion = personajes[i]->pedirCoordenadas();
     }
 
-    cout << "\n\n Ingrese la columna: " ;
-    cin >> columna;
-
-    while (columna < MIN_COLUMNA || columna > MAX_COLUMNA) {
-        cout << " Columna invalida. Reingrese la columna: " ;
-        cin >> columna;
-    }
-
-    cout << "\n\n" ;
+    personajes[i]->asignarPosicion(posicion);
 
 }
 

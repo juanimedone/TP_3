@@ -13,13 +13,21 @@ private:
 
     // metodos
 public:
+    // PRE: debe haber un personaje en posicion (personaje != nullptr)
+    // POS:
+    Personaje* obtenerPersonaje(array<int,2> posicion);
+
     // PRE:
     // POS:
-    Recorrido dijkstra(array<int,2> origen, array<int,2> destino);
+    bool estaVacio(array<int,2> posicion);
 
     // PRE:
     // POS:
     void posicionarPersonaje(Personaje* personaje, array<int,2> posicion);
+
+    // PRE:
+    // POS:
+    Recorrido dijkstra(array<int,2> origen, array<int,2> destino);
 
 };
 

@@ -48,6 +48,10 @@ public:
     // POS: devuelve un arreglo con la posicion [fila, columna] del personaje
     array<int,2> obtenerPosicion();
 
+    // PRE:
+    // POS:
+    array<int,2> pedirCoordenadas();
+
     // PRE: -
     // POS: devuelve el elemento del personaje
     virtual string obtenerElemento() = 0;
@@ -90,10 +94,6 @@ protected:
 
     // PRE:
     // POS:
-    array<int,2> pedirCoordenadas();
-
-    // PRE:
-    // POS:
     bool esValida(string& fila, string& columna);
 
     // PRE:
@@ -103,8 +103,6 @@ protected:
     // PRE: -
     // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
     bool energiaMaxima();
-
-
 
 };
 

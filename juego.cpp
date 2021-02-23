@@ -61,12 +61,12 @@ void Juego::posicionarPersonajes() {
     for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
         cout << " Jugador 1 \n" ;
-        jugador1.posicionarPersonaje(i);
+        jugador1.posicionarPersonaje(tablero, i);
 
         limpiarPantalla();
 
         cout << " Jugador 2 \n" ;
-        jugador2.posicionarPersonaje(i);
+        jugador2.posicionarPersonaje(tablero, i);
     }
 
 }
