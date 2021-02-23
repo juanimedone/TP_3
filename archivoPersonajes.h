@@ -17,7 +17,7 @@ private:
 public:
     // constructor
     // PRE: -
-    // POS: abre el archivo con PATH_ARCHIVO
+    // POS: abre el archivo con PATH_ARCHIVO_PERSONAJES
     ArchivoPersonajes();
 
     // PRE: -
@@ -36,7 +36,7 @@ public:
 private:
     // PRE: -
     // POS: reserva espacio para el elemento correspondiente en el heap y lo devuelve como puntero a Personaje
-    Personaje* crearPersonaje(const string& elemento, const string& nombre);
+    Personaje* crearPersonaje(const string& elemento, const string& nombre, const string& escudo, const string& vida);
 
 };
 

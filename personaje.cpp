@@ -28,10 +28,16 @@ void Personaje::asignarVida(int vida) {
 }
 
 
-void Personaje::asignarPosicion(short int fila, short int columna) {
+void Personaje::asignarEnergia(int energia) {
 
-    posicion[0] = fila;
-    posicion[1] = columna;
+    this->energia = energia;
+
+}
+
+
+void Personaje::asignarPosicion(array<int,2> posicion) {
+
+    this->posicion = posicion;
 
 }
 

@@ -28,9 +28,13 @@ public:
     // POS: modifica el valor del atributo vida
     void asignarVida(int vida);
 
+    // PRE:
+    // POS:
+    void asignarEnergia(int energia);
+
     // PRE: -
     // POS: modifica los valores de posicion a los ingresados
-    void asignarPosicion(short int fila, short int columna);
+    void asignarPosicion(array<int,2> posicion);
 
     // PRE: -
     // POS: devuelve el nombre del personaje

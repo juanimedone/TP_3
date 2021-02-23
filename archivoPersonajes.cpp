@@ -25,11 +25,7 @@ void ArchivoPersonajes::procesarArchivo(DiccionarioABB<string, Personaje*>& dicc
         getline(archivo, escudo, ',');
         getline(archivo, vida);
 
-        nuevoPersonaje = crearPersonaje(elemento, nombre);
-
-        nuevoPersonaje->asignarEscudo( (short) stoi(escudo) );
-        nuevoPersonaje->asignarVida( stoi(vida) );
-
+        nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida);
         diccionario.insertar(nombre, nuevoPersonaje);
 
     }
@@ -47,23 +43,25 @@ ArchivoPersonajes::~ArchivoPersonajes() {
 }
 
 
-Personaje* ArchivoPersonajes::crearPersonaje(const string& elemento, const string& nombre) {
+Personaje* ArchivoPersonajes::crearPersonaje(const string& elemento, const string& nombre, const string& escudo, const string& vida) {
 
-    Personaje* nuevo;
+    Personaje* nuevoPersonaje;
 
     if (elemento == "agua")
-        nuevo = new Agua(nombre);
+        nuevoPersonaje = new Agua(nombre);
 
     else if (elemento == "fuego")
-        nuevo = new Fuego(nombre);
+        nuevoPersonaje = new Fuego(nombre);
 
     else if (elemento == "tierra")
-        nuevo = new Tierra(nombre);
+        nuevoPersonaje = new Tierra(nombre);
 
     else
-        nuevo = new Aire(nombre);
+        nuevoPersonaje = new Aire(nombre);
 
+    nuevoPersonaje->asignarEscudo( (short) stoi(escudo) );
+    nuevoPersonaje->asignarVida( stoi(vida) );
 
-    return nuevo;
+    return nuevoPersonaje;
 
 }

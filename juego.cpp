@@ -26,6 +26,13 @@ Jugador Juego::obtenerJugador2() {
 }
 
 
+Grafo Juego::obtenerTablero() {
+
+    return tablero;
+
+}
+
+
 void Juego::pausar() {
 
     cout << "\n\n Presione una tecla para continuar..." ;

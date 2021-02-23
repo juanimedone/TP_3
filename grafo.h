@@ -1,6 +1,8 @@
 #ifndef TP_3_GRAFO_H
 #define TP_3_GRAFO_H
 
+#include "matriz.h"
+#include "casillero.h"
 
 class Grafo {
 
@@ -11,7 +13,13 @@ private:
 
     // metodos
 public:
+    // PRE:
+    // POS:
     Recorrido dijkstra(array<int,2> origen, array<int,2> destino);
+
+    // PRE:
+    // POS:
+    void posicionarPersonaje(Personaje* personaje, array<int,2> posicion);
 
 };
 

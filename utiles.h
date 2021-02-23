@@ -12,7 +12,8 @@
 
 using namespace std;
 
-// constante de ArchivoPersonajes
+// constantes de archivos
+const string PATH_ARCHIVO_PARTIDA = "partida.csv";
 const string PATH_ARCHIVO_PERSONAJES = "personajes.csv";
 
 // constantes de Menu

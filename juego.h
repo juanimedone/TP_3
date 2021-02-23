@@ -24,6 +24,10 @@ public:
     // POS:
     Jugador obtenerJugador2();
 
+    // PRE:
+    // POS:
+    Grafo obtenerTablero();
+
 private:
     // PRE: -
     // POS: detiene la ejecucion del programa hasta que el usuario presione una tecla para continuar
