@@ -7,10 +7,21 @@ class Casillero {
 
     // atributos
 private:
+    Personaje* personaje = nullptr;
 
     // metodos
 public:
+    // PRE:
+    // POS:
+    void asignarPersonaje(Personaje* personaje);
 
+    // PRE:
+    // POS:
+    bool estaVacio();
+
+    // PRE:
+    // POS:
+    virtual int obtenerCosto(string elemento) = 0;
 
 };
 
