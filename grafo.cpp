@@ -20,3 +20,10 @@ void Grafo::posicionarPersonaje(Personaje* personaje, array<int,2> posicion) {
 
 
 }
+
+
+Recorrido Grafo::dijkstra(array<int, 2> origen, array<int, 2> destino) {
+
+    return ;
+
+}

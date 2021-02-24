@@ -3,6 +3,7 @@
 
 #include "matriz.h"
 #include "casillero.h"
+#include "recorrido.h"
 
 class Grafo {
 
