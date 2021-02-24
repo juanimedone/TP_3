@@ -28,7 +28,7 @@ public:
 
     // PRE:
     // POS:
-    Recorrido dijkstra(array<int,2> origen, array<int,2> destino);
+    Recorrido dijkstra(array<int,2> origen, array<int,2> destino, string elemento);
 
 };
 
