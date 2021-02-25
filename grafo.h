@@ -14,6 +14,10 @@ private:
 
     // metodos
 public:
+    // PRE:
+    // POS:
+    void asignarVertice(Casillero* vertice, array<int,2> posicion);
+
     // PRE: debe haber un personaje en posicion (personaje != nullptr)
     // POS:
     Personaje* obtenerPersonaje(array<int,2> posicion);

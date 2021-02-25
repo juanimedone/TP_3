@@ -13,6 +13,7 @@
 using namespace std;
 
 // constantes de archivos
+const string PATH_ARCHIVO_TABLERO = "tablero.csv";
 const string PATH_ARCHIVO_PARTIDA = "partida.csv";
 const string PATH_ARCHIVO_PERSONAJES = "personajes.csv";
 
@@ -63,6 +64,14 @@ const int MIN_FILA = 1;
 const int MAX_FILA = 8;
 const int MIN_COLUMNA = 1;
 const int MAX_COLUMNA = 8;
+
+// constantes de los casilleros
+const char MONTANIA = 'M';
+const char PRECIPICIO = 'P';
+const char LAGO = 'L';
+const char VOLCAN = 'V';
+const char CAMINO = 'C';
+const char VACIO = 'X';
 
 // constantes de la defensa
 const int ENERGIA_DEF_FUEGO = 10;

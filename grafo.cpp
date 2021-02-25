@@ -1,6 +1,18 @@
 #include "grafo.h"
 
 
+void Grafo::asignarVertice(Casillero* vertice, array<int, 2> posicion) {
+
+    short int fila, columna;
+
+    fila = posicion[0];
+    columna = posicion[1];
+
+    vertices[fila][columna] = vertice;
+
+}
+
+
 Personaje* Grafo::obtenerPersonaje(array<int, 2> posicion) {
 
     return ;

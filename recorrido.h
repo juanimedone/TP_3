@@ -20,6 +20,10 @@ public:
     // POS:
     int obtenerEnergiaGastada();
 
+    // PRE:
+    // POS:
+    void mostrar();
+
 };
 
 
