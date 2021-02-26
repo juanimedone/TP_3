@@ -11,9 +11,14 @@ class Grafo {
 private:
     Matriz<int>* agua, *aire, *fuego, *tierra;     // matrices de costos
     Casillero* vertices[MAX_FILA][MAX_COLUMNA];
+    // int elementos = MAX_FILA * MAX_COLUMNA;
 
     // metodos
 public:
+    // PRE:
+    // POS:
+    void inicializarMatrices();
+
     // PRE:
     // POS:
     void asignarVertice(Casillero* vertice, array<int,2> posicion);

@@ -8,6 +8,13 @@ void Casillero::asignarPersonaje(Personaje* personaje) {
 }
 
 
+Personaje* Casillero::obtenerPersonaje() {
+
+    return personaje;
+
+}
+
+
 bool Casillero::estaVacio() {
 
     return (personaje == nullptr);

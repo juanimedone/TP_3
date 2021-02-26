@@ -1,23 +1,30 @@
 #include "recorrido.h"
 
 
-void Recorrido::asignarEnergiaGastada(int energiaGastada) {
+void Recorrido::asignarEnergiaMinima(int energiaMinima) {
 
-    this->energiaGastada = energiaGastada;
+    this->energiaMinima = energiaMinima;
 
 }
 
 
-int Recorrido::obtenerEnergiaGastada() {
+void Recorrido::agregarPosicion(array<int,2> posicion) {
 
-    return energiaGastada;
+    posiciones.alta(posicion);
+
+}
+
+
+int Recorrido::obtenerEnergiaMinima() {
+
+    return energiaMinima;
 
 }
 
 
 void Recorrido::mostrar() {
 
-    cout << "\n\n Energia gastada: " << energiaGastada <<
+    cout << "\n\n Energia gastada: " << energiaMinima <<
             "\n\n Recorrido: \n" ;
 
     posiciones.imprimir();

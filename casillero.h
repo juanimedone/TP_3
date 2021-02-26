@@ -17,6 +17,10 @@ public:
 
     // PRE:
     // POS:
+    Personaje* obtenerPersonaje();
+
+    // PRE:
+    // POS:
     bool estaVacio();
 
     // PRE:

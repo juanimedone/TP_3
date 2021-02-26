@@ -5,12 +5,11 @@
 
 class Volcan : public Casillero {
 
-    // atributos
-private:
-
     // metodos
 public:
-
+    // PRE:
+    // POS:
+    int obtenerCosto(string elemento) override;
 
 };
 

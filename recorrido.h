@@ -7,18 +7,22 @@ class Recorrido {
 
     // atributos
 private:
-    int energiaGastada;
+    int energiaMinima;
     Lista posiciones;
 
     // metodos
 public:
     // PRE:
     // POS:
-    void asignarEnergiaGastada(int energiaGastada);
+    void asignarEnergiaMinima(int energiaMinima);
 
     // PRE:
     // POS:
-    int obtenerEnergiaGastada();
+    void agregarPosicion(array<int,2> posicion);
+
+    // PRE:
+    // POS:
+    int obtenerEnergiaMinima();
 
     // PRE:
     // POS:

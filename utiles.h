@@ -64,6 +64,10 @@ const int MIN_FILA = 1;
 const int MAX_FILA = 8;
 const int MIN_COLUMNA = 1;
 const int MAX_COLUMNA = 8;
+const int CANT_VERTICES = MAX_FILA * MAX_COLUMNA;
+
+// constante de dijkstra
+const int INFINITO = 9999;
 
 // constantes de los casilleros
 const char MONTANIA = 'M';
@@ -72,6 +76,10 @@ const char LAGO = 'L';
 const char VOLCAN = 'V';
 const char CAMINO = 'C';
 const char VACIO = 'X';
+const int COSTO_NULO = 0;
+const int COSTO_MEDIO = 1;
+const int COSTO_ALTO = 2;
+const int COSTO_VACIO = 15;
 
 // constantes de la defensa
 const int ENERGIA_DEF_FUEGO = 10;
