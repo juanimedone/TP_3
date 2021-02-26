@@ -156,3 +156,26 @@ bool Personaje::energiaMaxima() {
     return false;
 
 }
+
+
+int Personaje::calcularAtkEntranteTierra(Personaje* enemigo) {
+
+    int danio;
+    array<int,2> posEnemigo = enemigo->obtenerPosicion();
+
+    int distanciaFila = abs(this->posicion[0] - posEnemigo[0]);
+    int distanciaColumna = abs(this->posicion[1] - posEnemigo[1]);
+
+    danio = ATK_BASE_TIERRA;
+
+    if (distanciaFila <= 2 && distanciaColumna <= 2)
+
+        danio *= 3;
+
+    else if (distanciaFila <= 4 && distanciaColumna <= 4)
+
+        danio *= 2;
+
+    return danio;
+
+}

@@ -1,8 +1,6 @@
 #include "aire.h"
 
 
-
-
 string Aire::obtenerElemento() {
 
     return COD_AIRE;
@@ -10,7 +8,7 @@ string Aire::obtenerElemento() {
 }
 
 
-void Aire::atacar(array<Personaje*,3> enemigos) {
+void Aire::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     if (energia < ENERGIA_ATK_AIRE)
 
@@ -29,7 +27,7 @@ void Aire::atacar(array<Personaje*,3> enemigos) {
 }
 
 
-void Aire::defender(array<Personaje*,3> aliados) {
+void Aire::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
 
     array<int,2> posNueva{};
 
@@ -42,16 +40,14 @@ void Aire::defender(array<Personaje*,3> aliados) {
         cout << "\n Inserte las coordenadas a las que desea volar." << endl;
         posNueva = pedirCoordenadas();
 
-        while ( !tablero.estaVacia(posNueva) ) {  // acceder a grafo, chequear si posNueva esta vacia
+        while ( !tablero.estaVacio(posNueva) ) {
 
-            cout << "\n\n La posicion esta ocupada. Reingrese las coordenadas " ;
+            cout << "\n\n La posicion esta ocupada por el personaje " << tablero.obtenerPersonaje(posNueva)->obtenerNombre() << ". Reingrese las coordenadas " ;
             posNueva = pedirCoordenadas();
         }
 
-        tablero.eliminar(posActual);        // eliminar pje de pos actual
-        tablero.posicionar(this, posNueva);     // ubicar pje en el grafo en pos nueva
-
-        asignarPosicion(posNueva[0], posNueva[1]);
+        tablero.moverPersonaje(this, obtenerPosicion(), posNueva);
+        asignarPosicion(posNueva);
 
         cout << "\n\n'" << nombre << "' ha utilizado " << ENERGIA_DEF_AIRE << "puntos de energía para volar a [" << posNueva[0] << "," << posNueva[1] << "]" << endl;
 

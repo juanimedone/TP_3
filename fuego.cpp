@@ -62,7 +62,7 @@ void Fuego::alimentar() {
 }
 
 
-void Fuego::atacar(array<Personaje*,3> enemigos) {
+void Fuego::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     if (energia < ENERGIA_DEF_FUEGO)
 
@@ -84,7 +84,7 @@ void Fuego::atacar(array<Personaje*,3> enemigos) {
 }
 
 
-void Fuego::defender(array<Personaje*,3> aliados) {
+void Fuego::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
 
 	int nuevaVida;
 
@@ -104,7 +104,7 @@ void Fuego::defender(array<Personaje*,3> aliados) {
         vida += nuevaVida;
         energia -= ENERGIA_DEF_FUEGO;
 
-        cout << "\n\n'" << nombre << "' ha convertido 10 puntos de energía en " << nuevaVida << " punto/s de vida" << endl;
+        cout << "\n\n'" << nombre << "' ha convertido 10 puntos de energï¿½a en " << nuevaVida << " punto/s de vida" << endl;
         cout << "\nVida anterior: " << vida - nuevaVida << " -----> Vida actual: " << vida << "\n";
         cout << "\nEnergia actual: " << energia << "\n\n";
 
@@ -130,24 +130,10 @@ int Fuego::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_FUEGO;
 
-    else if(elemento == COD_TIERRA) {
+    else if(elemento == COD_TIERRA)
 
-        array<int,2> posEnemigo = enemigo->obtenerPosicion();
+        danio = calcularAtkEntranteTierra(enemigo);
 
-        int distanciaFila = abs(posicion[0] - posEnemigo[0]);
-        int distanciaColumna = abs(posicion[1] - posEnemigo[1]);
-
-        danio = ATK_BASE_TIERRA;
-
-        if (distanciaFila <= 2 && distanciaColumna <= 2)
-
-            danio *= 3;
-
-        else if (distanciaFila <= 4 && distanciaColumna <= 4)
-
-            danio *= 2;
-
-    }
 
     return (int) ( danio - danio * (MOD_ESCUDO * escudo) );
 
@@ -155,6 +141,8 @@ int Fuego::calcularAtkEntrante(Personaje* enemigo) {
 
 
 void Fuego::aumentarEnergia() {
+
+    int nuevaEnergia;
 
     if (energia + ENERGIA_MADERA > ENERGIA_MAXIMA)
 
@@ -189,8 +177,6 @@ void Fuego::aumentarVida() {
 
 
 bool Fuego::vidaMaxima() {
-
-
 
     if (vida == VIDA_MAXIMA)
         return true;

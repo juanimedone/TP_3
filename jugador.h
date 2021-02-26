@@ -8,7 +8,7 @@ class Jugador {
 
     // atributos
 private:
-    Personaje* personajes[MAX_PERSONAJES];
+    array<Personaje*,MAX_PERSONAJES> personajes;
     short int cantPersonajes = 0;
     short int opcion = 0;
 
@@ -34,6 +34,10 @@ public:
     // PRE:
     // POS:
     bool quiereSalir();
+
+    // PRE:
+    // POS:
+    void chequearBajas(Grafo& tablero);
 
     // PRE:
     // POS:
@@ -67,6 +71,10 @@ private:
     // PRE:
     // POS:
     void pedirOpcion();
+
+    // PRE:
+    // POS:
+    void eliminarPersonaje(short int i, Grafo& tablero);
 
 };
 

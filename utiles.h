@@ -29,6 +29,7 @@ const int SALIR = 6;
 const int ESCUDO_MINIMO = 0;
 const int ESCUDO_MAXIMO = 2;
 const int RANGO_ESCUDO = ESCUDO_MAXIMO - ESCUDO_MINIMO + 1;
+const int VIDA_NULA = 0;
 const int VIDA_MINIMA = 10;
 const int VIDA_MAXIMA = 100;
 const int RANGO_VIDA = VIDA_MAXIMA - VIDA_MINIMA + 1;

@@ -50,14 +50,25 @@ bool Grafo::estaVacio(array<int,2> posicion) {
 }
 
 
-void Grafo::posicionarPersonaje(Personaje* personaje, array<int,2> posicion) {
+void Grafo::moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<int,2> posFinal) {
 
-    int fila, columna;
+    int filaFinal, columnaFinal;
 
-    fila = posicion[0];
-    columna = posicion[1];
+    filaFinal = posFinal[0];
+    columnaFinal = posFinal[1];
 
-    vertices[fila][columna]->asignarPersonaje(personaje);
+    if (posInicial != COORD_INVALIDA) {
+
+        int filaInicial, columnaInicial;
+
+        filaInicial = posInicial[0];
+        columnaInicial = posInicial[1];
+
+        vertices[filaInicial][columnaInicial]->asignarPersonaje(nullptr);
+
+    }
+
+    vertices[filaFinal][columnaFinal]->asignarPersonaje(personaje);
 
 }
 

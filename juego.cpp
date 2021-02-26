@@ -126,7 +126,9 @@ void Juego::cicloPrincipal() {
             if (!salir) {
 
                 jugador1.jugar(tablero);
+                jugador2.chequearBajas(tablero);
                 pausar();
+
 
                 tablero.mostrar();
                 salir = jugador2.quiereSalir();
@@ -134,6 +136,7 @@ void Juego::cicloPrincipal() {
                 if (!salir) {
 
                     jugador2.jugar(tablero);
+                    jugador1.chequearBajas(tablero);
                     pausar();
                 }
             }
@@ -148,6 +151,7 @@ void Juego::cicloPrincipal() {
             if (!salir) {
 
                 jugador2.jugar(tablero);
+                jugador1.chequearBajas(tablero);
                 pausar();
 
                 tablero.mostrar();
@@ -156,6 +160,7 @@ void Juego::cicloPrincipal() {
                 if (!salir) {
 
                     jugador1.jugar(tablero);
+                    jugador2.chequearBajas(tablero);
                     pausar();
                 }
             }

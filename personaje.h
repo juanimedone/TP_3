@@ -2,6 +2,7 @@
 #define TP_3_PERSONAJE_H
 
 #include "utiles.h"
+#include "grafo.h"
 
 class Personaje {
 
@@ -78,11 +79,11 @@ public:
 
     // PRE: el vector enemigos contiene tres personajes
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
-    virtual void atacar(array<Personaje*,3> enemigos) = 0;
+    virtual void atacar(array<Personaje*,MAX_PERSONAJES> enemigos) = 0;
 
     // PRE: el vector aliados contiene tres personajes
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    virtual void defender(array<Personaje*,3> aliados) = 0;
+    virtual void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) = 0;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,
@@ -111,6 +112,10 @@ protected:
     // PRE: -
     // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
     bool energiaMaxima();
+
+    // PRE:
+    // POS:
+    int calcularAtkEntranteTierra(Personaje* enemigo);
 
 };
 

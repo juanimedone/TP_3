@@ -37,7 +37,7 @@ void Agua::alimentar() {
 }
 
 
-void Agua::atacar(array<Personaje*,3> enemigos) {
+void Agua::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     array<int,2> posEnemigo{}, input{};
     bool hayEnemigos = false;
@@ -73,7 +73,7 @@ void Agua::atacar(array<Personaje*,3> enemigos) {
 }
 
 
-void Agua::defender(array<Personaje*, 3> aliados) {
+void Agua::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
 
     int nuevaVidaPropia;
 
@@ -113,38 +113,23 @@ int Agua::calcularAtkEntrante(Personaje* enemigo) {
     int danio;
     string elemento = enemigo->obtenerElemento();
 
-    if(elemento == COD_AGUA){
+    if (elemento == COD_AGUA)
 
         danio = ATK_BASE_AGUA;
 
-    }else if(elemento == COD_AIRE){
+    else if (elemento == COD_AIRE)
 
         danio = ATK_BASE_AIRE;
 
-    }else if(elemento == COD_FUEGO){
+    else if (elemento == COD_FUEGO)
 
         danio = ATK_BASE_FUEGO - MOD_ATK_FUEGO;
 
-    }else if(elemento == COD_TIERRA){
+    else if (elemento == COD_TIERRA){
 
-        array<int, 2> posEnemigo = enemigo->obtenerPosicion();
-
-        int distanciaFila = abs(this->posicion[0] - posEnemigo[0]);
-
-        int distanciaColumna = abs(this->posicion[1] - posEnemigo[1]);
-
-        danio = ATK_BASE_TIERRA;
-
-        if (distanciaFila <= 2 && distanciaColumna <= 2)
-
-            danio *= 3;
-
-        else if (distanciaFila <= 4 && distanciaColumna <= 4)
-
-            danio *= 2;
-
-
+        danio = calcularAtkEntranteTierra(enemigo);
         danio += MOD_ATK_TIERRA;
+
     }
 
     return (int) ( danio - danio * (MOD_ESCUDO * escudo) );

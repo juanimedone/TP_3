@@ -33,7 +33,7 @@ public:
 
     // PRE:
     // POS:
-    void posicionarPersonaje(Personaje* personaje, array<int,2> posicion);
+    void moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<int,2> posFinal);
 
     // PRE:
     // POS:

@@ -41,6 +41,7 @@ void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
     }
 
     personajes[i]->asignarPosicion(posicion);
+    tablero.moverPersonaje(personajes[i], COORD_INVALIDA, posicion);
 
 }
 
@@ -56,6 +57,17 @@ bool Jugador::quiereSalir() {
         return true;
 
     return false;
+
+}
+
+
+void Jugador::chequearBajas(Grafo& tablero) {
+
+    for (short int i = 0; i < cantPersonajes; i++)
+
+        if (personajes[i]->obtenerVida() == VIDA_NULA)
+
+            eliminarPersonaje(i, tablero);
 
 }
 
@@ -153,7 +165,7 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo& tablero) {
         posFinal = personaje->pedirCoordenadas();
     }
 
-    tablero.posicionarPersonaje(personaje, posFinal);
+    tablero.moverPersonaje(personaje, posInicial, posFinal);
     personaje->asignarPosicion(posFinal);
 
 }
@@ -167,7 +179,7 @@ void Jugador::defenderAtacar(Personaje*& personaje, Grafo& tablero) {
     switch (opcion) {
 
         case DEFENDERSE:
-            personaje->defender();
+            personaje->defender(personajes, tablero);
             break;
 
         case ATACAR:
@@ -189,6 +201,21 @@ void Jugador::mostrarOpcionesDA() {
     cout << "\n\n 1- Defenderse \n"
             " 2- Atacar \n"
             " 3- Pasar opcion \n\n" ;
+
+}
+
+
+void Jugador::eliminarPersonaje(short int i, Grafo& tablero) {
+
+    for (short int j = i; j < MAX_PERSONAJES - 1; j++)
+
+        personajes[j] = personajes[j+1];
+
+
+    personajes[MAX_PERSONAJES - 1] = nullptr;
+    delete personajes[MAX_PERSONAJES - 1];
+
+    cantPersonajes--;
 
 }
 

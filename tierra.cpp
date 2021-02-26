@@ -40,7 +40,7 @@ void Tierra::alimentar() {
 }
 
 
-void Tierra::atacar(array<Personaje*,3> enemigos) {
+void Tierra::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     if (energia < ENERGIA_ATK_TIERRA)
 
@@ -55,7 +55,7 @@ void Tierra::atacar(array<Personaje*,3> enemigos) {
 }
 
 
-void Tierra::defender(array<Personaje*,3> aliados) {
+void Tierra::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 
@@ -91,24 +91,10 @@ int Tierra::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_FUEGO;
 
-    else if (elemento == COD_TIERRA) {
+    else if (elemento == COD_TIERRA)
 
-        array<int,2> posEnemigo = enemigo->obtenerPosicion();
+        danio = calcularAtkEntranteTierra(enemigo);
 
-        int distanciaFila = abs(this->posicion[0] - posEnemigo[0]);
-        int distanciaColumna = abs(this->posicion[1] - posEnemigo[1]);
-
-        danio = ATK_BASE_TIERRA;
-
-        if (distanciaFila <= 2 && distanciaColumna <= 2)
-
-            danio *= 3;
-
-        else if (distanciaFila <= 4 && distanciaColumna <= 4)
-
-            danio *= 2;
-
-    }
 
     if (defensaActiva)
 

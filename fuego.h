@@ -30,14 +30,14 @@ public:
 
     // PRE: -
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
-    void atacar(array<Personaje*, 3> enemigos) override;
+    void atacar(array<Personaje*,MAX_PERSONAJES> enemigos) override;
 
     // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    void defender(array<Personaje*, 3> aliados) override;
+    void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) override;
 
     // PRE: -
-    // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,
+    // POS: devuelve el daï¿½o que recibiria el personaje al ser atacado por el atacante,
     //      teniendo en cuenta elementos, escudo y habilidades especiales.
     int calcularAtkEntrante(Personaje* enemigo) override;
 
