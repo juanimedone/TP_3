@@ -48,6 +48,13 @@ string Personaje::obtenerNombre() {
 }
 
 
+short int Personaje::obtenerEscudo() {
+
+    return escudo;
+
+}
+
+
 int Personaje::obtenerVida() {
 
     return vida;

@@ -29,6 +29,14 @@ public:
 
     // PRE:
     // POS:
+    array<Personaje*,MAX_PERSONAJES> obtenerPersonajes();
+
+    // PRE:
+    // POS:
+    short int obtenerCantPersonajes();
+
+    // PRE:
+    // POS:
     void posicionarPersonaje(Grafo& tablero, short int i);
 
     // PRE:
@@ -41,7 +49,7 @@ public:
 
     // PRE:
     // POS:
-    void jugar(Grafo& tablero);
+    void jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
 
     // PRE:
     // POS:
@@ -54,7 +62,7 @@ private:
 
     // PRE:
     // POS:
-    void defenderAtacar(Personaje*& personaje, Grafo& tablero);
+    void defenderAtacar(Personaje*& personaje, Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
 
     // PRE:
     // POS:

@@ -24,6 +24,20 @@ void Jugador::asignarPersonaje(Personaje* personaje) {
 }
 
 
+array<Personaje*,MAX_PERSONAJES> Jugador::obtenerPersonajes() {
+
+    return personajes;
+
+}
+
+
+short int Jugador::obtenerCantPersonajes() {
+
+    return cantPersonajes;
+
+}
+
+
 void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
 
     array<int,2> posicion{};
@@ -48,15 +62,21 @@ void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
 
 bool Jugador::quiereSalir() {
 
+    bool salir = false;
+
     cout << "\n\n Desea guardar la partida y salir?"
             "\n 1- Si           2- No \n\n" ;
 
     pedirOpcion();
 
-    if (opcion == GUARDAR_Y_SALIR)
-        return true;
+    if (opcion == GUARDAR_Y_SALIR) {
 
-    return false;
+        ArchivoPartida archivoPartida;
+
+        archivoPartida.guardarPartida();
+    }
+
+    return salir;
 
 }
 
@@ -72,7 +92,7 @@ void Jugador::chequearBajas(Grafo& tablero) {
 }
 
 
-void Jugador::jugar(Grafo& tablero) {
+void Jugador::jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     int i = 0;
 
@@ -82,7 +102,7 @@ void Jugador::jugar(Grafo& tablero) {
 
         alimentarMover(personajes[i], tablero);
 
-        defenderAtacar(personajes[i], tablero);
+        defenderAtacar(personajes[i], tablero, enemigos);
 
         i++;
     }
@@ -171,7 +191,7 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo& tablero) {
 }
 
 
-void Jugador::defenderAtacar(Personaje*& personaje, Grafo& tablero) {
+void Jugador::defenderAtacar(Personaje*& personaje, Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     mostrarOpcionesDA();
     pedirOpcion();
@@ -183,7 +203,7 @@ void Jugador::defenderAtacar(Personaje*& personaje, Grafo& tablero) {
             break;
 
         case ATACAR:
-            personaje->atacar();
+            personaje->atacar(enemigos);
             break;
 
         case PASAR:

@@ -41,6 +41,10 @@ public:
     // POS: devuelve el nombre del personaje
     string obtenerNombre();
 
+    // PRE:
+    // POS:
+    short int obtenerEscudo();
+
     // PRE: -
     // POS: devuelve la vida actual del personaje
     int obtenerVida();

@@ -125,17 +125,19 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador1.jugar(tablero);
+                jugador1.jugar(tablero, jugador2.obtenerPersonajes() );
                 jugador2.chequearBajas(tablero);
                 pausar();
-
 
                 tablero.mostrar();
                 salir = jugador2.quiereSalir();
 
-                if (!salir) {
+                if (salir)
+                    turno = JUGADOR_2;
 
-                    jugador2.jugar(tablero);
+                else {
+
+                    jugador2.jugar(tablero, jugador1.obtenerPersonajes() );
                     jugador1.chequearBajas(tablero);
                     pausar();
                 }
@@ -150,21 +152,31 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador2.jugar(tablero);
+                jugador2.jugar(tablero, jugador1.obtenerPersonajes() );
                 jugador1.chequearBajas(tablero);
                 pausar();
 
                 tablero.mostrar();
                 salir = jugador1.quiereSalir();
 
-                if (!salir) {
+                if (salir)
+                    turno = JUGADOR_1;
 
-                    jugador1.jugar(tablero);
+                else {
+
+                    jugador1.jugar(tablero, jugador2.obtenerPersonajes() );
                     jugador2.chequearBajas(tablero);
                     pausar();
                 }
             }
         }
+
+    if (salir) {
+
+        ArchivoPartida archivoPartida;
+
+        archivoPartida.guardarPartida(this, turno);
+    }
 
 }
 
@@ -179,9 +191,9 @@ bool Juego::terminado() {
 void Juego::mostrarGanador() {
 
     if (jugador1.todosMuertos())
-        cout << "\n El jugador 2 ha ganado la batalla \n" ;
+        cout << "\n El jugador 2 ha ganado la partida \n" ;
 
     else
-        cout << "\n El jugador 1 ha ganado la batalla \n" ;
+        cout << "\n El jugador 1 ha ganado la partida \n" ;
 
 }

@@ -11,7 +11,8 @@ class ArchivoPartida {
 
     // atributos
 private:
-    fstream archivo;
+    ifstream archivoEntrada;
+    ofstream archivoSalida;
 
     // metodos
 public:
@@ -30,7 +31,7 @@ public:
 
     // PRE:
     // POS:
-    void guardarPartida();
+    void guardarPartida(Juego* juego, short int turno);
 
     // destructor
     // PRE:
@@ -46,6 +47,10 @@ private:
     // POS: reserva espacio para el elemento correspondiente en el heap y lo devuelve como puntero a Personaje
     Personaje* crearPersonaje(const string& elemento, const string& nombre, const string& escudo, const string& vida,
                               const string& energia, array<int,2> posicion);
+
+    // PRE:
+    // POS:
+    void guardarPersonajes(array<Personaje*,MAX_PERSONAJES> personajes, short int cantPersonajes);
 
 };
 
