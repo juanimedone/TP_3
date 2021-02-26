@@ -1,4 +1,5 @@
 #include "juego.h"
+#include "archivoPartida.h"
 
 
 Juego::Juego() {

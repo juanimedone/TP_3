@@ -1,4 +1,5 @@
 #include "archivoTablero.h"
+#include "archivoPartida.h"
 #include "archivoPersonajes.h"
 #include "menuPrincipal.h"
 

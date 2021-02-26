@@ -50,6 +50,10 @@ private:
     // POS:
     void inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento);
 
+    // PRE:
+    // POS:
+    void rellenarMatriz(int matriz[MAX_FILA][MAX_COLUMNA]);
+
 };
 
 

@@ -1,7 +1,6 @@
 #ifndef TP_3_JUEGO_H
 #define TP_3_JUEGO_H
 
-//#include "archivoPartida.h"
 #include "jugador.h"
 
 class Juego {

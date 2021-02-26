@@ -116,6 +116,8 @@ Recorrido Grafo::dijkstra(array<int, 2> origen, string elemento) {
 
 void Grafo::inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento) {
 
+    rellenarMatriz(matrizPesos);
+
     for (int i = 0; i < MAX_FILA - 1; i++)
 
         for (int j = 0; j < MAX_COLUMNA - 1; j++) {
@@ -139,5 +141,16 @@ void Grafo::inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const stri
             matrizPesos[i*MAX_FILA+j][j+8] = pesoActual;
 
         }
+
+}
+
+
+void Grafo::rellenarMatriz(int matriz[MAX_FILA][MAX_COLUMNA]) {
+
+    for (int i = 0; i < MAX_FILA; i++)
+
+        for (int j = 0; j < MAX_COLUMNA; j++)
+
+            matriz[i][j] = -1;
 
 }

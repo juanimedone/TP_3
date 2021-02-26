@@ -62,21 +62,15 @@ void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
 
 bool Jugador::quiereSalir() {
 
-    bool salir = false;
-
     cout << "\n\n Desea guardar la partida y salir?"
             "\n 1- Si           2- No \n\n" ;
 
     pedirOpcion();
 
-    if (opcion == GUARDAR_Y_SALIR) {
+    if (opcion == GUARDAR_Y_SALIR)
+        return true;
 
-        ArchivoPartida archivoPartida;
-
-        archivoPartida.guardarPartida();
-    }
-
-    return salir;
+    return false;
 
 }
 
