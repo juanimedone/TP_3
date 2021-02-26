@@ -3,13 +3,10 @@
 
 void Grafo::inicializarMatrices() {
 
-    for (int i = 0; i < CANT_VERTICES; i++) {
-
-        for (int j = 0; j < CANT_VERTICES; j++) {
-
-
-        }
-    }
+    inicializarMatriz(this->agua, COD_AGUA);
+    inicializarMatriz(this->aire, COD_AIRE);
+    inicializarMatriz(this->tierra, COD_TIERRA);
+    inicializarMatriz(this->fuego, COD_FUEGO);
 
 }
 
@@ -113,5 +110,34 @@ Recorrido Grafo::dijkstra(array<int, 2> origen, string elemento) {
 
 
     return recorridoMin;
+
+}
+
+
+void Grafo::inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento) {
+
+    for (int i = 0; i < MAX_FILA - 1; i++)
+
+        for (int j = 0; j < MAX_COLUMNA - 1; j++) {
+
+            int pesoActual = vertices[i * MAX_FILA + j]->obtenerCosto(elemento);
+            int pesoSiguiente = vertices[i * MAX_FILA + j+1]->obtenerCosto(elemento);
+
+            matrizPesos[i * MAX_FILA + j][j+1] = pesoSiguiente;
+            matrizPesos[i * MAX_FILA + j+1][j] = pesoActual;
+
+        }
+
+    for (int i = 0; i < MAX_COLUMNA - 1; i++)
+
+        for (int j = 0; j < MAX_FILA - 1; j++) {
+
+            int pesoActual = vertices[i + j*8]->obtenerCosto(elemento);
+            int pesoSiguiente = vertices[i + (j+1)*8]->obtenerCosto(elemento);
+
+            matrizPesos[i*MAX_FILA+j+8][j] = pesoSiguiente;
+            matrizPesos[i*MAX_FILA+j][j+8] = pesoActual;
+
+        }
 
 }

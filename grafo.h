@@ -1,17 +1,19 @@
 #ifndef TP_3_GRAFO_H
 #define TP_3_GRAFO_H
 
-#include "matriz.h"
 #include "casillero.h"
 #include "recorrido.h"
+#include "utiles.h"
 
 class Grafo {
 
     // atributos
 private:
-    Matriz<int>* agua, *aire, *fuego, *tierra;     // matrices de costos
-    Casillero* vertices[MAX_FILA][MAX_COLUMNA];
-    // int elementos = MAX_FILA * MAX_COLUMNA;
+    int agua[MAX_FILA][MAX_COLUMNA];                      // matrices de costos
+    int aire[MAX_FILA][MAX_COLUMNA];
+    int fuego[MAX_FILA][MAX_COLUMNA];
+    int tierra[MAX_FILA][MAX_COLUMNA];
+    array<Casillero*,CANT_VERTICES> vertices;
 
     // metodos
 public:
@@ -42,6 +44,11 @@ public:
     // PRE:
     // POS:
     Recorrido dijkstra(array<int,2> origen, string elemento);
+
+private:
+    // PRE:
+    // POS:
+    void inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento);
 
 };
 
