@@ -1,14 +1,42 @@
 #include "juego.h"
 
 
-void Juego::iniciar() {
+Juego::Juego() {
+
+    srand(time(nullptr));
+
+    turno = rand() % CANT_JUGADORES + JUGADOR_1;
+
+    salir = false;
+
+}
+
+
+void Juego::iniciarPartida() {
 
     posicionarPersonajes();
 
     cicloPrincipal();
 
-    mostrarGanador();
+    if (!salir)
+        mostrarGanador();
 
+}
+
+
+void Juego::reanudarPartida() {
+
+    cicloPrincipal();
+
+    if (!salir)
+        mostrarGanador();
+
+}
+
+
+void Juego::asignarTurno(short int turno) {
+
+    this->turno = turno;
 }
 
 
@@ -58,32 +86,80 @@ void Juego::limpiarPantalla() {
 
 void Juego::posicionarPersonajes() {
 
-    for (short int i = 0; i < MAX_PERSONAJES; i++) {
+    if (turno == JUGADOR_1)
 
-        cout << " Jugador 1 \n" ;
-        jugador1.posicionarPersonaje(tablero, i);
+        for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
-        limpiarPantalla();
+            cout << " Jugador 1 \n" ;
+            jugador1.posicionarPersonaje(tablero, i);
 
-        cout << " Jugador 2 \n" ;
-        jugador2.posicionarPersonaje(tablero, i);
-    }
+            limpiarPantalla();
+
+            cout << " Jugador 2 \n" ;
+            jugador2.posicionarPersonaje(tablero, i);
+        }
+
+    else
+        for (short int i = 0; i < MAX_PERSONAJES; i++) {
+
+            cout << " Jugador 2 \n" ;
+            jugador2.posicionarPersonaje(tablero, i);
+
+            limpiarPantalla();
+
+            cout << " Jugador 1 \n" ;
+            jugador1.posicionarPersonaje(tablero, i);
+        }
 
 }
 
 
 void Juego::cicloPrincipal() {
 
-    while ( !terminado() ) {
+    if (turno == JUGADOR_1)
 
-        tablero.mostrar();
-        jugador1.jugar(tablero);
-        pausar();
+        while ( !terminado() && !salir ) {
 
-        tablero.mostrar();
-        jugador2.jugar(tablero);
-        pausar();
-    }
+            tablero.mostrar();
+            salir = jugador1.quiereSalir();
+
+            if (!salir) {
+
+                jugador1.jugar(tablero);
+                pausar();
+
+                tablero.mostrar();
+                salir = jugador2.quiereSalir();
+
+                if (!salir) {
+
+                    jugador2.jugar(tablero);
+                    pausar();
+                }
+            }
+        }
+
+    else
+        while ( !terminado() && !salir ) {
+
+            tablero.mostrar();
+            salir = jugador2.quiereSalir();
+
+            if (!salir) {
+
+                jugador2.jugar(tablero);
+                pausar();
+
+                tablero.mostrar();
+                salir = jugador1.quiereSalir();
+
+                if (!salir) {
+
+                    jugador1.jugar(tablero);
+                    pausar();
+                }
+            }
+        }
 
 }
 

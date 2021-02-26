@@ -44,6 +44,10 @@ public:
     // POS: devuelve la vida actual del personaje
     int obtenerVida();
 
+    // PRE:
+    // POS:
+    int obtenerEnergia();
+
     // PRE: -
     // POS: devuelve un arreglo con la posicion [fila, columna] del personaje
     array<int,2> obtenerPosicion();
@@ -51,6 +55,10 @@ public:
     // PRE:
     // POS:
     array<int,2> pedirCoordenadas();
+
+    // PRE:
+    // POS:
+    bool energiaSuficiente(int energiaNecesaria);
 
     // PRE: -
     // POS: devuelve el elemento del personaje

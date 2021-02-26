@@ -37,7 +37,11 @@ public:
 
     // PRE:
     // POS:
-    Recorrido dijkstra(array<int,2> origen, array<int,2> destino, string elemento);
+    void mostrar();
+
+    // PRE:
+    // POS:
+    Recorrido dijkstra(array<int,2> origen, string elemento);
 
 };
 

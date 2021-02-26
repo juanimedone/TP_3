@@ -9,12 +9,27 @@ class Juego {
 private:
     Jugador jugador1, jugador2;
     Grafo tablero;
+    short int turno;
+    bool salir;
 
     // metodos
 public:
+    // constructor
     // PRE:
     // POS:
-    void iniciar();
+    Juego();
+
+    // PRE:
+    // POS:
+    void iniciarPartida();
+
+    // PRE:
+    // POS:
+    void asignarTurno(short int turno);
+
+    // PRE:
+    // POS:
+    void reanudarPartida();
 
     // PRE:
     // POS:

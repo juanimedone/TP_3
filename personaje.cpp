@@ -55,6 +55,13 @@ int Personaje::obtenerVida() {
 }
 
 
+int Personaje::obtenerEnergia() {
+
+    return energia;
+
+}
+
+
 array<int,2> Personaje::obtenerPosicion() {
 
     return posicion;
@@ -96,6 +103,16 @@ array<int,2> Personaje::pedirCoordenadas() {
     coords = {stoi(fila), stoi(columna)};
 
     return coords;
+
+}
+
+
+bool Personaje::energiaSuficiente(int energiaNecesaria) {
+
+    if (energiaNecesaria <= energia)
+        return true;
+
+    return false;
 
 }
 

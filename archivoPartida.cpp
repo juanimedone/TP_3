@@ -1,5 +1,6 @@
 #include "archivoPartida.h"
 
+
 ArchivoPartida::ArchivoPartida() {
 
     archivo.open(PATH_ARCHIVO_PARTIDA);
@@ -25,7 +26,7 @@ void ArchivoPartida::cargarPartida(Juego& juego) {
     tablero = juego.obtenerTablero();
 
     getline(archivo, turno);
-    // (short) stoi(turno)
+    juego.asignarTurno( (short) stoi(turno) );
 
     cargarPersonajes(tablero, jugador1);
     cargarPersonajes(tablero, jugador2);

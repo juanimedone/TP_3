@@ -58,6 +58,7 @@ const int MOVERSE = 2;
 const int PASAR = 3;
 const int DEFENDERSE = 1;
 const int ATACAR = 2;
+const short int GUARDAR_Y_SALIR = 1;
 
 // constantes del tablero
 const int MIN_FILA = 1;
@@ -113,5 +114,10 @@ const string COD_TIERRA = "tierra";
 const string COD_FUEGO = "fuego";
 const string COD_AIRE = "aire";
 const string COD_AGUA = "agua";
+
+// constantes de Juego
+const int CANT_JUGADORES = 2;
+const int JUGADOR_1 = 1;
+const int JUGADOR_2 = 2;
 
 #endif //TP_3_UTILES_H

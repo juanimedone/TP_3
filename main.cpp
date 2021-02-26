@@ -25,22 +25,29 @@ int main() {
             menuPrincipal.pausar();
 
             archivoPartida.cargarPartida(juego);
+            juego.reanudarPartida();
+
         }
 
-        else if (archivoPersonajes.estaAbierto()) {
+        else {          // empieza una nueva partida
 
-            archivoPersonajes.procesarArchivo(diccionario);
-            cout << "\n El archivo de personajes se ha cargado correctamente" << endl;
+            if (archivoPersonajes.estaAbierto()) {
+
+                archivoPersonajes.procesarArchivo(diccionario);
+                cout << "\n El archivo de personajes se ha cargado correctamente" << endl;
+            }
+            else
+                cout << "\n Error al abrir el archivo de personajes" << endl;
+
+            menuPrincipal.pausar();
+
+            menuPrincipal.interfazPrincipal(juego, diccionario);
+
         }
-        else
-            cout << "\n Error al abrir el archivo de personajes" << endl;
 
-        menuPrincipal.pausar();
-
-        menuPrincipal.interfazPrincipal(juego, diccionario);
     }
 
-    else
+    else                                                            // sin el archivo del tablero no se puede jugar
         cout << "\n Error al abrir el archivo del tablero" << endl;
 
 

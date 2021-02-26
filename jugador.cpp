@@ -45,6 +45,21 @@ void Jugador::posicionarPersonaje(Grafo& tablero, short int i) {
 }
 
 
+bool Jugador::quiereSalir() {
+
+    cout << "\n\n Desea guardar la partida y salir?"
+            "\n 1- Si           2- No \n\n" ;
+
+    pedirOpcion();
+
+    if (opcion == GUARDAR_Y_SALIR)
+        return true;
+
+    return false;
+
+}
+
+
 void Jugador::jugar(Grafo& tablero) {
 
     int i = 0;
@@ -113,13 +128,33 @@ void Jugador::pedirOpcion() {
 
 void Jugador::moverPersonaje(Personaje*& personaje, Grafo& tablero) {
 
-    short int fila, columna;
+    array<int,2> posInicial{}, posFinal{};
+    int energiaNecesaria;
+    string elemento;
 
-    pedirCoordenadas(fila, columna);
+    posInicial = personaje->obtenerPosicion();
+    posFinal = personaje->pedirCoordenadas();
+    elemento = personaje->obtenerElemento();
 
-    // verificar si las coordenadas en el tablero no estan ocupadas
+    energiaNecesaria = tablero.dijkstra(posInicial, elemento).obtenerEnergiaMinima();
 
-    personaje->asignarPosicion(fila, columna);
+    while ( !tablero.estaVacio(posFinal) || !personaje->energiaSuficiente(energiaNecesaria) ) {
+
+        if ( !tablero.estaVacio(posFinal) )
+
+            cout << "\n La posicion [" << posFinal[0] << "," << posFinal[1] << "] se encuentra ocupada por " <<
+                 tablero.obtenerPersonaje(posFinal)->obtenerNombre() << "\n\n Reingrese las coordenadas\n" ;
+
+        else
+            cout << "\n El personaje " << personaje->obtenerNombre() << " no posee la energia necesaria para llegar a ["
+            << posFinal[0] << "," << posFinal[1] << "] \n\n Energia requerida: " << energiaNecesaria <<
+            "\n Energia actual: " << personaje->obtenerEnergia() << "\n\n Reingrese las coordenadas\n" ;
+
+        posFinal = personaje->pedirCoordenadas();
+    }
+
+    tablero.posicionarPersonaje(personaje, posFinal);
+    personaje->asignarPosicion(posFinal);
 
 }
 

@@ -33,6 +33,10 @@ public:
 
     // PRE:
     // POS:
+    bool quiereSalir();
+
+    // PRE:
+    // POS:
     void jugar(Grafo& tablero);
 
     // PRE:

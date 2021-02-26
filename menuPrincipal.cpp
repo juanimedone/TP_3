@@ -64,7 +64,7 @@ void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string, Perso
                         "\n\n\t\t CARGAR PERSONAJES \n\n\n" ;
                 cargarPersonajes(juego.obtenerJugador1(), juego.obtenerJugador2(), diccionario);
                 if (opcion != SALIR_JUEGO)
-                    juego.iniciar();
+                    juego.iniciarPartida();
                 opcion = SALIR;
                 break;
 
