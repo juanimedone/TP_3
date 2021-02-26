@@ -51,6 +51,15 @@ void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
     cantPersonajes = juego->obtenerJugador2().obtenerCantPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
+    archivoSalida.close();
+
+}
+
+
+void ArchivoPartida::eliminarArchivo() {
+
+    remove(PATH_ARCHIVO_PARTIDA);
+
 }
 
 

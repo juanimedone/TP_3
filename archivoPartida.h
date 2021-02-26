@@ -33,6 +33,10 @@ public:
     // POS:
     void guardarPartida(Juego* juego, short int turno);
 
+    // PRE:
+    // POS:
+    void eliminarArchivo();
+
     // destructor
     // PRE:
     // POS:

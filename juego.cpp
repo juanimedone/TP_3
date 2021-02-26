@@ -22,15 +22,23 @@ void Juego::iniciarPartida() {
     if (!salir)
         mostrarGanador();
 
+    pausar();
+
 }
 
 
 void Juego::reanudarPartida() {
 
+    ArchivoPartida archivoPartida;
+
     cicloPrincipal();
 
     if (!salir)
         mostrarGanador();
+
+    pausar();
+
+    archivoPartida.eliminarArchivo();
 
 }
 
