@@ -17,3 +17,10 @@ int Montania::obtenerCosto(string elemento) {
     return costo;
 
 }
+
+
+char Montania::obtenerCodigo() {
+
+    return MONTANIA;
+
+}

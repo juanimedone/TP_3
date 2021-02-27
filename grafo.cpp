@@ -74,46 +74,48 @@ void Grafo::mostrar() {
 
 Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]) {
 
-    vector<int> ruta;
     Recorrido recorridoMin;
+    array<int, CANT_VERTICES> pesosMinimos{}, rutaMinima{};
     array<bool, CANT_VERTICES> visitados{};
 
     for (int i = 0; i < CANT_VERTICES; i++) {
 
-        recorridoMin.pesosMinimos[i] = INFINITO;
-        recorridoMin.rutaMinima[i] = VACIO;
+        pesosMinimos[i] = INFINITO;
+        rutaMinima[i] = VACIO;
         visitados[i] = false;
     }
 
-    recorridoMin.pesoMinimo[origen] = 0;
+    pesosMinimos[origen] = 0;
 
     for (int i = 0; i < CANT_VERTICES - 1; i++) {
 
-        int posMin = distanciaMinima(recorridoMin.pesosMinimos, visitados);
+        int posMin = distanciaMinima(pesosMinimos, visitados);
         visitados[posMin] = true;
 
         for (int j = 0; j < CANT_VERTICES; j++) {
 
-            int minDist = recorridoMin.pesosMinimos[posMin] + matrizPesos[posMin][j];
+            int minDist = pesosMinimos[posMin] + matrizPesos[posMin][j];
 
-            if (!visitados[j] && recorridoMin.pesosMinimos[posMin] != INFINITO && minDist < recorridoMin.pesosMinimos[j]) {
+            if (!visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j]) {
 
-                recorridoMin.pesosMinimos[j] = minDist;
-                recorridoMin.rutaMinima[j] = vertices->obtenerPeso(posMin);
+                pesosMinimos[j] = minDist;
+                rutaMinima[j] = vertices->obtenerPeso(posMin);
             }
         }
     }
+
+    recorridoMin.energiaGastada = pesosMinimos[destino];
 
     int aux = destino;
 
     while (aux != origen) {
 
-        ruta.push_back(aux);
+        recorridoMin.caminoTomado.push_back(aux);
         aux = rutaMinima[aux];
     }
 
-    ruta.push_back(aux);
-    reverse(ruta.begin(), ruta.end());
+    recorridoMin.caminoTomado.push_back(aux);
+    reverse(recorridoMin.caminoTomado.begin(), recorridoMin.caminoTomado.end());
 
     return recorridoMin;
 

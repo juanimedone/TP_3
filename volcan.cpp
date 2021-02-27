@@ -17,3 +17,10 @@ int Volcan::obtenerCosto(string elemento) {
     return costo;
 
 }
+
+
+char Volcan::obtenerCodigo() {
+
+    return VOLCAN;
+
+}

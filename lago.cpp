@@ -17,3 +17,10 @@ int Lago::obtenerCosto(string elemento) {
     return costo;
 
 }
+
+
+char Lago::obtenerCodigo() {
+
+    return LAGO;
+
+}

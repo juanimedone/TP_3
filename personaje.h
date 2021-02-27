@@ -1,7 +1,6 @@
 #ifndef TP_3_PERSONAJE_H
 #define TP_3_PERSONAJE_H
 
-#include "utiles.h"
 #include "grafo.h"
 
 class Personaje {

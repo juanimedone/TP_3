@@ -2,7 +2,6 @@
 #define TP_3_JUGADOR_H
 
 #include "personaje.h"
-#include "grafo.h"
 
 class Jugador {
 

@@ -11,6 +11,10 @@ public:
     // POS:
     int obtenerCosto(string elemento) override;
 
+    // PRE:
+    // POS:
+    char obtenerCodigo() override;
+
 };
 
 

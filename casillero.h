@@ -27,6 +27,10 @@ public:
     // POS:
     virtual int obtenerCosto(string elemento) = 0;
 
+    // PRE:
+    // POS:
+    virtual char obtenerCodigo() = 0;
+
     // destructor
     // PRE: -
     // POS: libera el espacio de memoria que corresponda segun el tipo de casillero

@@ -17,3 +17,10 @@ int Precipicio::obtenerCosto(string elemento) {
     return costo;
 
 }
+
+
+char Precipicio::obtenerCodigo() {
+
+    return PRECIPICIO;
+
+}

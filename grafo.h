@@ -3,7 +3,6 @@
 
 #include "casillero.h"
 #include "recorrido.h"
-#include "utiles.h"
 
 class Grafo {
 
