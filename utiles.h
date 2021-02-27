@@ -9,6 +9,7 @@
 #include <cctype>
 #include <array>
 #include <algorithm>
+#include "vector"
 
 using namespace std;
 

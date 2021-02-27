@@ -13,59 +13,54 @@ void Grafo::inicializarMatrices() {
 
 void Grafo::asignarVertice(Casillero* vertice, array<int, 2> posicion) {
 
-    short int fila, columna;
+    int indice;
 
-    fila = posicion[0];
-    columna = posicion[1];
+    indice = calcularIndice(posicion);
 
-    vertices[fila][columna] = vertice;
+    vertices[indice] = vertice;
 
 }
 
 
 Personaje* Grafo::obtenerPersonaje(array<int, 2> posicion) {
 
-    int fila, columna;
+    int indice;
 
-    fila = posicion[0];
-    columna = posicion[1];
+    indice = calcularIndice(posicion);
 
-    return vertices[fila][columna]->obtenerPersonaje();
+    return vertices[indice]->obtenerPersonaje();
 
 }
 
 
 bool Grafo::estaVacio(array<int,2> posicion) {
 
-    int fila, columna;
+    int indice;
 
-    fila = posicion[0];
-    columna = posicion[1];
+    indice = calcularIndice(posicion);
 
-    return vertices[fila][columna]->estaVacio();
+    return vertices[indice]->estaVacio();
 
 }
 
 
 void Grafo::moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<int,2> posFinal) {
 
-    int filaFinal, columnaFinal;
+    int indiceFinal;
 
-    filaFinal = posFinal[0];
-    columnaFinal = posFinal[1];
+    indiceFinal = calcularIndice(posFinal);
 
     if (posInicial != COORD_INVALIDA) {
 
-        int filaInicial, columnaInicial;
+        int indiceInicial;
 
-        filaInicial = posInicial[0];
-        columnaInicial = posInicial[1];
+        indiceInicial = calcularIndice(posInicial);
 
-        vertices[filaInicial][columnaInicial]->asignarPersonaje(nullptr);
+        vertices[indiceInicial]->asignarPersonaje(nullptr);
 
     }
 
-    vertices[filaFinal][columnaFinal]->asignarPersonaje(personaje);
+    vertices[indiceFinal]->asignarPersonaje(personaje);
 
 }
 
@@ -77,44 +72,55 @@ void Grafo::mostrar() {
 }
 
 
-Recorrido Grafo::dijkstra(array<int, 2> origen, string elemento) {
+Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]) {
 
+    vector<int> ruta;
     Recorrido recorridoMin;
-    bool visitados[MAX_FILA][MAX_COLUMNA];
+    array<bool, CANT_VERTICES> visitados{};
 
-    for (short int i = 0; i < MAX_FILA; i++)
+    for (int i = 0; i < CANT_VERTICES; i++) {
 
-        for (short int j = 0; j < MAX_COLUMNA; j++)
+        recorridoMin.pesosMinimos[i] = INFINITO;
+        recorridoMin.rutaMinima[i] = VACIO;
+        visitados[i] = false;
+    }
 
-            visitados[i][j] = false;
+    recorridoMin.pesoMinimo[origen] = 0;
 
-    recorridoMin.asignarEnergiaMinima(COSTO_NULO);
+    for (int i = 0; i < CANT_VERTICES - 1; i++) {
 
-    // if (elemento == COD_AGUA)
+        int posMin = distanciaMinima(recorridoMin.pesosMinimos, visitados);
+        visitados[posMin] = true;
 
-    for (short int i = 0; i < MAX_FILA; i++)      // elementos - 1
+        for (int j = 0; j < CANT_VERTICES; j++) {
 
-        for (short int j = 0; j < MAX_COLUMNA; j++) {
+            int minDist = recorridoMin.pesosMinimos[posMin] + matrizPesos[posMin][j];
 
-            int posMin = distanciaMinima(recorridoMin.obtenerEnergiaMinima(), visitados);
-            visitados[posMin] = true;
+            if (!visitados[j] && recorridoMin.pesosMinimos[posMin] != INFINITO && minDist < recorridoMin.pesosMinimos[j]) {
 
-            for (unsigned j = 0; j < elementos; j++){
-                int minDist = recorridoMin.precioMinimo[posMin] + precios->obtenerValor(posMin, j);
-                if (!visitados[j] && recorridoMin.precioMinimo[posMin] != E_INFINITO && minDist < recorridoMin.precioMinimo[j]) {
-                    recorridoMin.precioMinimo[j] = minDist;
-                    recorridoMin.rutaMinima[j] = vertices->obtenerDato(posMin);
-                }
+                recorridoMin.pesosMinimos[j] = minDist;
+                recorridoMin.rutaMinima[j] = vertices->obtenerPeso(posMin);
             }
         }
+    }
 
+    int aux = destino;
+
+    while (aux != origen) {
+
+        ruta.push_back(aux);
+        aux = rutaMinima[aux];
+    }
+
+    ruta.push_back(aux);
+    reverse(ruta.begin(), ruta.end());
 
     return recorridoMin;
 
 }
 
 
-void Grafo::inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento) {
+void Grafo::inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], const string& elemento) {
 
     rellenarMatriz(matrizPesos);
 
@@ -145,12 +151,45 @@ void Grafo::inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const stri
 }
 
 
-void Grafo::rellenarMatriz(int matriz[MAX_FILA][MAX_COLUMNA]) {
+void Grafo::rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]) {
 
-    for (int i = 0; i < MAX_FILA; i++)
+    for (int i = 0; i < CANT_VERTICES; i++)
 
-        for (int j = 0; j < MAX_COLUMNA; j++)
+        for (int j = 0; j < CANT_VERTICES; j++)
 
             matriz[i][j] = -1;
+
+}
+
+
+int Grafo::distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_VERTICES> visitados) {
+
+    int min = INFINITO;
+    int indiceMin = 0;
+
+    for (int i = 0; i < CANT_VERTICES; i++)
+
+        if (!visitados[i] && distancias[i] <= min) {
+
+            min = distancias[i];
+            indiceMin = i;
+        }
+
+
+    return indiceMin;
+
+}
+
+
+int Grafo::calcularIndice(array<int, 2> posicion) {
+
+    int fila, columna, indice;
+
+    fila = posicion[0];
+    columna = posicion[1];
+
+    indice = (fila * MAX_FILA) + columna;
+
+    return indice;
 
 }

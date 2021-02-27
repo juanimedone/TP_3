@@ -9,10 +9,10 @@ class Grafo {
 
     // atributos
 private:
-    int agua[MAX_FILA][MAX_COLUMNA];                      // matrices de costos
-    int aire[MAX_FILA][MAX_COLUMNA];
-    int fuego[MAX_FILA][MAX_COLUMNA];
-    int tierra[MAX_FILA][MAX_COLUMNA];
+    int agua[CANT_VERTICES][CANT_VERTICES];                      // matrices de costos
+    int aire[CANT_VERTICES][CANT_VERTICES];
+    int fuego[CANT_VERTICES][CANT_VERTICES];
+    int tierra[CANT_VERTICES][CANT_VERTICES];
     array<Casillero*,CANT_VERTICES> vertices;
 
     // metodos
@@ -43,16 +43,24 @@ public:
 
     // PRE:
     // POS:
-    Recorrido dijkstra(array<int,2> origen, string elemento);
+    Recorrido dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]);
 
 private:
     // PRE:
     // POS:
-    void inicializarMatriz(int matrizPesos[MAX_FILA][MAX_COLUMNA], const string& elemento);
+    void inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], const string& elemento);
 
     // PRE:
     // POS:
-    void rellenarMatriz(int matriz[MAX_FILA][MAX_COLUMNA]);
+    void rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]);
+
+    // PRE:
+    // POS:
+    int distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_VERTICES> visitados);
+
+    // PRE:
+    // POS:
+    int calcularIndice(array<int,2> posicion);
 
 };
 

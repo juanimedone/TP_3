@@ -1,10 +1,7 @@
 #ifndef DICCIONARIOABB_H
 #define DICCIONARIOABB_H
 
-#include <iostream>
 #include "nodoDiccionarioABB.h"
-
-using namespace std;
 
 template <typename Clave, typename Valor>
 class DiccionarioABB {

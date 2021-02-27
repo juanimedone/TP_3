@@ -1,6 +1,9 @@
 #ifndef NODODICCIONARIOABB_H
 #define NODODICCIONARIOABB_H
 
+#include <iostream>
+
+using namespace std;
 
 template <typename Clave, typename Valor>
 class NodoDiccionarioABB {
