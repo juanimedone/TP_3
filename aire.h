@@ -35,7 +35,7 @@ public:
     void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) override;
 
     // PRE: -
-    // POS: devuelve el daño que recibiria el personaje al ser atacado por un enemigo,
+    // POS: devuelve el danio que recibiria el personaje al ser atacado por un enemigo,
     //      teniendo en cuenta elementos, escudo y habilidades especiales
     int calcularAtkEntrante(Personaje* enemigo) override;
 

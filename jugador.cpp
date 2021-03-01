@@ -177,7 +177,7 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo& tablero) {
     recorridoMin = tablero.caminoMinimo(posInicial, posFinal, elemento);
     energiaNecesaria = recorridoMin.obtenerEnergiaGastada();
 
-    validarMovimiento(tablero, posFinal, personaje, energiaNecesaria);
+    validarMovimiento(tablero, posInicial, posFinal, personaje, energiaNecesaria);
 
     tablero.moverPersonaje(personaje, posInicial, posFinal);
     personaje->asignarPosicion(posFinal);

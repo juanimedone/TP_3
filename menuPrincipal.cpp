@@ -431,7 +431,7 @@ void MenuPrincipal::asignarCodigo(Personaje* personaje, int numPersonaje) {
 
         case PERSONAJE_6:
             personaje->asignarCodigo('#');
-            break;
+
     }
 
 }

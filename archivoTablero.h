@@ -1,7 +1,6 @@
 #ifndef TP_3_ARCHIVOTABLERO_H
 #define TP_3_ARCHIVOTABLERO_H
 
-#include "grafo.h"
 #include "montania.h"
 #include "precipicio.h"
 #include "lago.h"
