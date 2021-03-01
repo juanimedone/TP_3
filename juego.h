@@ -41,7 +41,7 @@ public:
 
     // PRE: -
     // POS: devuelve el tablero
-    Grafo obtenerTablero();
+    Grafo* obtenerTablero();
 
 private:
     // PRE: -

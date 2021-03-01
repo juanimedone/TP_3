@@ -68,9 +68,9 @@ Jugador Juego::obtenerJugador2() {
 }
 
 
-Grafo Juego::obtenerTablero() {
+Grafo* Juego::obtenerTablero() {
 
-    return tablero;
+    return &tablero;
 
 }
 

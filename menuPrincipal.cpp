@@ -5,11 +5,11 @@ void MenuPrincipal::iniciar() {
 
     limpiarPantalla();
 
-    cout << "\n\t\tTrabajo Practico 3\n\n"
-            "\tLa batalla de los elementos\n\n"
-            " Grupo 3\n\n"
+    cout << "\n\t\t Trabajo Practico 3\n\n"
+            "\t La batalla de los elementos\n\n"
+            "\t\t\t Grupo 3\n\n"
             " Algoritmos y Programacion II - 2C 2020 \n\n\n\n\n"
-            " Se procedera a cargar el archivo de personajes.. \n\n" ;
+            " Se procedera a cargar el archivo del tablero.. \n\n" ;
 
     pausar();
 
@@ -78,8 +78,6 @@ void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string,Person
         pausar();
 
     }
-
-    cout << "\n\n El programa ha finalizado\n\n" ;
 
 }
 

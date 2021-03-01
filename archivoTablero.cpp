@@ -22,13 +22,13 @@ ArchivoTablero::~ArchivoTablero() {
 }
 
 
-void ArchivoTablero::cargarTablero(Grafo tablero) {
+void ArchivoTablero::cargarTablero(Grafo* tablero) {
 
     Casillero* nuevoCasillero;
     string tipo;
     array<int,2> posicion{};
 
-    for (short int i = 0; i < MAX_FILA; i++)
+    for (short int i = 0; i < MAX_FILA; i++) {
 
         for (short int j = 0; j < MAX_COLUMNA; j++) {
 
@@ -37,8 +37,12 @@ void ArchivoTablero::cargarTablero(Grafo tablero) {
             posicion[1] = j;
 
             nuevoCasillero = crearCasillero(tipo[0]);
-            tablero.asignarVertice(nuevoCasillero, posicion);
+            tablero->asignarVertice(nuevoCasillero, posicion);
         }
+
+        getline(archivo, tipo);
+
+    }
 
     nuevoCasillero = nullptr;
     delete nuevoCasillero;

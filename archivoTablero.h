@@ -28,7 +28,7 @@ public:
 
     // PRE: -
     // POS: prepara el tablero para jugar
-    void cargarTablero(Grafo tablero);
+    void cargarTablero(Grafo* tablero);
 
     // destructor
     // PRE: -

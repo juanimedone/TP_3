@@ -19,7 +19,7 @@ void ArchivoPartida::cargarPartida(Juego& juego) {
 
     string turno;
     Jugador jugador1, jugador2;
-    Grafo tablero;
+    Grafo* tablero;
 
     jugador1 = juego.obtenerJugador1();
     jugador2 = juego.obtenerJugador2();
@@ -70,7 +70,7 @@ ArchivoPartida::~ArchivoPartida() {
 }
 
 
-void ArchivoPartida::cargarPersonajes(Grafo& tablero, Jugador& jugador) {
+void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador& jugador) {
 
     Personaje* nuevoPersonaje;
     string turno, elemento, nombre, escudo, vida, energia, fila, columna;
@@ -89,7 +89,7 @@ void ArchivoPartida::cargarPersonajes(Grafo& tablero, Jugador& jugador) {
         posicion = {stoi(fila), stoi(columna)};
         nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida, energia, posicion);
 
-        tablero.moverPersonaje(nuevoPersonaje, COORD_INVALIDA, posicion);
+        tablero->moverPersonaje(nuevoPersonaje, COORD_INVALIDA, posicion);
         jugador.asignarPersonaje(nuevoPersonaje);
 
     }
