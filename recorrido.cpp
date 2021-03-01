@@ -15,19 +15,30 @@ int Recorrido::obtenerEnergiaGastada() {
 }
 
 
+void Recorrido::agregarPosicion(int indice) {
+
+    caminoTomado.push_back(indice);
+
+}
+
+
 void Recorrido::mostrar() {
 
-    array<int,2> posicion{};
     int i = 0;
+
+    reverse(caminoTomado.begin(), caminoTomado.end());
 
     cout << "\n\n Energia gastada: " << energiaGastada <<
             "\n\n Recorrido: \n" ;
 
     while (caminoTomado[i]) {
 
-        posicion = {};
+        int fila, columna;
 
-        cout << "-> [" << posicion[0] << "," << posicion[1] << "] " ;
+        fila = caminoTomado[i] / MAX_FILA;
+        columna = caminoTomado[i] % MAX_COLUMNA;
+
+        cout << "-> [" << fila << "," << columna << "] " ;
     }
 
 }

@@ -17,7 +17,7 @@ private:
     // metodos
 public:
     // PRE: -
-    // POS: carga las 4 matrices de pesos (una por cada elemento)
+    // POS: carga las 4 matrices de adyacencias con los pesos (una por cada elemento)
     void inicializarMatrices();
 
     // PRE: la posicion debe ser valida
@@ -50,7 +50,7 @@ public:
 
 private:
     // PRE: -
-    // POS: carga la matriz con los pesos correspondientes segun el elemento
+    // POS: carga la matriz de adyacencias con los pesos correspondientes segun el elemento
     void inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], const string& elemento);
 
     // PRE: -
@@ -61,9 +61,14 @@ private:
     // POS: calcula y devuelve el camino minimo para ir desde el origen hasta el destino
     Recorrido dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]);
 
-    // PRE:
-    // POS:
-    int distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_VERTICES> visitados);
+    // PRE: -
+    // POS: da los valores iniciales a los vectores para poder hacer el dijkstra
+    void inicializarVectores(array<int,CANT_VERTICES>& pesosMinimos, array<int,CANT_VERTICES>& rutaMinima,
+                             array<bool,CANT_VERTICES>& visitados);
+
+    // PRE: -
+    // POS: devuelve el indice del array en el cual se encuentra el menor peso no visitado hasta el momento
+    int buscarPesoMinimo(array<int,CANT_VERTICES> pesosMinimos, array<bool,CANT_VERTICES> visitados);
 
     // PRE: -
     // POS: devuelve el indice del vector (numero de casillero) correspondiente a una posicion

@@ -138,7 +138,7 @@ void Grafo::rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]) {
 
         for (int j = 0; j < CANT_VERTICES; j++)
 
-            matriz[i][j] = VALOR_INVALIDO;
+            matriz[i][j] = INFINITO;
 
 }
 
@@ -149,28 +149,23 @@ Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES
     array<int,CANT_VERTICES> pesosMinimos{}, rutaMinima{};
     array<bool,CANT_VERTICES> visitados{};
 
-    for (int i = 0; i < CANT_VERTICES; i++) {
-
-        pesosMinimos[i] = INFINITO;
-        rutaMinima[i] = VACIO;
-        visitados[i] = false;
-    }
+    inicializarVectores(pesosMinimos, rutaMinima, visitados);
 
     pesosMinimos[origen] = 0;
 
     for (int i = 0; i < CANT_VERTICES - 1; i++) {
 
-        int posMin = distanciaMinima(pesosMinimos, visitados);
+        int posMin = buscarPesoMinimo(pesosMinimos, visitados);
         visitados[posMin] = true;
 
         for (int j = 0; j < CANT_VERTICES; j++) {
 
             int minDist = pesosMinimos[posMin] + matrizPesos[posMin][j];
 
-            if (!visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j]) {
+            if ( !visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j] ) {
 
                 pesosMinimos[j] = minDist;
-                rutaMinima[j] = vertices->obtenerPeso(posMin);
+                rutaMinima[j] = posMin;
             }
         }
     }
@@ -181,28 +176,40 @@ Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES
 
     while (aux != origen) {
 
-        recorridoMin.caminoTomado.push_back(aux);
+        recorridoMin.agregarPosicion(aux);
         aux = rutaMinima[aux];
     }
 
-    recorridoMin.caminoTomado.push_back(aux);
-    reverse(recorridoMin.caminoTomado.begin(), recorridoMin.caminoTomado.end());
-
+    recorridoMin.agregarPosicion(aux);
+    
     return recorridoMin;
 
 }
 
 
-int Grafo::distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_VERTICES> visitados) {
+void Grafo::inicializarVectores(array<int,CANT_VERTICES>& pesosMinimos, array<int,CANT_VERTICES>& rutaMinima,
+                                array<bool,CANT_VERTICES>& visitados) {
+
+    for (int i = 0; i < CANT_VERTICES; i++) {
+
+        pesosMinimos[i] = INFINITO;
+        rutaMinima[i] = VACIO;
+        visitados[i] = false;
+    }
+
+}
+
+
+int Grafo::buscarPesoMinimo(array<int,CANT_VERTICES> pesosMinimos, array<bool,CANT_VERTICES> visitados) {
 
     int min = INFINITO;
     int indiceMin = 0;
 
     for (int i = 0; i < CANT_VERTICES; i++)
 
-        if (!visitados[i] && distancias[i] <= min) {
+        if ( !visitados[i] && pesosMinimos[i] <= min ) {
 
-            min = distancias[i];
+            min = pesosMinimos[i];
             indiceMin = i;
         }
 

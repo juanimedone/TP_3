@@ -21,6 +21,10 @@ public:
     int obtenerEnergiaGastada();
 
     // PRE: -
+    // POS: va agregando las posiciones recorridas en sentido inverso (desde el destino hasta el origen) al vector
+    void agregarPosicion(int indice);
+
+    // PRE: -
     // POS: imprime por pantalla la energia gastada y el camino tomado (las posiciones)
     void mostrar();
 
