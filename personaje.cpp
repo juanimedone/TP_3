@@ -42,6 +42,13 @@ void Personaje::asignarPosicion(array<int,2> posicion) {
 }
 
 
+void Personaje::asignarCodigo(char codigo) {
+
+    this->codigo = codigo;
+
+}
+
+
 string Personaje::obtenerNombre() {
 
     return nombre;
@@ -72,6 +79,13 @@ int Personaje::obtenerEnergia() {
 array<int,2> Personaje::obtenerPosicion() {
 
     return posicion;
+
+}
+
+
+char Personaje::obtenerCodigo() {
+
+    return codigo;
 
 }
 

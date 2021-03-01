@@ -65,6 +65,10 @@ private:
     bool terminado();
 
     // PRE: -
+    // POS: imprime por pantalla los nombres y los simbolos asociados a cada personaje
+    void mostrarReferencias();
+
+    // PRE: -
     // POS: imprime por pantalla quien es el ganador del juego
     void mostrarGanador();
 

@@ -12,6 +12,7 @@ protected:
     int vida;
     int energia;
     array<int,2> posicion;
+    char codigo;
 
     // metodos
 public:
@@ -37,6 +38,10 @@ public:
     void asignarPosicion(array<int,2> posicion);
 
     // PRE: -
+    // POS: asigna el simbolo que representa al personaje en el tablero
+    void asignarCodigo(char codigo);
+
+    // PRE: -
     // POS: devuelve el nombre del personaje
     string obtenerNombre();
 
@@ -55,6 +60,10 @@ public:
     // PRE: -
     // POS: devuelve un arreglo con la posicion [fila, columna] del personaje
     array<int,2> obtenerPosicion();
+
+    // PRE: -
+    // POS: devuelve el codigo que representa al personaje en el tablero
+    char obtenerCodigo();
 
     // PRE: -
     // POS: pide, valida y devuelve un array de coordenadas

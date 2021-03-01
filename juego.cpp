@@ -135,6 +135,7 @@ void Juego::cicloPrincipal() {
         while ( !terminado() && !salir ) {
 
             tablero.mostrar();
+            mostrarReferencias();
             salir = jugador1.quiereSalir();
 
             if (!salir) {
@@ -144,6 +145,7 @@ void Juego::cicloPrincipal() {
                 pausar();
 
                 tablero.mostrar();
+                mostrarReferencias();
                 salir = jugador2.quiereSalir();
 
                 if (salir)
@@ -162,6 +164,7 @@ void Juego::cicloPrincipal() {
         while ( !terminado() && !salir ) {
 
             tablero.mostrar();
+            mostrarReferencias();
             salir = jugador2.quiereSalir();
 
             if (!salir) {
@@ -171,6 +174,7 @@ void Juego::cicloPrincipal() {
                 pausar();
 
                 tablero.mostrar();
+                mostrarReferencias();
                 salir = jugador1.quiereSalir();
 
                 if (salir)
@@ -198,6 +202,33 @@ void Juego::cicloPrincipal() {
 bool Juego::terminado() {
 
     return (jugador1.todosMuertos() || jugador2.todosMuertos());
+
+}
+
+
+void Juego::mostrarReferencias() {
+
+    array<Personaje*,MAX_PERSONAJES> personajes{};
+
+    cout << "\n\n\n\t\t Personajes" ;
+
+    cout << "\n\n Jugador 1" ;
+
+    personajes = jugador1.obtenerPersonajes();
+
+    for (int i = 0; i < jugador1.obtenerCantPersonajes(); i++) {
+
+        cout << "\n Nombre: " << personajes[i]->obtenerNombre() << " -> " << personajes[i]->obtenerCodigo();
+    }
+
+    cout << "\n\n Jugador 2" ;
+
+    personajes = jugador2.obtenerPersonajes();
+
+    for (int i = 0; i < jugador2.obtenerCantPersonajes(); i++) {
+
+        cout << "\n Nombre: " << personajes[i]->obtenerNombre() << " -> " << personajes[i]->obtenerCodigo();
+    }
 
 }
 
