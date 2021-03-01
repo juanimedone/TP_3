@@ -18,9 +18,15 @@ void Aire::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
         energia -= ENERGIA_ATK_AIRE;
 
-        for(int i = 0; i < MAX_PERSONAJES; i++)
+        short int i = 0;
+
+        while (enemigos[i]) {
 
             restarVida(enemigos[i]);
+
+            i++;
+
+        }
 
     }
 
@@ -104,9 +110,20 @@ int Aire::calcularAtkEntrante(Personaje* enemigo) {
 
 void Aire::aumentarEnergia() {
 
-    energia += ENERGIA_TURNO_AIRE;
+    int nuevaEnergia;
 
-    if (energia > ENERGIA_MAXIMA)
-        energia = ENERGIA_MAXIMA;
+    if (energia + ENERGIA_TURNO_AIRE > ENERGIA_MAXIMA)
+
+        nuevaEnergia = ENERGIA_MAXIMA - energia;
+
+    else
+        nuevaEnergia = ENERGIA_TURNO_AIRE;
+
+    energia += nuevaEnergia;
+
+    cout << "\n\n " << nombre << " suma " << nuevaEnergia << " puntos de energia \n" ;
+
+    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
+
 
 }

@@ -94,6 +94,14 @@ void Jugador::jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
 
         cout << personajes[i]->obtenerNombre();
 
+        if (personajes[i]->obtenerElemento == COD_AIRE)
+
+            personajes[i]->aumentarEnergia();
+
+        else if (personajes[i]->obtenerElemento == COD_FUEGO)
+
+            personajes[i]->vidaPorCeroEnergia();
+
         alimentarMover(personajes[i], tablero);
 
         defenderAtacar(personajes[i], tablero, enemigos);

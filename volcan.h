@@ -7,12 +7,12 @@ class Volcan : public Casillero {
 
     // metodos
 public:
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el costo de pasar por el casillero segun el elemento del personaje
     int obtenerCosto(string elemento) override;
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el caracter que representa el tipo de casillero
     char obtenerCodigo() override;
 
 };

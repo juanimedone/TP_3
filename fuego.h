@@ -13,7 +13,7 @@ public:
     Fuego(string nombre) : Personaje(nombre) {};
 
     // PRE: -
-    // POS: si el personaje tiene cero energia, reduce la vida por 5 puntos
+    // POS: si el personaje tiene cero energia, reduce la vida por VIDA_TURNO_FUEGO
     void vidaPorCeroEnergia();
 
     // PRE: -
@@ -42,9 +42,8 @@ public:
     int calcularAtkEntrante(Personaje* enemigo) override;
 
 private:
-
-    // PRE:
-    // POS:
+    // PRE: el personaje no debe tener su energia al maximo
+    // POS: aumenta la cantidad de energia que corresponda y lo muestra por pantalla
     void aumentarEnergia() override;
 
     // PRE: el personaje no debe tener su vida al maximo

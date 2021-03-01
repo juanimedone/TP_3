@@ -18,16 +18,16 @@ private:
     // metodos
 public:
     // constructor
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: abre el archivo con PATH_ARCHIVO_TABLERO
     ArchivoTablero();
 
     // PRE: -
     // POS: devuelve true si se abrio correctamente, false de lo contrario
     bool estaAbierto();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: prepara el tablero para jugar
     void cargarTablero(Grafo tablero);
 
     // destructor
@@ -36,8 +36,8 @@ public:
     ~ArchivoTablero();
 
 private:
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: reserva espacio para el tipo correspondiente en el heap y lo devuelve como puntero a Casillero
     Casillero* crearCasillero(char tipo);
 
 };

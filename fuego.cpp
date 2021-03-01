@@ -3,8 +3,19 @@
 
 void Fuego::vidaPorCeroEnergia() {
 
-    if (energia == 0)
-        vida -= 5;
+    int vidaPerdida;
+
+    if (vida < 5)
+
+        vidaPerdida = vida;
+
+    else
+        vidaPerdida = VIDA_TURNO_FUEGO;
+
+    vida -= vidaPerdida;
+
+    cout << "\n\n " << nombre << " perdio " << vidaPerdida << " puntos de vida por no tener energia" ;
+    cout << "\n Vida anterior: " << vida + vidaPerdida << " -----> Vida actual: " << vida << "\n\n" ;
 
 }
 

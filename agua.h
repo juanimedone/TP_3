@@ -37,8 +37,8 @@ public:
     void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) override;
 
     // PRE: -
-    // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,
-    //      teniendo en cuenta elementos, escudo y habilidades especiales.
+    // POS: devuelve el daño que recibiria el personaje al ser atacado por un enemigo,
+    //      teniendo en cuenta elementos, escudo y habilidades especiales
     int calcularAtkEntrante(Personaje* enemigo) override;
 
 private:
@@ -46,12 +46,12 @@ private:
     // POS: aumenta la cantidad de energia que corresponda, lo muestra por pantalla e incrementa vecesAlimentado en 1
     void aumentarEnergia() override;
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: incrementa la vida del aliado
     void curarAliado(Personaje* aliado);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: muestra por pantalla el efecto de la defensa
     void mostrarMsjDefensa(int nuevaVidaPropia);
 
 };

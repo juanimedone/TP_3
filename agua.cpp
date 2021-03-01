@@ -94,10 +94,14 @@ void Agua::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
 
         vida += nuevaVidaPropia;
 
-        for(int i = 0; i < MAX_PERSONAJES; i++){
+        short int i = 0;
 
-            if(aliados[i] != this)
+        while (aliados[i]) {
+
+            if (aliados[i] != this)
                 curarAliado(aliados[i]);
+
+            i++;
 
         }
 
@@ -168,8 +172,10 @@ void Agua::curarAliado(Personaje* aliado) {
     nuevaVidaAliado = aliado->obtenerVida();
     nuevaVidaAliado += CURA_DEF_AGUA;
 
-    if(nuevaVidaAliado > VIDA_MAXIMA)
+    if (nuevaVidaAliado > VIDA_MAXIMA)
+
         aliado->asignarVida(VIDA_MAXIMA);
+
     else
         aliado->asignarVida(nuevaVidaAliado);
 
@@ -178,10 +184,10 @@ void Agua::curarAliado(Personaje* aliado) {
 
 void Agua::mostrarMsjDefensa(int nuevaVidaPropia) {
 
-    cout << "\n\n'" << nombre << "' ha convertido 12 puntos de energía en " << nuevaVidaPropia << " punto/s de vida" << endl;
-    cout << "\nHa curado " << CURA_DEF_AGUA << " puntos de vida a sus aliados con vida. \n";
-    cout << "\nVida anterior: " << vida - nuevaVidaPropia << " -----> Vida actual: " << vida << "\n\n";
-    cout << "\nEnergia actual: " << energia;
+    cout << "\n\n '" << nombre << "' ha convertido 12 puntos de energía en " << nuevaVidaPropia << " punto/s de vida" << endl;
+    cout << "\n Ha curado " << CURA_DEF_AGUA << " puntos de vida a sus aliados. \n";
+    cout << "\n Vida anterior: " << vida - nuevaVidaPropia << " -----> Vida actual: " << vida << "\n\n";
+    cout << "\n Energia actual: " << energia;
 
 }
 

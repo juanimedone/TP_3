@@ -46,6 +46,7 @@ const int ENERGIA_HIERBAS = 8;
 const int VIDA_MADERA = 5;
 const int ENERGIA_MADERA = 10;
 const int ENERGIA_TURNO_AIRE = 5;
+const int VIDA_TURNO_FUEGO = 5;
 
 // constantes de cargarPersonajes
 const int MOSTRAR_DETALLE = 1;

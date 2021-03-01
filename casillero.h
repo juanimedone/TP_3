@@ -11,24 +11,24 @@ private:
 
     // metodos
 public:
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: carga el personaje en el casillero
     void asignarPersonaje(Personaje* personaje);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el personaje que se encuentra en el casillero (si no hay devuelve nullptr)
     Personaje* obtenerPersonaje();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve true si no hay ningun personaje en el casillero, false de lo contrario
     bool estaVacio();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el costo de pasar por el casillero segun el tipo de casillero y el elemento del personaje
     virtual int obtenerCosto(string elemento) = 0;
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el caracter que representa el tipo de casillero
     virtual char obtenerCodigo() = 0;
 
     // destructor
