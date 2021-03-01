@@ -1,7 +1,7 @@
 #ifndef TP_3_JUGADOR_H
 #define TP_3_JUGADOR_H
 
-#include "personaje.h"
+#include "grafo.h"
 
 class Jugador {
 
@@ -83,6 +83,11 @@ private:
     // PRE: -
     // POS: muestra por pantalla las opciones de defensa, ataque o pasar opcion
     void mostrarOpcionesDA();
+
+    // PRE: -
+    // POS: si tiene la energia necesaria para volar, se posiciona al personaje en las coordenadas ingresadas por el
+    //      usuario, de ser invalidas las coordenadas o no tener energia suficiente, se imprime un mensaje
+    void defensaAire(Personaje*& personaje, Grafo& tablero);
 
     // PRE: -
     // POS: elimina el personaje con indice i del array de personajes y del tablero

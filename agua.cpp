@@ -73,7 +73,7 @@ void Agua::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Agua::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
+void Agua::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
 
     int nuevaVidaPropia;
 

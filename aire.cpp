@@ -33,36 +33,6 @@ void Aire::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Aire::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
-
-    array<int,2> posNueva{};
-
-    if (energia < ENERGIA_DEF_AIRE)
-
-        cout << "\n\n La energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_AIRE << endl;
-
-    else {
-
-        cout << "\n Inserte las coordenadas a las que desea volar." << endl;
-        posNueva = pedirCoordenadas();
-
-        while ( !tablero.estaVacio(posNueva) ) {
-
-            cout << "\n\n La posicion esta ocupada por el personaje " << tablero.obtenerPersonaje(posNueva)->obtenerNombre() << ". Reingrese las coordenadas " ;
-            posNueva = pedirCoordenadas();
-        }
-
-        tablero.moverPersonaje(this, obtenerPosicion(), posNueva);
-        asignarPosicion(posNueva);
-
-        cout << "\n\n'" << nombre << "' ha utilizado " << ENERGIA_DEF_AIRE << "puntos de energía para volar a [" << posNueva[0] << "," << posNueva[1] << "]" << endl;
-
-        energia -= ENERGIA_DEF_AIRE;
-    }
-
-}
-
-
 void Aire::mostrar() {
 
     cout << "\n\n Elemento: Aire" << endl;

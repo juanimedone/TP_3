@@ -76,7 +76,7 @@ void Fuego::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Fuego::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
+void Fuego::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
 
 	int nuevaVida;
 

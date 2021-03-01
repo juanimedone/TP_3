@@ -15,7 +15,7 @@ using namespace std;
 
 // constantes de archivos
 const string PATH_ARCHIVO_TABLERO = "tablero.csv";
-const char* PATH_ARCHIVO_PARTIDA = "partida.csv";
+const char *const PATH_ARCHIVO_PARTIDA = "partida.csv";
 const string PATH_ARCHIVO_PERSONAJES = "personajes.csv";
 
 // constantes de Menu

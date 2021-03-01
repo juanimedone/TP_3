@@ -34,7 +34,7 @@ public:
 
     // PRE: el vector parametro contiene 3 personajes
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) override;
+    void defender(array<Personaje*,MAX_PERSONAJES> aliados) override;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por un enemigo,

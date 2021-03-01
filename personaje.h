@@ -1,7 +1,7 @@
 #ifndef TP_3_PERSONAJE_H
 #define TP_3_PERSONAJE_H
 
-#include "grafo.h"
+#include "utiles.h"
 
 class Personaje {
 
@@ -99,7 +99,7 @@ public:
 
     // PRE: el vector aliados contiene tres personajes
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    virtual void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) = 0;
+    virtual void defender(array<Personaje*,MAX_PERSONAJES> aliados) = 0;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,

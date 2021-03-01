@@ -55,7 +55,7 @@ void Tierra::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Tierra::defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) {
+void Tierra::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 
