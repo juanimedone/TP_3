@@ -64,6 +64,10 @@ public:
     // POS:
     bool energiaSuficiente(int energiaNecesaria);
 
+    // PRE: el personaje debe ser de fuego
+    // POS: si el personaje tiene cero energia, reduce la vida por VIDA_TURNO_FUEGO
+    void vidaPorCeroEnergia();
+
     // PRE: -
     // POS: devuelve el elemento del personaje
     virtual string obtenerElemento() = 0;

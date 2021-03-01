@@ -16,28 +16,28 @@ private:
 
     // metodos
 public:
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: carga las 4 matrices de pesos (una por cada elemento)
     void inicializarMatrices();
 
-    // PRE:
-    // POS:
+    // PRE: la posicion debe ser valida
+    // POS: asigna el nuevo casillero a su posicion correspondiente en el vector de vertices
     void asignarVertice(Casillero* vertice, array<int,2> posicion);
 
-    // PRE: debe haber un personaje en posicion (personaje != nullptr)
-    // POS:
+    // PRE: -
+    // POS: devuelve el personaje que se encuentra en tal posicion del tablero
     Personaje* obtenerPersonaje(array<int,2> posicion);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve true si no hay ningun personaje en tal posicion del tablero
     bool estaVacio(array<int,2> posicion);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: mueve el personaje de posInicial a posFinal en el tablero
     void moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<int,2> posFinal);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: imprime por pantalla el tablero
     void mostrar();
 
     // PRE:
@@ -45,20 +45,20 @@ public:
     Recorrido dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]);
 
 private:
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: carga la matriz con los pesos correspondientes segun el elemento
     void inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], const string& elemento);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: llena la matriz con valores invalidos
     void rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]);
 
     // PRE:
     // POS:
     int distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_VERTICES> visitados);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el indice del vector (numero de casillero) correspondiente a una posicion
     int calcularIndice(array<int,2> posicion);
 
 };

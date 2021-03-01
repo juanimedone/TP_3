@@ -94,11 +94,11 @@ void Jugador::jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
 
         cout << personajes[i]->obtenerNombre();
 
-        if (personajes[i]->obtenerElemento == COD_AIRE)
+        if (personajes[i]->obtenerElemento() == COD_AIRE)
 
             personajes[i]->aumentarEnergia();
 
-        else if (personajes[i]->obtenerElemento == COD_FUEGO)
+        else if (personajes[i]->obtenerElemento() == COD_FUEGO && personajes[i]->obtenerEnergia() == ENERGIA_MINIMA)
 
             personajes[i]->vidaPorCeroEnergia();
 

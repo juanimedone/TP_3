@@ -15,6 +15,8 @@ Juego::Juego() {
 
 void Juego::iniciarPartida() {
 
+    tablero.inicializarMatrices();
+
     posicionarPersonajes();
 
     cicloPrincipal();
@@ -30,6 +32,8 @@ void Juego::iniciarPartida() {
 void Juego::reanudarPartida() {
 
     ArchivoPartida archivoPartida;
+
+    tablero.inicializarMatrices();
 
     cicloPrincipal();
 

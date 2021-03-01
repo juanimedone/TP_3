@@ -124,6 +124,25 @@ bool Personaje::energiaSuficiente(int energiaNecesaria) {
 }
 
 
+void Personaje::vidaPorCeroEnergia() {
+
+    int vidaPerdida;
+
+    if (vida < 5)
+
+        vidaPerdida = vida;
+
+    else
+        vidaPerdida = VIDA_TURNO_FUEGO;
+
+    vida -= vidaPerdida;
+
+    cout << "\n\n " << nombre << " perdio " << vidaPerdida << " puntos de vida por no tener energia" ;
+    cout << "\n Vida anterior: " << vida + vidaPerdida << " -----> Vida actual: " << vida << "\n\n" ;
+
+}
+
+
 bool Personaje::esValida(string& fila, string& columna) {
 
     bool filaEsNumero = all_of(fila.begin(), fila.end(), ::isdigit);

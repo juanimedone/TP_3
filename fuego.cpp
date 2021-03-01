@@ -1,25 +1,6 @@
 #include "fuego.h"
 
 
-void Fuego::vidaPorCeroEnergia() {
-
-    int vidaPerdida;
-
-    if (vida < 5)
-
-        vidaPerdida = vida;
-
-    else
-        vidaPerdida = VIDA_TURNO_FUEGO;
-
-    vida -= vidaPerdida;
-
-    cout << "\n\n " << nombre << " perdio " << vidaPerdida << " puntos de vida por no tener energia" ;
-    cout << "\n Vida anterior: " << vida + vidaPerdida << " -----> Vida actual: " << vida << "\n\n" ;
-
-}
-
-
 string Fuego::obtenerElemento() {
 
     return COD_FUEGO;

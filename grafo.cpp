@@ -3,15 +3,15 @@
 
 void Grafo::inicializarMatrices() {
 
-    inicializarMatriz(this->agua, COD_AGUA);
-    inicializarMatriz(this->aire, COD_AIRE);
-    inicializarMatriz(this->tierra, COD_TIERRA);
-    inicializarMatriz(this->fuego, COD_FUEGO);
+    inicializarMatriz(agua, COD_AGUA);
+    inicializarMatriz(aire, COD_AIRE);
+    inicializarMatriz(tierra, COD_TIERRA);
+    inicializarMatriz(fuego, COD_FUEGO);
 
 }
 
 
-void Grafo::asignarVertice(Casillero* vertice, array<int, 2> posicion) {
+void Grafo::asignarVertice(Casillero* vertice, array<int,2> posicion) {
 
     int indice;
 
@@ -159,7 +159,7 @@ void Grafo::rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]) {
 
         for (int j = 0; j < CANT_VERTICES; j++)
 
-            matriz[i][j] = -1;
+            matriz[i][j] = VALOR_INVALIDO;
 
 }
 
@@ -183,7 +183,7 @@ int Grafo::distanciaMinima(array<int,CANT_VERTICES> distancias, array<bool,CANT_
 }
 
 
-int Grafo::calcularIndice(array<int, 2> posicion) {
+int Grafo::calcularIndice(array<int,2> posicion) {
 
     int fila, columna, indice;
 

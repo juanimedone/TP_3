@@ -13,10 +13,6 @@ public:
     Fuego(string nombre) : Personaje(nombre) {};
 
     // PRE: -
-    // POS: si el personaje tiene cero energia, reduce la vida por VIDA_TURNO_FUEGO
-    void vidaPorCeroEnergia();
-
-    // PRE: -
     // POS: Devuelve COD_FUEGO
     string obtenerElemento() override;
 
