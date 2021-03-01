@@ -28,8 +28,8 @@ public:
     // POS: modifica el valor del atributo vida
     void asignarVida(int vida);
 
-    // PRE:
-    // POS:
+    // PRE: ENERGIA_MINIMA <= energia <= ENERGIA_MAXIMA
+    // POS: modifica el valor del atributo energia
     void asignarEnergia(int energia);
 
     // PRE: -
@@ -40,28 +40,28 @@ public:
     // POS: devuelve el nombre del personaje
     string obtenerNombre();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el valor de escudo del personaje
     short int obtenerEscudo();
 
     // PRE: -
     // POS: devuelve la vida actual del personaje
     int obtenerVida();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve la energia actual del personaje
     int obtenerEnergia();
 
     // PRE: -
     // POS: devuelve un arreglo con la posicion [fila, columna] del personaje
     array<int,2> obtenerPosicion();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: pide, valida y devuelve un array de coordenadas
     array<int,2> pedirCoordenadas();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve true si el personaje posee un valor de energia mayor o igual a la necesaria, false de lo contrario
     bool energiaSuficiente(int energiaNecesaria);
 
     // PRE: el personaje debe ser de fuego
@@ -80,8 +80,8 @@ public:
     // POS: modifica la energia o la vida (o no hace nada) segun el elemento del personaje
     virtual void alimentar() = 0;
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: aumenta la energia que corresponda segun el elemento del personaje
     virtual void aumentarEnergia() = 0;
 
     // PRE: el vector enemigos contiene tres personajes
@@ -108,20 +108,20 @@ protected:
     // POS: imprime por pantalla todos los atributos del personaje
     void mostrarAtributos();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve true si los valores de coordenadas ingresados son validos, false de lo contrario
     bool esValida(string& fila, string& columna);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: resta la vida correspondiente segun el ataque del enemigo y lo muestra por pantalla
     void restarVida(Personaje*& enemigo);
 
     // PRE: -
     // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
     bool energiaMaxima();
 
-    // PRE:
-    // POS:
+    // PRE: enemigo tiene que ser de tierra
+    // POS: devuelve el danio que recibe el personaje de acuerdo a su distancia en el tablero con el atacante
     int calcularAtkEntranteTierra(Personaje* enemigo);
 
 };

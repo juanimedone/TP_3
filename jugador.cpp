@@ -6,12 +6,15 @@ Jugador::Jugador() {
     for (short int i = 0; i < MAX_PERSONAJES; i++)
         personajes[i] = nullptr;
 
+    cantPersonajes = 0;
+    opcion = 0;
+
 }
 
 
 bool Jugador::personajesCargados() {
 
-    return ( cantPersonajes == MAX_PERSONAJES );
+    return (cantPersonajes == MAX_PERSONAJES);
 
 }
 
@@ -165,30 +168,47 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo& tablero) {
     array<int,2> posInicial{}, posFinal{};
     int energiaNecesaria;
     string elemento;
+    Recorrido recorridoMin;
 
     posInicial = personaje->obtenerPosicion();
     posFinal = personaje->pedirCoordenadas();
     elemento = personaje->obtenerElemento();
 
-    energiaNecesaria = tablero.dijkstra(posInicial, elemento).obtenerEnergiaMinima();
+    recorridoMin = tablero.caminoMinimo(posInicial, posFinal, elemento);
+    energiaNecesaria = recorridoMin.obtenerEnergiaGastada();
+
+    validarMovimiento(tablero, posFinal, personaje, energiaNecesaria);
+
+    tablero.moverPersonaje(personaje, posInicial, posFinal);
+    personaje->asignarPosicion(posFinal);
+
+    recorridoMin.mostrar();
+
+}
+
+
+void Jugador::validarMovimiento(Grafo& tablero, array<int,2> posInicial, array<int,2>& posFinal, Personaje* personaje, int& energiaNecesaria) {
+
+    Recorrido recorridoMin;
 
     while ( !tablero.estaVacio(posFinal) || !personaje->energiaSuficiente(energiaNecesaria) ) {
 
         if ( !tablero.estaVacio(posFinal) )
 
             cout << "\n La posicion [" << posFinal[0] << "," << posFinal[1] << "] se encuentra ocupada por " <<
-                 tablero.obtenerPersonaje(posFinal)->obtenerNombre() << "\n\n Reingrese las coordenadas\n" ;
+                 tablero.obtenerPersonaje(posFinal)->obtenerNombre() << "\n\n Reingrese las coordenadas \n" ;
 
         else
             cout << "\n El personaje " << personaje->obtenerNombre() << " no posee la energia necesaria para llegar a ["
-            << posFinal[0] << "," << posFinal[1] << "] \n\n Energia requerida: " << energiaNecesaria <<
-            "\n Energia actual: " << personaje->obtenerEnergia() << "\n\n Reingrese las coordenadas\n" ;
+                 << posFinal[0] << "," << posFinal[1] << "] \n\n Energia requerida: " << energiaNecesaria <<
+                 "\n Energia actual: " << personaje->obtenerEnergia() << "\n\n Reingrese las coordenadas \n" ;
 
         posFinal = personaje->pedirCoordenadas();
-    }
 
-    tablero.moverPersonaje(personaje, posInicial, posFinal);
-    personaje->asignarPosicion(posFinal);
+        recorridoMin = tablero.caminoMinimo(posInicial, posFinal, personaje->obtenerElemento());
+        energiaNecesaria = recorridoMin.obtenerEnergiaGastada();
+
+    }
 
 }
 
@@ -228,6 +248,12 @@ void Jugador::mostrarOpcionesDA() {
 
 
 void Jugador::eliminarPersonaje(short int i, Grafo& tablero) {
+
+    array<int,2> posicion{};
+
+    posicion = personajes[i]->obtenerPosicion();
+
+    tablero.eliminarPersonaje(posicion);
 
     for (short int j = i; j < MAX_PERSONAJES - 1; j++)
 

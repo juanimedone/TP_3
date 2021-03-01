@@ -160,7 +160,7 @@ void Personaje::restarVida(Personaje*& enemigo) {
     vidaPerdida = enemigo->calcularAtkEntrante(this);
     vidaActual = enemigo->obtenerVida();
 
-    if((vidaActual-vidaPerdida) < VIDA_MINIMA)
+    if ( (vidaActual-vidaPerdida) < VIDA_MINIMA )
 
         enemigo->asignarVida(VIDA_MINIMA);
 

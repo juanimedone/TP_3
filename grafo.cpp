@@ -50,17 +50,21 @@ void Grafo::moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<
 
     indiceFinal = calcularIndice(posFinal);
 
-    if (posInicial != COORD_INVALIDA) {
+    if (posInicial != COORD_INVALIDA)
 
-        int indiceInicial;
+        eliminarPersonaje(posInicial);
 
-        indiceInicial = calcularIndice(posInicial);
-
-        vertices[indiceInicial]->asignarPersonaje(nullptr);
-
-    }
 
     vertices[indiceFinal]->asignarPersonaje(personaje);
+
+}
+
+
+void Grafo::eliminarPersonaje(array<int,2> posicion) {
+
+    int indice = calcularIndice(posicion);
+
+    vertices[indice]->asignarPersonaje(nullptr);
 
 }
 
@@ -72,50 +76,25 @@ void Grafo::mostrar() {
 }
 
 
-Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]) {
+Recorrido Grafo::caminoMinimo(array<int,2> posInicial, array<int,2> posFinal, string elemento) {
 
+    int indiceInicial, indiceFinal;
     Recorrido recorridoMin;
-    array<int, CANT_VERTICES> pesosMinimos{}, rutaMinima{};
-    array<bool, CANT_VERTICES> visitados{};
 
-    for (int i = 0; i < CANT_VERTICES; i++) {
+    indiceInicial = calcularIndice(posInicial);
+    indiceFinal = calcularIndice(posFinal);
 
-        pesosMinimos[i] = INFINITO;
-        rutaMinima[i] = VACIO;
-        visitados[i] = false;
-    }
+    if (elemento == COD_AGUA)
+        recorridoMin = dijkstra(indiceInicial, indiceFinal, agua);
 
-    pesosMinimos[origen] = 0;
+    else if (elemento == COD_TIERRA)
+        recorridoMin = dijkstra(indiceInicial, indiceFinal, tierra);
 
-    for (int i = 0; i < CANT_VERTICES - 1; i++) {
+    else if (elemento == COD_FUEGO)
+        recorridoMin = dijkstra(indiceInicial, indiceFinal, fuego);
 
-        int posMin = distanciaMinima(pesosMinimos, visitados);
-        visitados[posMin] = true;
-
-        for (int j = 0; j < CANT_VERTICES; j++) {
-
-            int minDist = pesosMinimos[posMin] + matrizPesos[posMin][j];
-
-            if (!visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j]) {
-
-                pesosMinimos[j] = minDist;
-                rutaMinima[j] = vertices->obtenerPeso(posMin);
-            }
-        }
-    }
-
-    recorridoMin.energiaGastada = pesosMinimos[destino];
-
-    int aux = destino;
-
-    while (aux != origen) {
-
-        recorridoMin.caminoTomado.push_back(aux);
-        aux = rutaMinima[aux];
-    }
-
-    recorridoMin.caminoTomado.push_back(aux);
-    reverse(recorridoMin.caminoTomado.begin(), recorridoMin.caminoTomado.end());
+    else
+        recorridoMin = dijkstra(indiceInicial, indiceFinal, aire);
 
     return recorridoMin;
 
@@ -160,6 +139,56 @@ void Grafo::rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]) {
         for (int j = 0; j < CANT_VERTICES; j++)
 
             matriz[i][j] = VALOR_INVALIDO;
+
+}
+
+
+Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]) {
+
+    Recorrido recorridoMin;
+    array<int,CANT_VERTICES> pesosMinimos{}, rutaMinima{};
+    array<bool,CANT_VERTICES> visitados{};
+
+    for (int i = 0; i < CANT_VERTICES; i++) {
+
+        pesosMinimos[i] = INFINITO;
+        rutaMinima[i] = VACIO;
+        visitados[i] = false;
+    }
+
+    pesosMinimos[origen] = 0;
+
+    for (int i = 0; i < CANT_VERTICES - 1; i++) {
+
+        int posMin = distanciaMinima(pesosMinimos, visitados);
+        visitados[posMin] = true;
+
+        for (int j = 0; j < CANT_VERTICES; j++) {
+
+            int minDist = pesosMinimos[posMin] + matrizPesos[posMin][j];
+
+            if (!visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j]) {
+
+                pesosMinimos[j] = minDist;
+                rutaMinima[j] = vertices->obtenerPeso(posMin);
+            }
+        }
+    }
+
+    recorridoMin.asignarEnergiaGastada(pesosMinimos[destino]);
+
+    int aux = destino;
+
+    while (aux != origen) {
+
+        recorridoMin.caminoTomado.push_back(aux);
+        aux = rutaMinima[aux];
+    }
+
+    recorridoMin.caminoTomado.push_back(aux);
+    reverse(recorridoMin.caminoTomado.begin(), recorridoMin.caminoTomado.end());
+
+    return recorridoMin;
 
 }
 

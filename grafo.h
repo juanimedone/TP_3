@@ -37,12 +37,16 @@ public:
     void moverPersonaje(Personaje* personaje, array<int,2> posInicial, array<int,2> posFinal);
 
     // PRE: -
+    // POS: asigna nullptr como personaje al casillero con la posicion correspondiente
+    void eliminarPersonaje(array<int,2> posicion);
+
+    // PRE: -
     // POS: imprime por pantalla el tablero
     void mostrar();
 
-    // PRE:
-    // POS:
-    Recorrido dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]);
+    // PRE: -
+    // POS: devuelve el camino minimo que corresponda segun el elemento del personaje
+    Recorrido caminoMinimo(array<int,2> posInicial, array<int,2> posFinal, string elemento);
 
 private:
     // PRE: -
@@ -52,6 +56,10 @@ private:
     // PRE: -
     // POS: llena la matriz con valores invalidos
     void rellenarMatriz(int matriz[CANT_VERTICES][CANT_VERTICES]);
+
+    // PRE: -
+    // POS: calcula y devuelve el camino minimo para ir desde el origen hasta el destino
+    Recorrido dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES][CANT_VERTICES]);
 
     // PRE:
     // POS:

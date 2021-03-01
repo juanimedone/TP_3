@@ -41,7 +41,7 @@ public:
     void defender(array<Personaje*,MAX_PERSONAJES> aliados, Grafo& tablero) override;
 
     // PRE: -
-    // POS: devuelve el da�o que recibiria el personaje al ser atacado por el atacante,
+    // POS: devuelve el danio que recibiria el personaje al ser atacado por el atacante,
     //      teniendo en cuenta elementos, escudo y defensa.
 	int calcularAtkEntrante(Personaje* enemigo) override;
 
@@ -50,10 +50,6 @@ private:
     // PRE: el personaje no debe tener su energia al maximo
     // POS: aumenta la cantidad de energia que corresponda y lo muestra por pantalla
     void aumentarEnergia() override;
-
-    // PRE: -
-    // POS: devuelve true si tiene la maxima cantidad de energia, false de lo contrario
-    bool energiaMaxima();
 
 };
 

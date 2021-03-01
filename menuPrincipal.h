@@ -26,7 +26,7 @@ public:
 
     // PRE: -
     // POS: ejecuta el ciclo principal del menu
-    void interfazPrincipal(Juego& juego, DiccionarioABB<string, Personaje*>& diccionario);
+    void interfazPrincipal(Juego& juego, DiccionarioABB<string,Personaje*>& diccionario);
 
 private:
 
@@ -44,19 +44,19 @@ private:
 
     // PRE: -
     // POS: muestra todos los personajes y si no fue cargado previamente, crea y agrega al diccionario el personaje indicado por el usuario
-    void agregarPersonaje(DiccionarioABB<string, Personaje*>& diccionario);
+    void agregarPersonaje(DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: -
     // POS: si el diccionario no esta vacio, muestra todos los personajes y elimina el ingresado por el usuario (si existe)
-    void eliminarPersonaje(DiccionarioABB<string, Personaje*>& diccionario);
+    void eliminarPersonaje(DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: -
     // POS: imprime por pantalla todos los nombres de los personajes del diccionario (si el dicionario esta vacio muestra un mensaje)
-    void mostrarPersonajes(DiccionarioABB<string, Personaje*>& diccionario);
+    void mostrarPersonajes(DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: -
     // POS: imprime por pantalla todos los atributos del personaje ingresado por el usuario (si existe y el diccionario no esta vacio)
-    void detallePersonaje(DiccionarioABB<string, Personaje*>& diccionario);
+    void detallePersonaje(DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: el usuario no debe ingresar espacios
     // POS: asigna el elemento ingresado por el usuario
@@ -78,21 +78,21 @@ private:
     // POS: reserva espacio para el elemento correspondiente en el heap y lo devuelve como puntero a Personaje
     Personaje* crearPersonaje(const string& elemento, const string& nombre);
 
-    // PRE:
-    // POS:
-    void cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string, Personaje*>& diccionario);
+    // PRE: -
+    // POS: carga los personajes en los arrays de los jugadores
+    void cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string,Personaje*>& diccionario);
 
-    // PRE:
-    // POS:
-    void menuJuego(Jugador jugador, DiccionarioABB<string, Personaje*>& diccionario);
+    // PRE: -
+    // POS: muestra el submenu de seleccionar personaje
+    void menuJuego(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario);
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: imprime por pantalla las opciones para la seleccion de los personajes
     void mostrarOpcionesJuego();
 
-    // PRE:
-    // POS:
-    void seleccionarPersonaje(Jugador jugador, DiccionarioABB<string, Personaje*>& diccionario);
+    // PRE: -
+    // POS: pide el personaje deseado, lo asigna al array de jugador y lo elimina del diccionario
+    void seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario);
 
 };
 

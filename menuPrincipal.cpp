@@ -28,7 +28,7 @@ void MenuPrincipal::pausar() {
 }
 
 
-void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string,Personaje*>& diccionario) {
 
     while (opcion != SALIR) {
 
@@ -116,7 +116,7 @@ void MenuPrincipal::pedirOpcion() {
 }
 
 
-void MenuPrincipal::agregarPersonaje(DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::agregarPersonaje(DiccionarioABB<string,Personaje*>& diccionario) {
 
     string elemento, nombre;
 
@@ -152,7 +152,7 @@ void MenuPrincipal::agregarPersonaje(DiccionarioABB<string, Personaje*>& diccion
 }
 
 
-void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string,Personaje*>& diccionario) {
 
     string nombre;
 
@@ -183,7 +183,7 @@ void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string, Personaje*>& diccio
 }
 
 
-void MenuPrincipal::mostrarPersonajes(DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::mostrarPersonajes(DiccionarioABB<string,Personaje*>& diccionario) {
 
     if ( diccionario.estaVacio() )
 
@@ -202,7 +202,7 @@ void MenuPrincipal::mostrarPersonajes(DiccionarioABB<string, Personaje*>& diccio
 }
 
 
-void MenuPrincipal::detallePersonaje(DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::detallePersonaje(DiccionarioABB<string,Personaje*>& diccionario) {
 
     string nombre;
 
@@ -296,7 +296,7 @@ Personaje* MenuPrincipal::crearPersonaje(const string& elemento, const string& n
 }
 
 
-void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string,Personaje*>& diccionario) {
 
     while (opcion != SALIR_JUEGO && !jugador1.personajesCargados() && !jugador2.personajesCargados()) {
 
@@ -323,7 +323,7 @@ void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, Diccion
 }
 
 
-void MenuPrincipal::menuJuego(Jugador jugador, DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::menuJuego(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario) {
 
     mostrarOpcionesJuego();
     pedirOpcion();
@@ -369,7 +369,7 @@ void MenuPrincipal::mostrarOpcionesJuego() {
 }
 
 
-void MenuPrincipal::seleccionarPersonaje(Jugador jugador, DiccionarioABB<string, Personaje*>& diccionario) {
+void MenuPrincipal::seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario) {
 
     string nombre;
 

@@ -15,32 +15,32 @@ private:
     // metodos
 public:
     // constructor
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: asigna los valores iniciales de los atributos turno (al azar) y salir
     Juego();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: prepara y ejecuta el ciclo principal del juego
     void iniciarPartida();
 
-    // PRE:
-    // POS:
-    void asignarTurno(short int turno);
-
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: prepara y reanuda el ciclo principal del juego
     void reanudarPartida();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: cambia de quien es el turno
+    void asignarTurno(short int turno);
+
+    // PRE: -
+    // POS: devuelve el jugador 1
     Jugador obtenerJugador1();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el jugador 2
     Jugador obtenerJugador2();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve el tablero
     Grafo obtenerTablero();
 
 private:
@@ -52,20 +52,20 @@ private:
     // POS: borra el contenido previo mostrado por pantalla
     void limpiarPantalla();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: pide a los jugadores y carga las posiciones de sus respectivos personajes
     void posicionarPersonajes();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: lleva a cabo los turnos de cada jugador hasta terminar o salir de la partida
     void cicloPrincipal();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: devuelve true si alguno de los jugadores tiene todos sus personajes muertos, false de lo contrario
     bool terminado();
 
-    // PRE:
-    // POS:
+    // PRE: -
+    // POS: imprime por pantalla quien es el ganador del juego
     void mostrarGanador();
 
 };

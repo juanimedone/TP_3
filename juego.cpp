@@ -50,6 +50,7 @@ void Juego::reanudarPartida() {
 void Juego::asignarTurno(short int turno) {
 
     this->turno = turno;
+
 }
 
 

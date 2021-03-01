@@ -129,11 +129,3 @@ void Tierra::aumentarEnergia() {
 }
 
 
-bool Tierra::energiaMaxima() {
-
-    if (energia == ENERGIA_MAXIMA)
-        return true;
-
-    return false;
-
-}
