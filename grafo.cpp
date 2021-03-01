@@ -71,7 +71,24 @@ void Grafo::eliminarPersonaje(array<int,2> posicion) {
 
 void Grafo::mostrar() {
 
+    int indiceActual = 0;
 
+    for (int i = 0; i < MAX_FILA; i++) {
+
+        for (int j = 0; j < MAX_COLUMNA; j++) {
+
+            Casillero* actual = vertices[indiceActual];
+
+            if ( !actual->estaVacio() )
+                cout << actual->obtenerPersonaje()->obtenerCodigo();
+            else
+                cout << actual->obtenerCodigo();
+
+            indiceActual++;
+        }
+
+        cout << endl;
+    }
 
 }
 
@@ -181,7 +198,7 @@ Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES
     }
 
     recorridoMin.agregarPosicion(aux);
-    
+
     return recorridoMin;
 
 }
