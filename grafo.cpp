@@ -118,6 +118,16 @@ Recorrido Grafo::caminoMinimo(array<int,2> posInicial, array<int,2> posFinal, st
 }
 
 
+Grafo::~Grafo() {
+
+    for (int i = 0; i < CANT_VERTICES; i++)
+
+        delete vertices[i];
+
+
+}
+
+
 void Grafo::inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], const string& elemento) {
 
     rellenarMatriz(matrizPesos);

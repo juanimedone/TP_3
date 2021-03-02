@@ -48,6 +48,10 @@ public:
     // POS: devuelve el camino minimo que corresponda segun el elemento del personaje
     Recorrido caminoMinimo(array<int,2> posInicial, array<int,2> posFinal, string elemento);
 
+    // PRE: -
+    // POS: libera la memoria de los casilleros
+    ~Grafo();
+
 private:
     // PRE: -
     // POS: carga la matriz de adyacencias con los pesos correspondientes segun el elemento
