@@ -24,7 +24,7 @@ int main() {
 
         if (archivoPartida.hayPartidaGuardada()) {
 
-            cout << "\n Cargando partida guardada.." << endl;
+            cout << "\n\n Cargando partida guardada.." << endl;
             menuPrincipal.pausar();
 
             archivoPartida.cargarPartida(juego);
@@ -36,14 +36,14 @@ int main() {
 
             if (archivoPersonajes.estaAbierto()) {
 
-                cout << "Se procedera a cargar el archivo de personajes.. \n\n" ;
+                cout << "\n\n Se procedera a cargar el archivo de personajes.. \n\n" ;
                 menuPrincipal.pausar();
 
                 archivoPersonajes.procesarArchivo(diccionario);
                 cout << "\n El archivo de personajes se ha cargado correctamente" << endl;
             }
             else
-                cout << "\n Error al abrir el archivo de personajes" << endl;
+                cout << "\n\n Error al abrir el archivo de personajes" << endl;
 
             menuPrincipal.pausar();
 
@@ -58,5 +58,7 @@ int main() {
 
     cout << "\n\n El programa ha finalizado \n\n" ;
 
+
     return 0;
+
 }
