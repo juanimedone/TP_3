@@ -16,6 +16,14 @@ public:
     // POS: Devuelve COD_FUEGO
     string obtenerElemento() override;
 
+    // PRE: solo para personajes de tierra
+    // POS: devuelve false
+    bool defensaActivada() override;
+
+    // PRE: solo para personajes de tierra
+    // POS: -
+    void desactivarDefensa() override {};
+
     // PRE: -
     // POS: muestra el elemento y los atributos del personaje
     void mostrar() override;

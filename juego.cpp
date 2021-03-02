@@ -54,16 +54,16 @@ void Juego::asignarTurno(short int turno) {
 }
 
 
-Jugador Juego::obtenerJugador1() {
+Jugador* Juego::obtenerJugador1() {
 
-    return jugador1;
+    return &jugador1;
 
 }
 
 
-Jugador Juego::obtenerJugador2() {
+Jugador* Juego::obtenerJugador2() {
 
-    return jugador2;
+    return &jugador2;
 
 }
 

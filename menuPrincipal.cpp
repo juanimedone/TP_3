@@ -28,7 +28,7 @@ void MenuPrincipal::pausar() {
 }
 
 
-void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string,Personaje*>& diccionario) {
+void MenuPrincipal::interfazPrincipal(Juego juego, DiccionarioABB<string,Personaje*>& diccionario) {
 
     while (opcion != SALIR) {
 
@@ -61,7 +61,7 @@ void MenuPrincipal::interfazPrincipal(Juego& juego, DiccionarioABB<string,Person
 
             case COMENZAR_JUEGO:
                 cout << "\n Preparando el juego.."
-                        "\n\n\t\t CARGAR PERSONAJES \n\n\n" ;
+                        "\n\n\t\t CARGAR PERSONAJES \n" ;
                 cargarPersonajes(juego.obtenerJugador1(), juego.obtenerJugador2(), diccionario);
                 if (opcion != SALIR_JUEGO)
                     juego.iniciarPartida();
@@ -294,18 +294,18 @@ Personaje* MenuPrincipal::crearPersonaje(const string& elemento, const string& n
 }
 
 
-void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string,Personaje*>& diccionario) {
+void MenuPrincipal::cargarPersonajes(Jugador* jugador1, Jugador* jugador2, DiccionarioABB<string,Personaje*>& diccionario) {
 
     int numPersonaje = 1;
 
-    while (opcion != SALIR_JUEGO && !jugador1.personajesCargados() && !jugador2.personajesCargados()) {
+    while (opcion != SALIR_JUEGO && !jugador1->personajesCargados() && !jugador2->personajesCargados()) {
 
         if (opcion != SALIR_JUEGO)
             opcion = 0;
 
         while (opcion != SALIR_JUEGO && opcion != SELECCIONAR_PERSONAJE) {
 
-            cout << " Jugador 1 \n" ;
+            cout << "\n\n Jugador 1 \n" ;
             menuJuego(jugador1, diccionario, numPersonaje);
 
         }
@@ -315,7 +315,7 @@ void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, Diccion
 
         while (opcion != SALIR_JUEGO && opcion != SELECCIONAR_PERSONAJE) {
 
-            cout << " Jugador 2 \n" ;
+            cout << "\n\n Jugador 2 \n" ;
             menuJuego(jugador2, diccionario, numPersonaje);
 
         }
@@ -325,7 +325,7 @@ void MenuPrincipal::cargarPersonajes(Jugador jugador1, Jugador jugador2, Diccion
 }
 
 
-void MenuPrincipal::menuJuego(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje) {
+void MenuPrincipal::menuJuego(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje) {
 
     mostrarOpcionesJuego();
     pedirOpcion();
@@ -356,7 +356,8 @@ void MenuPrincipal::menuJuego(Jugador jugador, DiccionarioABB<string,Personaje*>
 
     }
 
-    pausar();
+    if (opcion != SALIR_JUEGO)
+        pausar();
 
 }
 
@@ -371,7 +372,7 @@ void MenuPrincipal::mostrarOpcionesJuego() {
 }
 
 
-void MenuPrincipal::seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario,
+void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario,
                                          int& numPersonaje) {
 
     string nombre;
@@ -384,7 +385,8 @@ void MenuPrincipal::seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,
 
     while ( !diccionario.contiene(nombre) ) {
 
-        cout << "\n El personaje '" << nombre << "' no se encuentra en el diccionario, vuelva a ingresarlo" << endl << endl;
+        cout << "\n El personaje '" << nombre << "' no se encuentra en el diccionario, vuelva a ingresarlo \n\n";
+
         pedirNombre(nombre);
         pasarAMinuscula(nombre);
     }
@@ -393,8 +395,8 @@ void MenuPrincipal::seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,
 
     asignarCodigo(nuevoPersonaje, numPersonaje);
 
-    jugador.asignarPersonaje(nuevoPersonaje);
-    cout << "\n Se ha agregado correctamente el personaje '" << nombre << "' " ;
+    jugador->asignarPersonaje(nuevoPersonaje);
+    cout << "\n Se ha agregado correctamente el personaje '" << nombre << "' \n\n" ;
 
     numPersonaje++;
 

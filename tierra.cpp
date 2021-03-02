@@ -1,6 +1,13 @@
 #include "tierra.h"
 
 
+bool Tierra::defensaActivada() {
+
+    return defensaActiva;
+
+}
+
+
 void Tierra::desactivarDefensa() {
 
 	escudo -= ESCUDO_DEF_TIERRA;
@@ -127,5 +134,8 @@ void Tierra::aumentarEnergia() {
     cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
 
 }
+
+
+
 
 

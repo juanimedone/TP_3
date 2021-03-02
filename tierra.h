@@ -16,9 +16,13 @@ public:
     // POS: crea un personaje de tierra con el nombre ingresado por el usuario y el resto de atributos aleatorios
     Tierra(string nombre) : Personaje(nombre) {};
 
-    // PRE: defensa_activa es true
-	// POS: el personaje pierde 2 puntos de escudo y defensa_activa es false
-	void desactivarDefensa();
+    // PRE: -
+    // POS: devuelve true si tiene su defensa activada, false de lo contrario
+    bool defensaActivada() override;
+
+    // PRE: defensaActiva = true
+    // POS: el personaje pierde 2 puntos de escudo y defensa_activa es false
+    void desactivarDefensa();
 
     // PRE: -
 	// POS: Devuelve COD_TIERRA

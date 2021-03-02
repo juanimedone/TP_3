@@ -33,11 +33,11 @@ public:
 
     // PRE: -
     // POS: devuelve el jugador 1
-    Jugador obtenerJugador1();
+    Jugador* obtenerJugador1();
 
     // PRE: -
     // POS: devuelve el jugador 2
-    Jugador obtenerJugador2();
+    Jugador* obtenerJugador2();
 
     // PRE: -
     // POS: devuelve el tablero

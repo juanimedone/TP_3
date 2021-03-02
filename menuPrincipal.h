@@ -26,7 +26,7 @@ public:
 
     // PRE: -
     // POS: ejecuta el ciclo principal del menu
-    void interfazPrincipal(Juego& juego, DiccionarioABB<string,Personaje*>& diccionario);
+    void interfazPrincipal(Juego juego, DiccionarioABB<string,Personaje*>& diccionario);
 
 private:
 
@@ -80,11 +80,11 @@ private:
 
     // PRE: -
     // POS: carga los personajes en los arrays de los jugadores
-    void cargarPersonajes(Jugador jugador1, Jugador jugador2, DiccionarioABB<string,Personaje*>& diccionario);
+    void cargarPersonajes(Jugador* jugador1, Jugador* jugador2, DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: -
     // POS: muestra el submenu de seleccionar personaje
-    void menuJuego(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
+    void menuJuego(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
 
     // PRE: -
     // POS: imprime por pantalla las opciones para la seleccion de los personajes
@@ -92,7 +92,7 @@ private:
 
     // PRE: -
     // POS: pide el personaje deseado, lo asigna al array de jugador y lo elimina del diccionario
-    void seleccionarPersonaje(Jugador jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
+    void seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
 
     // PRE: -
     // POS: asigna el codigo correspondiente al personaje segun su numero de personaje

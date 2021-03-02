@@ -18,7 +18,7 @@ bool ArchivoPartida::hayPartidaGuardada() {
 void ArchivoPartida::cargarPartida(Juego& juego) {
 
     string turno;
-    Jugador jugador1, jugador2;
+    Jugador* jugador1, *jugador2;
     Grafo* tablero;
 
     jugador1 = juego.obtenerJugador1();
@@ -43,12 +43,12 @@ void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
 
     archivoSalida << turno << "\n" ;
 
-    personajes = juego->obtenerJugador1().obtenerPersonajes();
-    cantPersonajes = juego->obtenerJugador1().obtenerCantPersonajes();
+    personajes = juego->obtenerJugador1()->obtenerPersonajes();
+    cantPersonajes = juego->obtenerJugador1()->obtenerCantPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
-    personajes = juego->obtenerJugador2().obtenerPersonajes();
-    cantPersonajes = juego->obtenerJugador2().obtenerCantPersonajes();
+    personajes = juego->obtenerJugador2()->obtenerPersonajes();
+    cantPersonajes = juego->obtenerJugador2()->obtenerCantPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
     archivoSalida.close();
@@ -70,7 +70,7 @@ ArchivoPartida::~ArchivoPartida() {
 }
 
 
-void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador& jugador) {
+void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador* jugador) {
 
     Personaje* nuevoPersonaje;
     string turno, elemento, nombre, escudo, vida, energia, fila, columna;
@@ -90,7 +90,7 @@ void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador& jugador) {
         nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida, energia, posicion);
 
         tablero->moverPersonaje(nuevoPersonaje, COORD_INVALIDA, posicion);
-        jugador.asignarPersonaje(nuevoPersonaje);
+        jugador->asignarPersonaje(nuevoPersonaje);
 
     }
 

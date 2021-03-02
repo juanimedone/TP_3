@@ -56,7 +56,7 @@ int main() {
     else                                                            // sin el archivo del tablero no se puede jugar
         cout << "\n Error al abrir el archivo del tablero" << endl;
 
-    cout << "\n\n El programa ha finalizado \n\n" ;
+    cout << "\n\n\n El programa ha finalizado \n\n" ;
 
 
     return 0;

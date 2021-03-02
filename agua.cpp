@@ -8,6 +8,13 @@ string Agua::obtenerElemento() {
 }
 
 
+bool Agua::defensaActivada() {
+
+    return false;
+
+}
+
+
 void Agua::mostrar() {
 
     cout << "\n\n Elemento: Agua" << endl;

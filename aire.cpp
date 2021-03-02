@@ -8,6 +8,13 @@ string Aire::obtenerElemento() {
 }
 
 
+bool Aire::defensaActivada() {
+
+    return false;
+
+}
+
+
 void Aire::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 
     if (energia < ENERGIA_ATK_AIRE)

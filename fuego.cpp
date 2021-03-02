@@ -8,6 +8,13 @@ string Fuego::obtenerElemento() {
 }
 
 
+bool Fuego::defensaActivada() {
+
+    return false;
+
+}
+
+
 void Fuego::mostrar() {
 
     cout << "\n\n Elemento: Fuego" << endl;

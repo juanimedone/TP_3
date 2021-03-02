@@ -105,6 +105,10 @@ void Jugador::jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
 
             personajes[i]->vidaPorCeroEnergia();
 
+        else if (personajes[i]->obtenerElemento() == COD_TIERRA && personajes[i]->defensaActivada())
+
+            personajes[i]->desactivarDefensa();
+
         alimentarMover(personajes[i], tablero);
 
         defenderAtacar(personajes[i], tablero, enemigos);

@@ -93,6 +93,14 @@ public:
     // POS: aumenta la energia que corresponda segun el elemento del personaje
     virtual void aumentarEnergia() = 0;
 
+    // PRE: -
+    // POS: devuelve true si tiene su defensa activada, false de lo contrario
+    virtual bool defensaActivada() = 0;
+
+    // PRE: defensaActiva = true
+    // POS: el personaje pierde 2 puntos de escudo y defensa_activa es false
+    virtual void desactivarDefensa() = 0;
+
     // PRE: el vector enemigos contiene tres personajes
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
     virtual void atacar(array<Personaje*,MAX_PERSONAJES> enemigos) = 0;

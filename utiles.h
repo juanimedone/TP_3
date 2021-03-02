@@ -18,7 +18,7 @@ const string PATH_ARCHIVO_TABLERO = "tablero.csv";
 const char *const PATH_ARCHIVO_PARTIDA = "partida.csv";
 const string PATH_ARCHIVO_PERSONAJES = "personajes.csv";
 
-// constantes de Menu
+// constantes de MenuPrincipal
 const int AGREGAR_PERSONAJE = 1;
 const int ELIMINAR_PERSONAJE = 2;
 const int MOSTRAR_PERSONAJES = 3;

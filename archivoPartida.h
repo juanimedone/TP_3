@@ -45,7 +45,7 @@ public:
 private:
     // PRE: los personajes deben haber sido guardados en el .csv con el formato correspondiente
     // POS: crea los personajes, se los asigna a los jugadores y los carga en el tablero
-    void cargarPersonajes(Grafo* tablero, Jugador& jugador);
+    void cargarPersonajes(Grafo* tablero, Jugador* jugador);
 
     // PRE: -
     // POS: reserva espacio para el elemento correspondiente en el heap y lo devuelve como puntero a Personaje
