@@ -36,7 +36,7 @@ public:
 
     // PRE:
     // POS: pide y actualiza la posicion del personaje (con indice i en el vector) y lo coloca en el tablero
-    void posicionarPersonaje(Grafo& tablero, short int i);
+    void posicionarPersonaje(Grafo*& tablero, short int i);
 
     // PRE: -
     // POS: devuelve true si el jugador quiere guardar y salir de la partida, false de lo contrario
@@ -44,11 +44,11 @@ public:
 
     // PRE: -
     // POS: chequea si hay personajes con VIDA_NULA y de ser asi los elimina
-    void chequearBajas(Grafo& tablero);
+    void chequearBajas(Grafo*& tablero);
 
     // PRE: -
     // POS: lleva a cabo el turno del jugador, realiza las acciones para cada personaje
-    void jugar(Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
+    void jugar(Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
 
     // PRE: -
     // POS: devuelve true si el jugador ya no tiene pesonajes con vida, false de lo contrario
@@ -57,7 +57,7 @@ public:
 private:
     // PRE: -
     // POS: muestra un primer submenu por pantalla (por personaje) y ejecuta la opcion elegida por el jugador
-    void alimentarMover(Personaje*& personaje, Grafo& tablero);
+    void alimentarMover(Personaje*& personaje, Grafo*& tablero);
 
     // PRE: -
     // POS: muestra por pantalla las opciones de alimentarse, moverse o pasar opcion
@@ -69,16 +69,16 @@ private:
 
     // PRE: -
     // POS: pide y actualiza la posicion del personaje a mover y muestra por pantalla el recorrido tomado
-    void moverPersonaje(Personaje*& personaje, Grafo& tablero);
+    void moverPersonaje(Personaje*& personaje, Grafo*& tablero);
 
     // PRE: -
     // POS: chequea que el movimiento sea valido, de no serlo vuelve a pedir las coordenadas hasta que lo sea
-    void validarMovimiento(Grafo& tablero, array<int,2> posInicial, array<int,2>& posFinal, Personaje* personaje,
+    void validarMovimiento(Grafo*& tablero, array<int,2> posInicial, array<int,2>& posFinal, Personaje* personaje,
                            int& energiaNecesaria);
 
     // PRE: -
     // POS: muestra un segundo submenu por pantalla (por personaje) y ejecuta la opcion elegida por el jugador
-    void defenderAtacar(Personaje*& personaje, Grafo& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
+    void defenderAtacar(Personaje*& personaje, Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
 
     // PRE: -
     // POS: muestra por pantalla las opciones de defensa, ataque o pasar opcion
@@ -87,11 +87,11 @@ private:
     // PRE: -
     // POS: si tiene la energia necesaria para volar, se posiciona al personaje en las coordenadas ingresadas por el
     //      usuario, de ser invalidas las coordenadas o no tener energia suficiente, se imprime un mensaje
-    void defensaAire(Personaje*& personaje, Grafo& tablero);
+    void defensaAire(Personaje*& personaje, Grafo*& tablero);
 
     // PRE: -
     // POS: elimina el personaje con indice i del array de personajes y del tablero
-    void eliminarPersonaje(short int i, Grafo& tablero);
+    void eliminarPersonaje(short int i, Grafo*& tablero);
 
 };
 

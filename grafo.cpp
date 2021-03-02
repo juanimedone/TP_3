@@ -210,7 +210,7 @@ void Grafo::inicializarVectores(array<int,CANT_VERTICES>& pesosMinimos, array<in
     for (int i = 0; i < CANT_VERTICES; i++) {
 
         pesosMinimos[i] = INFINITO;
-        rutaMinima[i] = VACIO;
+        rutaMinima[i] = VALOR_INVALIDO;
         visitados[i] = false;
     }
 

@@ -7,8 +7,8 @@ class Juego {
 
     // atributos
 private:
-    Jugador jugador1, jugador2;
-    Grafo tablero;
+    Jugador* jugador1, *jugador2;
+    Grafo* tablero;
     short int turno;
     bool salir;
 
@@ -16,7 +16,7 @@ private:
 public:
     // constructor
     // PRE: -
-    // POS: asigna los valores iniciales de los atributos turno (al azar) y salir
+    // POS: asigna los valores iniciales de los atributos y reserva el espacio necesario en el heap
     Juego();
 
     // PRE: -
@@ -42,6 +42,11 @@ public:
     // PRE: -
     // POS: devuelve el tablero
     Grafo* obtenerTablero();
+
+    // destructor
+    // PRE: -
+    // POS: libera la memoria pedida en el heap
+    ~Juego();
 
 private:
     // PRE: -

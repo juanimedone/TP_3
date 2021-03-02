@@ -26,7 +26,7 @@ public:
 
     // PRE: -
     // POS: ejecuta el ciclo principal del menu
-    void interfazPrincipal(Juego juego, DiccionarioABB<string,Personaje*>& diccionario);
+    void interfazPrincipal(Juego* juego, DiccionarioABB<string,Personaje*>& diccionario);
 
 private:
 

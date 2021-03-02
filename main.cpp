@@ -11,13 +11,13 @@ int main() {
     ArchivoPersonajes archivoPersonajes;
     DiccionarioABB<string, Personaje*> diccionario;
     MenuPrincipal menuPrincipal;
-    Juego juego;
+    Juego* juego = new Juego();
 
     menuPrincipal.iniciar();
 
     if (archivoTablero.estaAbierto()) {
 
-        archivoTablero.cargarTablero(juego.obtenerTablero());
+        archivoTablero.cargarTablero(juego->obtenerTablero());
 
         cout << "\n\n El tablero se ha cargado correctamente \n" ;
         menuPrincipal.pausar();
@@ -28,7 +28,7 @@ int main() {
             menuPrincipal.pausar();
 
             archivoPartida.cargarPartida(juego);
-            juego.reanudarPartida();
+            juego->reanudarPartida();
 
         }
 
@@ -58,6 +58,7 @@ int main() {
 
     cout << "\n\n\n El programa ha finalizado \n\n" ;
 
+    delete juego;
 
     return 0;
 

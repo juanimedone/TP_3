@@ -15,18 +15,18 @@ bool ArchivoPartida::hayPartidaGuardada() {
 }
 
 
-void ArchivoPartida::cargarPartida(Juego& juego) {
+void ArchivoPartida::cargarPartida(Juego*& juego) {
 
     string turno;
     Jugador* jugador1, *jugador2;
     Grafo* tablero;
 
-    jugador1 = juego.obtenerJugador1();
-    jugador2 = juego.obtenerJugador2();
-    tablero = juego.obtenerTablero();
+    jugador1 = juego->obtenerJugador1();
+    jugador2 = juego->obtenerJugador2();
+    tablero = juego->obtenerTablero();
 
     getline(archivoEntrada, turno);
-    juego.asignarTurno( (short) stoi(turno) );
+    juego->asignarTurno( (short) stoi(turno) );
 
     cargarPersonajes(tablero, jugador1);
     cargarPersonajes(tablero, jugador2);

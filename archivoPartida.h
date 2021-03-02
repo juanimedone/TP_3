@@ -27,7 +27,7 @@ public:
 
     // PRE: debe existir un archivo de partida guardada
     // POS: prepara el juego para reaunudar la partida
-    void cargarPartida(Juego& juego);
+    void cargarPartida(Juego*& juego);
 
     // PRE: -
     // POS: crea un archivo .csv y guarda los datos de la partida

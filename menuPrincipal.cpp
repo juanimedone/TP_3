@@ -28,7 +28,7 @@ void MenuPrincipal::pausar() {
 }
 
 
-void MenuPrincipal::interfazPrincipal(Juego juego, DiccionarioABB<string,Personaje*>& diccionario) {
+void MenuPrincipal::interfazPrincipal(Juego* juego, DiccionarioABB<string,Personaje*>& diccionario) {
 
     while (opcion != SALIR) {
 
@@ -60,12 +60,15 @@ void MenuPrincipal::interfazPrincipal(Juego juego, DiccionarioABB<string,Persona
                 break;
 
             case COMENZAR_JUEGO:
+
                 cout << "\n Preparando el juego.."
                         "\n\n\t\t CARGAR PERSONAJES \n" ;
-                cargarPersonajes(juego.obtenerJugador1(), juego.obtenerJugador2(), diccionario);
+                cargarPersonajes(juego->obtenerJugador1(), juego->obtenerJugador2(), diccionario);
+
                 if (opcion != SALIR_JUEGO)
-                    juego.iniciarPartida();
+                    juego->iniciarPartida();
                 opcion = SALIR;
+
                 break;
 
             case SALIR:
