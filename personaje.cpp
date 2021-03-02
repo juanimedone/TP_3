@@ -113,11 +113,11 @@ array<int,2> Personaje::pedirCoordenadas() {
 
     while ( !esValida(fila, columna) ) {
 
-        cout << "\n\nValores invalidos. Ingrese solo numeros enteros entre 0 y 8." << endl;
+        cout << "\n\n Valores invalidos. Ingrese solo numeros enteros entre 0 y 7." << endl;
 
-        cout << "\nFila: ";
+        cout << "\n Fila: ";
         getline(cin, fila);
-        cout << "\nColumna: ";
+        cout << "\n Columna: ";
         getline(cin, columna);
     }
 

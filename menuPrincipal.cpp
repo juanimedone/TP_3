@@ -5,10 +5,10 @@ void MenuPrincipal::iniciar() {
 
     limpiarPantalla();
 
-    cout << "\n\t\t Trabajo Practico 3\n\n"
-            "\t La batalla de los elementos\n\n"
+    cout << "\n\t\t    Trabajo Practico 3\n\n"
+            "\t\t La batalla de los elementos\n\n"
             "\t\t\t Grupo 3\n\n"
-            " Algoritmos y Programacion II - 2C 2020 \n\n\n\n\n"
+            "\t Algoritmos y Programacion II - 2C 2020 \n\n\n\n\n"
             " Se procedera a cargar el archivo del tablero.. \n\n" ;
 
     pausar();
@@ -332,8 +332,6 @@ void MenuPrincipal::menuJuego(Jugador*& jugador, DiccionarioABB<string,Personaje
 
     mostrarOpcionesJuego();
     pedirOpcion();
-
-    limpiarPantalla();
 
     switch (opcion) {
 

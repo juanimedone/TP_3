@@ -124,7 +124,6 @@ Grafo::~Grafo() {
 
         delete vertices[i];
 
-
 }
 
 
@@ -148,11 +147,11 @@ void Grafo::inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], con
 
         for (int j = 0; j < MAX_FILA - 1; j++) {
 
-            int pesoActual = vertices[i + j*8]->obtenerCosto(elemento);
-            int pesoSiguiente = vertices[i + (j+1)*8]->obtenerCosto(elemento);
+            int pesoActual = vertices[i + j * MAX_FILA]->obtenerCosto(elemento);
+            int pesoSiguiente = vertices[i + (j+1) * MAX_FILA]->obtenerCosto(elemento);
 
-            matrizPesos[i*MAX_FILA+j+8][j] = pesoSiguiente;
-            matrizPesos[i*MAX_FILA+j][j+8] = pesoActual;
+            matrizPesos[i * MAX_FILA + j+MAX_FILA][j] = pesoActual;
+            matrizPesos[i * MAX_FILA + j][j+MAX_FILA] = pesoSiguiente;
 
         }
 
