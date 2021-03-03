@@ -24,7 +24,7 @@ int main() {
 
         if (archivoPartida.hayPartidaGuardada()) {
 
-            cout << "\n\n Cargando partida guardada.." << endl;
+            cout << "\n\n Cargando partida guardada..\n\n" ;
             menuPrincipal.pausar();
 
             archivoPartida.cargarPartida(juego);

@@ -397,7 +397,7 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
 
     nuevoPersonaje = diccionario.obtenerValor(nombre);
 
-    asignarCodigo(nuevoPersonaje, numPersonaje);
+    nuevoPersonaje->asignarCodigo( nuevoPersonaje->obtenerNombre()[0] );
 
     jugador->asignarPersonaje(nuevoPersonaje);
     cout << "\n Se ha agregado correctamente el personaje '" << nombre << "' \n\n" ;
@@ -409,34 +409,5 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
 }
 
 
-void MenuPrincipal::asignarCodigo(Personaje* personaje, int numPersonaje) {
 
-    switch (numPersonaje) {
-
-        case PERSONAJE_1:
-            personaje->asignarCodigo('*');
-            break;
-
-        case PERSONAJE_2:
-            personaje->asignarCodigo('&');
-            break;
-
-        case PERSONAJE_3:
-            personaje->asignarCodigo('$');
-            break;
-
-        case PERSONAJE_4:
-            personaje->asignarCodigo('+');
-            break;
-
-        case PERSONAJE_5:
-            personaje->asignarCodigo('~');
-            break;
-
-        case PERSONAJE_6:
-            personaje->asignarCodigo('#');
-
-    }
-
-}
 

@@ -40,10 +40,11 @@ void Juego::reanudarPartida() {
 
     cicloPrincipal();
 
-    if (!salir)
-        mostrarGanador();
+    if (!salir) {
 
-    archivoPartida.eliminarArchivo();
+        mostrarGanador();
+        archivoPartida.eliminarArchivo();
+    }
 
 }
 

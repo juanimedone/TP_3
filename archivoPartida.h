@@ -50,7 +50,7 @@ private:
     // PRE: -
     // POS: reserva espacio para el elemento correspondiente en el heap y lo devuelve como puntero a Personaje
     Personaje* crearPersonaje(const string& elemento, const string& nombre, const string& escudo, const string& vida,
-                              const string& energia, array<int,2> posicion);
+                              const string& energia, array<int,2> posicion, const string& codigo);
 
     // PRE: -
     // POS: carga los personajes en el archivo de guardado

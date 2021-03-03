@@ -43,12 +43,14 @@ void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
 
     archivoSalida << turno << "\n" ;
 
-    personajes = juego->obtenerJugador1()->obtenerPersonajes();
     cantPersonajes = juego->obtenerJugador1()->obtenerCantPersonajes();
+    archivoSalida << cantPersonajes << "\n" ;
+    personajes = juego->obtenerJugador1()->obtenerPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
-    personajes = juego->obtenerJugador2()->obtenerPersonajes();
     cantPersonajes = juego->obtenerJugador2()->obtenerCantPersonajes();
+    archivoSalida << cantPersonajes << "\n" ;
+    personajes = juego->obtenerJugador2()->obtenerPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
     archivoSalida.close();
@@ -73,10 +75,13 @@ ArchivoPartida::~ArchivoPartida() {
 void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador* jugador) {
 
     Personaje* nuevoPersonaje;
-    string turno, elemento, nombre, escudo, vida, energia, fila, columna;
+    string turno, elemento, nombre, escudo, vida, energia, fila, columna, codigo;
     array<int,2> posicion{};
+    string cantPersonajes;
 
-    for (short int i = 0; i < MAX_PERSONAJES; i++) {
+    getline(archivoEntrada, cantPersonajes);
+
+    for (short int i = 0; i < (short) stoi(cantPersonajes); i++) {
 
         getline(archivoEntrada, elemento, ',');
         getline(archivoEntrada, nombre, ',');
@@ -84,24 +89,23 @@ void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador* jugador) {
         getline(archivoEntrada, vida, ',');
         getline(archivoEntrada, energia, ',');
         getline(archivoEntrada, fila, ',');
-        getline(archivoEntrada, columna);
+        getline(archivoEntrada, columna, ',');
+        getline(archivoEntrada, codigo);
 
         posicion = {stoi(fila), stoi(columna)};
-        nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida, energia, posicion);
+        nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida, energia, posicion, codigo);
 
         tablero->moverPersonaje(nuevoPersonaje, COORD_INVALIDA, posicion);
         jugador->asignarPersonaje(nuevoPersonaje);
 
     }
 
-    nuevoPersonaje = nullptr;
-    delete nuevoPersonaje;
-
 }
 
 
 Personaje* ArchivoPartida::crearPersonaje(const string& elemento, const string& nombre, const string& escudo,
-                                          const string& vida, const string& energia, array<int,2> posicion) {
+                                          const string& vida, const string& energia, array<int,2> posicion,
+                                          const string& codigo) {
 
     Personaje* nuevoPersonaje;
 
@@ -121,6 +125,7 @@ Personaje* ArchivoPartida::crearPersonaje(const string& elemento, const string& 
     nuevoPersonaje->asignarVida( stoi(vida) );
     nuevoPersonaje->asignarEnergia( stoi(energia) );
     nuevoPersonaje->asignarPosicion(posicion);
+    nuevoPersonaje->asignarCodigo(codigo[0]);
 
     return nuevoPersonaje;
 
@@ -142,7 +147,8 @@ void ArchivoPartida::guardarPersonajes(Personaje** personajes, short int cantPer
         archivoSalida << personajes[i]->obtenerVida() << "," ;
         archivoSalida << personajes[i]->obtenerEnergia() << "," ;
         archivoSalida << fila << "," ;
-        archivoSalida << columna;
+        archivoSalida << columna << ",";
+        archivoSalida << personajes[i]->obtenerCodigo();
 
         archivoSalida << "\n" ;
     }
