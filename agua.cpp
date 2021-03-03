@@ -17,7 +17,7 @@ bool Agua::defensaActivada() {
 
 void Agua::mostrar() {
 
-    cout << "\n\n Elemento: Agua" << endl;
+    cout << "\n Elemento: Agua" << endl;
 
     mostrarAtributos();
 

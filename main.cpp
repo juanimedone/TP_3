@@ -19,7 +19,7 @@ int main() {
 
         archivoTablero.cargarTablero(juego->obtenerTablero());
 
-        cout << "\n\n El tablero se ha cargado correctamente \n" ;
+        cout << "\n\n El tablero se ha cargado correctamente \n\n" ;
         menuPrincipal.pausar();
 
         if (archivoPartida.hayPartidaGuardada()) {
@@ -40,10 +40,10 @@ int main() {
                 menuPrincipal.pausar();
 
                 archivoPersonajes.procesarArchivo(diccionario);
-                cout << "\n El archivo de personajes se ha cargado correctamente" << endl;
+                cout << "\n\n El archivo de personajes se ha cargado correctamente \n\n" ;
             }
             else
-                cout << "\n\n Error al abrir el archivo de personajes" << endl;
+                cout << "\n\n Error al abrir el archivo de personajes \n\n" ;
 
             menuPrincipal.pausar();
 
@@ -54,7 +54,7 @@ int main() {
     }
 
     else                                                            // sin el archivo del tablero no se puede jugar
-        cout << "\n Error al abrir el archivo del tablero" << endl;
+        cout << "\n Error al abrir el archivo del tablero \n\n" ;
 
     cout << "\n\n\n El programa ha finalizado \n\n" ;
 

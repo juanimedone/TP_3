@@ -42,7 +42,7 @@ void Aire::atacar(Personaje** enemigos) {
 
 void Aire::mostrar() {
 
-    cout << "\n\n Elemento: Aire" << endl;
+    cout << "\n Elemento: Aire" << endl;
 
     mostrarAtributos();
 

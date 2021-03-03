@@ -17,7 +17,7 @@ bool Fuego::defensaActivada() {
 
 void Fuego::mostrar() {
 
-    cout << "\n\n Elemento: Fuego" << endl;
+    cout << "\n Elemento: Fuego" << endl;
 
     mostrarAtributos();
 

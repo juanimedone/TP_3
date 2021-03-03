@@ -96,7 +96,8 @@ void Personaje::mostrarAtributos() {
          << " Escudo: " << escudo << endl
          << " Vida: " << vida << endl
          << " Energia: " << energia << endl
-         << " Posicion: [" << posicion[0] << ", " << posicion[1] << "]" << endl;
+         << " Posicion: [" << posicion[0] << "," << posicion[1] << "]" << endl
+         << " Simbolo: " << codigo << endl;
 
 }
 
@@ -108,7 +109,7 @@ array<int,2> Personaje::pedirCoordenadas() {
 
     cout << "\n Fila: ";
     getline(cin, fila);
-    cout << "\n Columna: ";
+    cout << " Columna: ";
     getline(cin, columna);
 
     while ( !esValida(fila, columna) ) {
@@ -117,7 +118,7 @@ array<int,2> Personaje::pedirCoordenadas() {
 
         cout << "\n Fila: ";
         getline(cin, fila);
-        cout << "\n Columna: ";
+        cout << " Columna: ";
         getline(cin, columna);
     }
 

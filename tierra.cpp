@@ -25,7 +25,7 @@ string Tierra::obtenerElemento() {
 
 void Tierra::mostrar() {
 
-    cout << "\n\n Elemento: Tierra" << endl;
+    cout << "\n Elemento: Tierra" << endl;
 
     mostrarAtributos();
 

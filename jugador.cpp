@@ -54,7 +54,7 @@ void Jugador::posicionarPersonaje(Grafo*& tablero, short int i) {
     while ( !tablero->estaVacio(posicion) ) {
 
         cout << "\n La posicion [" << posicion[0] << "," << posicion[1] << "] esta ocupada por " <<
-        tablero->obtenerPersonaje(posicion)->obtenerNombre() << "\n Vuelva a ingresar las coordenadas \n" ;
+        tablero->obtenerPersonaje(posicion)->obtenerNombre() << "\n\n Vuelva a ingresar las coordenadas \n" ;
 
         posicion = personajes[i]->pedirCoordenadas();
     }
@@ -67,8 +67,8 @@ void Jugador::posicionarPersonaje(Grafo*& tablero, short int i) {
 
 bool Jugador::quiereSalir() {
 
-    cout << "\n\n Desea guardar la partida y salir?"
-            "\n 1- Si           2- No \n\n" ;
+    cout << "\n Desea guardar la partida y salir?"
+            "\n    1- Si           2- No \n\n" ;
 
     pedirOpcion();
 

@@ -61,8 +61,7 @@ void MenuPrincipal::interfazPrincipal(Juego* juego, DiccionarioABB<string,Person
 
             case COMENZAR_JUEGO:
 
-                cout << "\n Preparando el juego.."
-                        "\n\n\t\t CARGAR PERSONAJES \n" ;
+                cout << "\n\n\t\t CARGAR PERSONAJES \n" ;
                 cargarPersonajes(juego->obtenerJugador1(), juego->obtenerJugador2(), diccionario);
 
                 if (opcion != SALIR_JUEGO)
@@ -143,9 +142,6 @@ void MenuPrincipal::agregarPersonaje(DiccionarioABB<string,Personaje*>& dicciona
         cout << "\n\n Se ha agregado correctamente el personaje";
         nuevoPersonaje->mostrar();
 
-        nuevoPersonaje = nullptr;
-        delete nuevoPersonaje;
-
     }
 
     cout << endl;
@@ -156,6 +152,7 @@ void MenuPrincipal::agregarPersonaje(DiccionarioABB<string,Personaje*>& dicciona
 void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string,Personaje*>& diccionario) {
 
     string nombre;
+    Personaje* eliminar;
 
     mostrarPersonajes(diccionario);
 
@@ -170,8 +167,12 @@ void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string,Personaje*>& diccion
 
         if ( diccionario.contiene(nombre) ) {
 
+            eliminar = diccionario.obtenerValor(nombre);
+
             diccionario.eliminar(nombre);
             cout << "\n Se ha eliminado correctamente el personaje '" << nombre << "'";
+
+            delete eliminar;
 
         }
         else
@@ -308,7 +309,8 @@ void MenuPrincipal::cargarPersonajes(Jugador* jugador1, Jugador* jugador2, Dicci
 
         while (opcion != SALIR_JUEGO && opcion != SELECCIONAR_PERSONAJE) {
 
-            cout << "\n\n Jugador 1 \n" ;
+            cout << "\n Preparando el juego..\n" ;
+            cout << "\n\n\t Jugador 1" ;
             menuJuego(jugador1, diccionario, numPersonaje);
 
         }
@@ -318,7 +320,8 @@ void MenuPrincipal::cargarPersonajes(Jugador* jugador1, Jugador* jugador2, Dicci
 
         while (opcion != SALIR_JUEGO && opcion != SELECCIONAR_PERSONAJE) {
 
-            cout << "\n\n Jugador 2 \n" ;
+            cout << "\n Preparando el juego..\n" ;
+            cout << "\n\n\t Jugador 2" ;
             menuJuego(jugador2, diccionario, numPersonaje);
 
         }
@@ -386,7 +389,7 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
 
     while ( !diccionario.contiene(nombre) ) {
 
-        cout << "\n El personaje '" << nombre << "' no se encuentra en el diccionario, vuelva a ingresarlo \n\n";
+        cout << "\n El personaje '" << nombre << "' no se encuentra en el diccionario, vuelva a ingresarlo \n\n" ;
 
         pedirNombre(nombre);
         pasarAMinuscula(nombre);
@@ -402,9 +405,6 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
     numPersonaje++;
 
     diccionario.eliminar(nombre);
-
-    nuevoPersonaje = nullptr;
-    delete nuevoPersonaje;
 
 }
 

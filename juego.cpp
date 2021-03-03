@@ -29,8 +29,6 @@ void Juego::iniciarPartida() {
     if (!salir)
         mostrarGanador();
 
-    pausar();
-
 }
 
 
@@ -44,8 +42,6 @@ void Juego::reanudarPartida() {
 
     if (!salir)
         mostrarGanador();
-
-    pausar();
 
     archivoPartida.eliminarArchivo();
 
@@ -119,14 +115,16 @@ void Juego::posicionarPersonajes() {
 
         for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
-            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
-            cout << " Jugador 1 \n\n" ;
+            cout << "\n Preparando el juego.." ;
+            cout << "\n\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << "\n\t Jugador 1 \n\n" ;
             jugador1->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
 
-            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
-            cout << " Jugador 2 \n\n" ;
+            cout << "\n Preparando el juego.." ;
+            cout << "\n\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << "\n\t Jugador 2 \n\n" ;
             jugador2->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
@@ -135,14 +133,16 @@ void Juego::posicionarPersonajes() {
     else
         for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
-            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
-            cout << " Jugador 2 \n\n" ;
+            cout << "\n Preparando el juego.." ;
+            cout << "\n\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << "\n\t Jugador 2 \n\n" ;
             jugador2->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
 
-            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
-            cout << " Jugador 1 \n\n" ;
+            cout << "\n Preparando el juego.." ;
+            cout << "\n\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << "\n\t Jugador 1 \n\n" ;
             jugador1->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
@@ -159,6 +159,8 @@ void Juego::cicloPrincipal() {
 
             tablero->mostrar();
             mostrarReferencias();
+
+            cout << "\n Jugador 1 \n" ;
             salir = jugador1->quiereSalir();
 
             if (!salir) {
@@ -169,6 +171,8 @@ void Juego::cicloPrincipal() {
 
                 tablero->mostrar();
                 mostrarReferencias();
+
+                cout << "\n Jugador 2 \n" ;
                 salir = jugador2->quiereSalir();
 
                 if (salir)
@@ -188,6 +192,8 @@ void Juego::cicloPrincipal() {
 
             tablero->mostrar();
             mostrarReferencias();
+
+            cout << "\n Jugador 2 \n" ;
             salir = jugador2->quiereSalir();
 
             if (!salir) {
@@ -198,6 +204,8 @@ void Juego::cicloPrincipal() {
 
                 tablero->mostrar();
                 mostrarReferencias();
+
+                cout << "\n Jugador 1 \n" ;
                 salir = jugador1->quiereSalir();
 
                 if (salir)
@@ -233,25 +241,25 @@ void Juego::mostrarReferencias() {
 
     Personaje** personajes;
 
-    cout << "\n\n\n\t\t Personajes" ;
+    cout << "\n\n\t Personajes" ;
 
-    cout << "\n\n Jugador 1" ;
+    cout << "\n\n Jugador 1\n" ;
 
     personajes = jugador1->obtenerPersonajes();
 
-    for (int i = 0; i < jugador1->obtenerCantPersonajes(); i++) {
+    for (int i = 0; i < jugador1->obtenerCantPersonajes(); i++)
 
-        cout << "\n Nombre: " << personajes[i]->obtenerNombre() << " -> " << personajes[i]->obtenerCodigo();
-    }
+        personajes[i]->mostrar();
 
-    cout << "\n\n Jugador 2" ;
+
+    cout << "\n\n Jugador 2\n" ;
 
     personajes = jugador2->obtenerPersonajes();
 
-    for (int i = 0; i < jugador2->obtenerCantPersonajes(); i++) {
+    for (int i = 0; i < jugador2->obtenerCantPersonajes(); i++)
 
-        cout << "\n Nombre: " << personajes[i]->obtenerNombre() << " -> " << personajes[i]->obtenerCodigo();
-    }
+        personajes[i]->mostrar();
+
 
     mostrarReferenciasCasilleros();
 
@@ -260,7 +268,7 @@ void Juego::mostrarReferencias() {
 
 void Juego::mostrarReferenciasCasilleros() {
 
-    cout << "\n\n\t Tipos de casillero \n "
+    cout << "\n\n\t Tipos de casillero \n\n "
          << MONTANIA <<  ": Montania \n "
          << PRECIPICIO <<  ": Precipicio \n "
          << LAGO <<  ": Lago \n "
