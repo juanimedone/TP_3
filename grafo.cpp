@@ -138,9 +138,6 @@ void Grafo::inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], con
             int pesoActual = vertices[i * MAX_FILA + j]->obtenerCosto(elemento);
             int pesoSiguiente = vertices[i * MAX_FILA + j+1]->obtenerCosto(elemento);
 
-            // matrizPesos[i * MAX_FILA + j][j+1] = pesoSiguiente;
-            // matrizPesos[i * MAX_FILA + j+1][j] = pesoActual;
-
             matrizPesos[i * MAX_FILA + j][i * MAX_FILA + j+1] = pesoSiguiente;
             matrizPesos[i * MAX_FILA + j+1][i * MAX_FILA + j] = pesoActual;
 
@@ -150,16 +147,14 @@ void Grafo::inicializarMatriz(int matrizPesos[CANT_VERTICES][CANT_VERTICES], con
 
         for (int j = 0; j < MAX_FILA - 1; j++) {
 
-            int pesoActual = vertices[i + j * MAX_FILA]->obtenerCosto(elemento);
-            int pesoSiguiente = vertices[i + (j+1) * MAX_FILA]->obtenerCosto(elemento);
+            int pesoActual = vertices[i + j * 8]->obtenerCosto(elemento);
+            int pesoSiguiente = vertices[i + (j + 1) * 8]->obtenerCosto(elemento);
 
-            // matrizPesos[i * MAX_FILA + j+MAX_FILA][j] = pesoActual;
-            // matrizPesos[i * MAX_FILA + j][j+MAX_FILA] = pesoSiguiente;
-
-            matrizPesos[j * MAX_FILA + i+MAX_FILA][i] = pesoActual;
-            matrizPesos[j * MAX_FILA + i][i+MAX_FILA] = pesoSiguiente;
+            matrizPesos[i + j * MAX_COLUMNA][i + (j + 1) * MAX_FILA] = pesoSiguiente;
+            matrizPesos[i + (j + 1) * MAX_COLUMNA][i + j * MAX_FILA] = pesoActual;
 
         }
+
 
 }
 
