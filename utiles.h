@@ -39,14 +39,6 @@ const int ENERGIA_MAXIMA = 20;
 const int RANGO_ENERGIA = ENERGIA_MAXIMA - ENERGIA_MINIMA + 1;
 const array<int,2> COORD_INVALIDA = {-1,-1};
 
-// codigos de Personaje
-const char PERSONAJE_1 = 1;
-const char PERSONAJE_2 = 2;
-const char PERSONAJE_3 = 3;
-const char PERSONAJE_4 = 4;
-const char PERSONAJE_5 = 5;
-const char PERSONAJE_6 = 6;
-
 // constantes de los elementos
 const int CANT_MAX_PLANCTON = 3;
 const int ENERGIA_PLANCTON = 10;

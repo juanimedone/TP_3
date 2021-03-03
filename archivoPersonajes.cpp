@@ -47,13 +47,13 @@ Personaje* ArchivoPersonajes::crearPersonaje(const string& elemento, const strin
 
     Personaje* nuevoPersonaje;
 
-    if (elemento == "agua")
+    if (elemento == COD_AGUA)
         nuevoPersonaje = new Agua(nombre);
 
-    else if (elemento == "fuego")
+    else if (elemento == COD_FUEGO)
         nuevoPersonaje = new Fuego(nombre);
 
-    else if (elemento == "tierra")
+    else if (elemento == COD_TIERRA)
         nuevoPersonaje = new Tierra(nombre);
 
     else

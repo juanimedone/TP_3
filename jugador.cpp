@@ -95,7 +95,7 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
 
     for (int i = 0; i < cantPersonajes; i++) {
 
-        cout << "\n Personaje: " << personajes[i]->obtenerNombre();
+        cout << "\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
 
         if (personajes[i]->obtenerElemento() == COD_AIRE)
 
@@ -112,7 +112,7 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
 
         alimentarMover(personajes[i], tablero);
 
-        cout << "\n\n Personaje: " << personajes[i]->obtenerNombre();
+        cout << "\n\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
         defenderAtacar(personajes[i], tablero, enemigos);
 
     }
@@ -234,10 +234,10 @@ void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje**
 
         case DEFENDERSE:
 
-            if (personaje->obtenerElemento() == "aire")
+            if (personaje->obtenerElemento() == COD_AIRE)
                 defensaAire(personaje, tablero);
             else
-                personaje->defender(personajes);
+                personaje->defender(personajes, cantPersonajes);
 
             break;
 
@@ -266,34 +266,40 @@ void Jugador::mostrarOpcionesDA() {
 
 void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 
-    array<int,2> posNueva{};
     int energia = personaje->obtenerEnergia();
 
     if (energia < ENERGIA_DEF_AIRE)
 
-        cout << "\n\n La energia actual es insuficiente para defender \n"
-                "\n Energia actual: " << personaje->obtenerEnergia() << " ---> Energia necesaria: " << ENERGIA_DEF_AIRE
-                << "\n\n";
+        cout << "\n La energia actual es insuficiente para defender \n"
+                "\n Energia actual: " << personaje->obtenerEnergia() <<
+                "\n Energia necesaria: " << ENERGIA_DEF_AIRE << "\n\n";
 
     else {
 
-        cout << "\n Inserte las coordenadas a las que desea volar." << endl;
-        posNueva = personaje->pedirCoordenadas();
+        array<int,2> posInicial{}, posFinal{};
 
-        while ( !tablero->estaVacio(posNueva) ) {
+        posInicial = personaje->obtenerPosicion();
 
-            cout << "\n\n La posicion esta ocupada por el personaje " <<
-                    tablero->obtenerPersonaje(posNueva)->obtenerNombre() << ". Reingrese las coordenadas " ;
-            posNueva = personaje->pedirCoordenadas();
+        cout << "\n Inserte las coordenadas a las que desea volar " << endl;
+        posFinal = personaje->pedirCoordenadas();
+
+        while ( !tablero->estaVacio(posFinal) ) {
+
+            cout << "\n La posicion [" << posFinal[0] << "," << posFinal[1] << "] esta ocupada por el personaje " <<
+                    tablero->obtenerPersonaje(posFinal)->obtenerNombre() << ". Reingrese las coordenadas a las que desea volar \n" ;
+            posFinal = personaje->pedirCoordenadas();
         }
 
-        tablero->moverPersonaje(personaje, personaje->obtenerPosicion(), posNueva);
-        personaje->asignarPosicion(posNueva);
-
-        cout << "\n\n'" << personaje->obtenerNombre() << "' ha utilizado " << ENERGIA_DEF_AIRE <<
-                "puntos de energía para volar a [" << posNueva[0] << "," << posNueva[1] << "]" << endl;
+        tablero->moverPersonaje(personaje, personaje->obtenerPosicion(), posFinal);
+        personaje->asignarPosicion(posFinal);
 
         personaje->asignarEnergia(energia - ENERGIA_DEF_AIRE);
+
+        cout << "\n '" << personaje->obtenerNombre() << "' ha utilizado " << ENERGIA_DEF_AIRE <<
+                " puntos de energía para volar de [" << posInicial[0] << "," << posInicial[1]
+                << "] a [" << posFinal[0] << "," << posFinal[1] << "] \n";
+        cout << " Energia anterior: " << energia << " ---> Energia actual: " << energia - ENERGIA_DEF_AIRE << endl;
+
     }
 
 }

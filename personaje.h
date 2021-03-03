@@ -105,9 +105,9 @@ public:
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
     virtual void atacar(Personaje** enemigos) = 0;
 
-    // PRE: el vector aliados contiene tres personajes
+    // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    virtual void defender(Personaje** aliados) = 0;
+    virtual void defender(Personaje** aliados, int cantPersonajes) = 0;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,

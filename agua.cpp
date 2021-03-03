@@ -77,13 +77,15 @@ void Agua::atacar(Personaje** enemigos) {
 }
 
 
-void Agua::defender(Personaje** aliados) {
+void Agua::defender(Personaje** aliados, int cantPersonajes) {
 
     int nuevaVidaPropia;
 
     if (energia < ENERGIA_DEF_AGUA)
 
-        cout << "\n\nLa energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_AGUA << endl;
+        cout << "\n La energia actual es insuficiente para defender"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_DEF_AGUA << endl;
 
     else {
 
@@ -96,20 +98,16 @@ void Agua::defender(Personaje** aliados) {
 
         vida += nuevaVidaPropia;
 
-        short int i = 0;
+        energia -= ENERGIA_DEF_AGUA;
 
-        while (aliados[i]) {
+        mostrarMsjDefensa(nuevaVidaPropia);
+
+        for (int i = 0; i < cantPersonajes; i++)
 
             if (aliados[i] != this)
                 curarAliado(aliados[i]);
 
-            i++;
 
-        }
-
-        energia -= ENERGIA_DEF_AGUA;
-
-        mostrarMsjDefensa(nuevaVidaPropia);
 
     }
 
@@ -170,29 +168,36 @@ void Agua::aumentarEnergia() {
 }
 
 
-void Agua::curarAliado(Personaje* aliado) {
+void Agua::mostrarMsjDefensa(int nuevaVidaPropia) {
 
-    int nuevaVidaAliado;
-
-    nuevaVidaAliado = aliado->obtenerVida();
-    nuevaVidaAliado += CURA_DEF_AGUA;
-
-    if (nuevaVidaAliado > VIDA_MAXIMA)
-
-        aliado->asignarVida(VIDA_MAXIMA);
-
-    else
-        aliado->asignarVida(nuevaVidaAliado);
+    cout << "\n '" << nombre << "' ha convertido " << ENERGIA_DEF_AGUA << " puntos de energía en " << nuevaVidaPropia << " punto/s de vida"
+         << "\n Ha curado " << CURA_DEF_AGUA << " puntos de vida a sus aliados \n"
+         << "\n Vida anterior: " << vida - nuevaVidaPropia << " ---> Vida actual: " << vida
+         << "\n Energia anterior: " << energia + ENERGIA_DEF_AGUA << " ---> Energia actual: " << energia << endl;
 
 }
 
 
-void Agua::mostrarMsjDefensa(int nuevaVidaPropia) {
+void Agua::curarAliado(Personaje* aliado) {
 
-    cout << "\n\n '" << nombre << "' ha convertido 12 puntos de energía en " << nuevaVidaPropia << " punto/s de vida" << endl;
-    cout << "\n Ha curado " << CURA_DEF_AGUA << " puntos de vida a sus aliados. \n";
-    cout << "\n Vida anterior: " << vida - nuevaVidaPropia << " -----> Vida actual: " << vida << "\n\n";
-    cout << "\n Energia actual: " << energia;
+    int vidaAliado, nuevaVidaAliado;
+
+    vidaAliado = aliado->obtenerVida();
+
+    if (vidaAliado + CURA_DEF_AGUA > VIDA_MAXIMA)
+
+        nuevaVidaAliado = VIDA_MAXIMA - vidaAliado;
+
+    else
+
+        nuevaVidaAliado = CURA_DEF_AGUA;
+
+    vidaAliado += nuevaVidaAliado;
+
+    aliado->asignarVida(vidaAliado);
+
+    cout << "\n Aliado: '" << aliado->obtenerNombre() << "'"
+            "\n Vida anterior: " << vidaAliado - nuevaVidaAliado << " ---> Vida actual: " << vidaAliado << endl;
 
 }
 

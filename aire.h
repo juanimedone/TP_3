@@ -40,7 +40,7 @@ public:
     // PRE: -
     // POS: si tiene 15 energia o mas, se posiciona al personaje en las coordenadas ingresadas por el usuario.
     //      de ser invalidas las coordenadas o no tener energia suficiente, se imprime un mensaje
-    void defender(Personaje** aliados) override {};
+    void defender(Personaje** aliados, int cantPersonajes) override {};
 
     // PRE: -
     // POS: devuelve el danio que recibiria el personaje al ser atacado por un enemigo,

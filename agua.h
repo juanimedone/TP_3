@@ -40,9 +40,9 @@ public:
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
     void atacar(Personaje** enemigos) override;
 
-    // PRE: el vector parametro contiene 3 personajes
+    // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    void defender(Personaje** aliados) override;
+    void defender(Personaje** aliados, int cantPersonajes) override;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por un enemigo,
@@ -55,12 +55,12 @@ private:
     void aumentarEnergia() override;
 
     // PRE: -
-    // POS: incrementa la vida del aliado
-    void curarAliado(Personaje* aliado);
-
-    // PRE: -
     // POS: muestra por pantalla el efecto de la defensa
     void mostrarMsjDefensa(int nuevaVidaPropia);
+
+    // PRE: -
+    // POS: incrementa la vida del aliado y lo muestra por pantalla
+    void curarAliado(Personaje* aliado);
 
 };
 

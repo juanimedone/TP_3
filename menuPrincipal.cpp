@@ -280,13 +280,13 @@ Personaje* MenuPrincipal::crearPersonaje(const string& elemento, const string& n
 
     Personaje* nuevo;
 
-    if (elemento == "agua")
+    if (elemento == COD_AGUA)
         nuevo = new Agua(nombre);
 
-    else if (elemento == "fuego")
+    else if (elemento == COD_FUEGO)
         nuevo = new Fuego(nombre);
 
-    else if (elemento == "tierra")
+    else if (elemento == COD_TIERRA)
         nuevo = new Tierra(nombre);
 
     else

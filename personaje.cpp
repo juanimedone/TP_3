@@ -107,6 +107,8 @@ array<int,2> Personaje::pedirCoordenadas() {
     static array<int,2> coords;
     string fila, columna;
 
+    fflush(stdin);
+
     cout << "\n Fila: ";
     getline(cin, fila);
     cout << " Columna: ";

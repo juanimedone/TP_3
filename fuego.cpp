@@ -28,11 +28,11 @@ void Fuego::alimentar() {
 
     if ( vidaMaxima() && energiaMaxima() )
 
-        cout << "\n\n El personaje tiene la maxima cantidad de vida y energia (" << VIDA_MAXIMA << " y " << ENERGIA_MAXIMA << ") \n\n" ;
+        cout << "\n El personaje tiene la maxima cantidad de vida y energia (" << VIDA_MAXIMA << " y " << ENERGIA_MAXIMA << ") \n\n" ;
 
     else {
 
-        cout << "\n\n '" << nombre << "' se ha alimentado correctamente de madera" ;
+        cout << "\n '" << nombre << "' se ha alimentado correctamente de madera" ;
 
         if (vidaMaxima()) {
 
@@ -79,13 +79,15 @@ void Fuego::atacar(Personaje** enemigos) {
 }
 
 
-void Fuego::defender(Personaje** aliados) {
+void Fuego::defender(Personaje** aliados, int cantPersonajes) {
 
 	int nuevaVida;
 
 	if (energia < ENERGIA_DEF_FUEGO)
 
-		cout << "\n\n La energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_FUEGO << endl;
+        cout << "\n La energia actual es insuficiente para defender"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_DEF_FUEGO << endl;
 
 	else {
 
@@ -99,9 +101,9 @@ void Fuego::defender(Personaje** aliados) {
         vida += nuevaVida;
         energia -= ENERGIA_DEF_FUEGO;
 
-        cout << "\n\n'" << nombre << "' ha convertido 10 puntos de energ�a en " << nuevaVida << " punto/s de vida" << endl;
-        cout << "\nVida anterior: " << vida - nuevaVida << " -----> Vida actual: " << vida << "\n";
-        cout << "\nEnergia actual: " << energia << "\n\n";
+        cout << "\n '" << nombre << "' ha convertido " <<  ENERGIA_DEF_FUEGO << " puntos de energia en " << nuevaVida << " punto/s de vida"
+                "\n Vida anterior: " << vida - nuevaVida << " ---> Vida actual: " << vida <<
+                "\n Energia anterior: " << energia + ENERGIA_DEF_FUEGO << " ---> Energia actual: " << energia << endl;
 
 	}
 
@@ -148,7 +150,7 @@ void Fuego::aumentarEnergia() {
 
     energia += nuevaEnergia;
 
-    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
+    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia;
 
 }
 
@@ -166,7 +168,7 @@ void Fuego::aumentarVida() {
 
     vida += nuevaVida;
 
-    cout << "\n Vida anterior: " << vida - nuevaVida << " -----> Vida actual: " << vida << "\n\n";
+    cout << "\n Vida anterior: " << vida - nuevaVida << " -----> Vida actual: " << vida << "\n" ;
 
 }
 

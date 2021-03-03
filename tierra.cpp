@@ -59,7 +59,7 @@ void Tierra::atacar(Personaje** enemigos) {
 }
 
 
-void Tierra::defender(Personaje** aliados) {
+void Tierra::defender(Personaje** aliados, int cantPersonajes) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 

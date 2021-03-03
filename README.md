@@ -4,7 +4,7 @@
 
 # Ejemplo:
 
-# 2 (jugador que guardo la partida)
+# 1 (jugador que guardo la partida)
 # 3 (cantidad de personajes del jugador 1)
 # agua,aquaman,2,50,4,1,1,a
 # fuego,firebolt,2,40,4,3,3,f
