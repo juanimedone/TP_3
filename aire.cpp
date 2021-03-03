@@ -51,9 +51,7 @@ void Aire::mostrar() {
 
 void Aire::alimentar() {
 
-    cout << "\n\n Elemento: Aire" ;
-
-    cout << "\n\n Los personajes de aire no necesitan alimentarse \n" << endl;
+    cout << "\n Los personajes de aire no necesitan alimentarse \n";
 
 }
 
@@ -98,9 +96,8 @@ void Aire::aumentarEnergia() {
 
     energia += nuevaEnergia;
 
-    cout << "\n\n " << nombre << " suma " << nuevaEnergia << " puntos de energia \n" ;
+    cout << "\n\n '" << nombre << "' suma " << nuevaEnergia << " puntos de energia \n" ;
 
-    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
-
+    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia;
 
 }

@@ -93,11 +93,9 @@ void Jugador::chequearBajas(Grafo*& tablero) {
 
 void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
 
-    int i = 0;
+    for (int i = 0; i < cantPersonajes; i++) {
 
-    while (i < cantPersonajes) {
-
-        cout << personajes[i]->obtenerNombre();
+        cout << "\n Personaje: " << personajes[i]->obtenerNombre();
 
         if (personajes[i]->obtenerElemento() == COD_AIRE)
 
@@ -107,15 +105,16 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
 
             personajes[i]->vidaPorCeroEnergia();
 
-        else if (personajes[i]->obtenerElemento() == COD_TIERRA && personajes[i]->defensaActivada())
+        else if ( personajes[i]->obtenerElemento() == COD_TIERRA && personajes[i]->defensaActivada() )
 
             personajes[i]->desactivarDefensa();
 
+
         alimentarMover(personajes[i], tablero);
 
+        cout << "\n\n Personaje: " << personajes[i]->obtenerNombre();
         defenderAtacar(personajes[i], tablero, enemigos);
 
-        i++;
     }
 
 }
@@ -272,7 +271,9 @@ void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 
     if (energia < ENERGIA_DEF_AIRE)
 
-        cout << "\n\n La energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_AIRE << endl;
+        cout << "\n\n La energia actual es insuficiente para defender \n"
+                "\n Energia actual: " << personaje->obtenerEnergia() << " ---> Energia necesaria: " << ENERGIA_DEF_AIRE
+                << "\n\n";
 
     else {
 

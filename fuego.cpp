@@ -26,8 +26,6 @@ void Fuego::mostrar() {
 
 void Fuego::alimentar() {
 
-    cout << "\n\n Elemento: Fuego" ;
-
     if ( vidaMaxima() && energiaMaxima() )
 
         cout << "\n\n El personaje tiene la maxima cantidad de vida y energia (" << VIDA_MAXIMA << " y " << ENERGIA_MAXIMA << ") \n\n" ;
@@ -55,9 +53,7 @@ void Fuego::alimentar() {
             aumentarEnergia();
             aumentarVida();
         }
-
     }
-
 }
 
 

@@ -161,7 +161,7 @@ void Juego::cicloPrincipal() {
             tablero->mostrar();
             mostrarReferencias();
 
-            cout << "\n Jugador 1 \n" ;
+            cout << "\n\t Turno Jugador 1 \n" ;
             salir = jugador1->quiereSalir();
 
             if (!salir) {
@@ -173,7 +173,7 @@ void Juego::cicloPrincipal() {
                 tablero->mostrar();
                 mostrarReferencias();
 
-                cout << "\n Jugador 2 \n" ;
+                cout << "\n\t Turno Jugador 2 \n" ;
                 salir = jugador2->quiereSalir();
 
                 if (salir)
@@ -194,7 +194,7 @@ void Juego::cicloPrincipal() {
             tablero->mostrar();
             mostrarReferencias();
 
-            cout << "\n Jugador 2 \n" ;
+            cout << "\n\t Turno Jugador 2 \n" ;
             salir = jugador2->quiereSalir();
 
             if (!salir) {
@@ -206,7 +206,7 @@ void Juego::cicloPrincipal() {
                 tablero->mostrar();
                 mostrarReferencias();
 
-                cout << "\n Jugador 1 \n" ;
+                cout << "\n\t Turno Jugador 1 \n" ;
                 salir = jugador1->quiereSalir();
 
                 if (salir)

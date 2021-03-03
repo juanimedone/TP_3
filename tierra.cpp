@@ -34,15 +34,12 @@ void Tierra::mostrar() {
 
 void Tierra::alimentar() {
 
-    cout << "\n\n Elemento: Tierra" ;
-
     if ( energiaMaxima() )
 
         cout << "\n\n El personaje tiene la maxima cantidad de energia (" << ENERGIA_MAXIMA << ") \n\n" ;
 
     else
         aumentarEnergia();
-
 
 }
 
@@ -66,16 +63,20 @@ void Tierra::defender(Personaje** aliados) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 
-        cout << "\n\nLa energia actual es insuficiente para defender. Valor requerido: " << ENERGIA_DEF_TIERRA << endl;
+        cout << "\n\n La energia actual de '" << nombre << "' es insuficiente para defender \n"
+                " Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_DEF_TIERRA << endl;
 
     else {
 
         escudo += ESCUDO_DEF_TIERRA;
-
-        if (escudo > ESCUDO_MAXIMO)
-            defensaActiva = true;
+        defensaActiva = true;
 
         energia -= ENERGIA_DEF_TIERRA;
+
+        cout << "\n Se ha aumentado el valor del escudo de '" << nombre << "' en " << ESCUDO_DEF_TIERRA << " por un turno \n"
+             << "\n Escudo anterior: " << escudo - ESCUDO_DEF_TIERRA << " ---> Escudo actual: " << escudo
+             << "\n Energia anterior: " << energia + ENERGIA_DEF_TIERRA << " ---> Energia actual: " << energia << "\n\n";
     }
 
 }
@@ -103,7 +104,7 @@ int Tierra::calcularAtkEntrante(Personaje* enemigo) {
         danio = calcularAtkEntranteTierra(enemigo);
 
 
-    if (defensaActiva)
+    if (escudo > ESCUDO_MAXIMO)
 
         danio -= danio * MOD_DEF_TIERRA;
 
@@ -131,7 +132,7 @@ void Tierra::aumentarEnergia() {
 
     cout << "\n\n '" << nombre << "' se ha alimentado correctamente de hierbas, suma " << nuevaEnergia << " punto/s de energia" << endl;
 
-    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n\n";
+    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n";
 
 }
 
