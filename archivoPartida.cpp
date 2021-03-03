@@ -36,7 +36,7 @@ void ArchivoPartida::cargarPartida(Juego*& juego) {
 
 void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
 
-    array<Personaje*,MAX_PERSONAJES> personajes{};
+    Personaje** personajes;
     short int cantPersonajes;
 
     archivoSalida.open(PATH_ARCHIVO_PARTIDA);
@@ -127,7 +127,7 @@ Personaje* ArchivoPartida::crearPersonaje(const string& elemento, const string& 
 }
 
 
-void ArchivoPartida::guardarPersonajes(array<Personaje*,MAX_PERSONAJES> personajes, short int cantPersonajes) {
+void ArchivoPartida::guardarPersonajes(Personaje** personajes, short int cantPersonajes) {
 
     int fila, columna;
 

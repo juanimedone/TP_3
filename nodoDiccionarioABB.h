@@ -191,6 +191,7 @@ bool NodoDiccionarioABB<Clave, Valor>::soloHijoDerecho() {
 template <typename Clave, typename Valor>
 NodoDiccionarioABB<Clave, Valor>::~NodoDiccionarioABB() {
 
+    valor = nullptr;
     delete valor;
 
 }

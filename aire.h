@@ -35,12 +35,12 @@ public:
     // PRE: el arreglo enemigos esta lleno
     // POS: si tiene 8 energia o mas, reduce la vida de todos los personajes en enemigos por un valor dependiendo de su elemento.
     //      por 20 puntos a los personajes de tierra, por 10 a los de fuego, 15 a los demas.
-    void atacar(array<Personaje*,MAX_PERSONAJES> enemigos) override;
+    void atacar(Personaje** enemigos) override;
 
     // PRE: -
     // POS: si tiene 15 energia o mas, se posiciona al personaje en las coordenadas ingresadas por el usuario.
     //      de ser invalidas las coordenadas o no tener energia suficiente, se imprime un mensaje
-    void defender(array<Personaje*,MAX_PERSONAJES> aliados) override {};
+    void defender(Personaje** aliados) override {};
 
     // PRE: -
     // POS: devuelve el danio que recibiria el personaje al ser atacado por un enemigo,

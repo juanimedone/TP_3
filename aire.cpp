@@ -15,7 +15,7 @@ bool Aire::defensaActivada() {
 }
 
 
-void Aire::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Aire::atacar(Personaje** enemigos) {
 
     if (energia < ENERGIA_ATK_AIRE)
 

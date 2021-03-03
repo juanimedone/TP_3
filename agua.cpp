@@ -44,7 +44,7 @@ void Agua::alimentar() {
 }
 
 
-void Agua::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Agua::atacar(Personaje** enemigos) {
 
     array<int,2> posEnemigo{}, input{};
     bool hayEnemigos = false;
@@ -80,7 +80,7 @@ void Agua::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Agua::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
+void Agua::defender(Personaje** aliados) {
 
     int nuevaVidaPropia;
 

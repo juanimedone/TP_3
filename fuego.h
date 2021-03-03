@@ -34,11 +34,11 @@ public:
 
     // PRE: -
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
-    void atacar(array<Personaje*,MAX_PERSONAJES> enemigos) override;
+    void atacar(Personaje** enemigos) override;
 
     // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    void defender(array<Personaje*,MAX_PERSONAJES> aliados) override;
+    void defender(Personaje** aliados) override;
 
     // PRE: -
     // POS: devuelve el da�o que recibiria el personaje al ser atacado por el atacante,

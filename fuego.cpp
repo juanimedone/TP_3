@@ -61,7 +61,7 @@ void Fuego::alimentar() {
 }
 
 
-void Fuego::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Fuego::atacar(Personaje** enemigos) {
 
     if (energia < ENERGIA_DEF_FUEGO)
 
@@ -83,7 +83,7 @@ void Fuego::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Fuego::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
+void Fuego::defender(Personaje** aliados) {
 
 	int nuevaVida;
 

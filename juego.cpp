@@ -223,7 +223,7 @@ bool Juego::terminado() {
 
 void Juego::mostrarReferencias() {
 
-    array<Personaje*,MAX_PERSONAJES> personajes{};
+    Personaje** personajes;
 
     cout << "\n\n\n\t\t Personajes" ;
 

@@ -403,6 +403,9 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
 
     diccionario.eliminar(nombre);
 
+    nuevoPersonaje = nullptr;
+    delete nuevoPersonaje;
+
 }
 
 

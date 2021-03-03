@@ -3,6 +3,8 @@
 
 Jugador::Jugador() {
 
+    personajes = new Personaje*[MAX_PERSONAJES];
+
     for (short int i = 0; i < MAX_PERSONAJES; i++)
         personajes[i] = nullptr;
 
@@ -27,7 +29,7 @@ void Jugador::asignarPersonaje(Personaje* personaje) {
 }
 
 
-array<Personaje*,MAX_PERSONAJES> Jugador::obtenerPersonajes() {
+Personaje** Jugador::obtenerPersonajes() {
 
     return personajes;
 
@@ -89,7 +91,7 @@ void Jugador::chequearBajas(Grafo*& tablero) {
 }
 
 
-void Jugador::jugar(Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
 
     int i = 0;
 
@@ -122,6 +124,13 @@ void Jugador::jugar(Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) 
 bool Jugador::todosMuertos() {
 
     return (cantPersonajes == 0);
+}
+
+
+Jugador::~Jugador() {
+
+    delete [] personajes;
+
 }
 
 
@@ -217,7 +226,7 @@ void Jugador::validarMovimiento(Grafo*& tablero, array<int,2> posInicial, array<
 }
 
 
-void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos) {
 
     mostrarOpcionesDA();
     pedirOpcion();

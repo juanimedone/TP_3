@@ -47,7 +47,7 @@ void Tierra::alimentar() {
 }
 
 
-void Tierra::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
+void Tierra::atacar(Personaje** enemigos) {
 
     if (energia < ENERGIA_ATK_TIERRA)
 
@@ -62,7 +62,7 @@ void Tierra::atacar(array<Personaje*,MAX_PERSONAJES> enemigos) {
 }
 
 
-void Tierra::defender(array<Personaje*,MAX_PERSONAJES> aliados) {
+void Tierra::defender(Personaje** aliados) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 

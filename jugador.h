@@ -7,7 +7,7 @@ class Jugador {
 
     // atributos
 private:
-    array<Personaje*,MAX_PERSONAJES> personajes;
+    Personaje** personajes;         // vector dinamico de punteros a Personaje
     short int cantPersonajes;
     short int opcion;
 
@@ -28,7 +28,7 @@ public:
 
     // PRE: -
     // POS: devuelve el array de personajes
-    array<Personaje*,MAX_PERSONAJES> obtenerPersonajes();
+    Personaje** obtenerPersonajes();
 
     // PRE: -
     // POS: devuelve la cantidad de personajes que hay en el array
@@ -48,11 +48,16 @@ public:
 
     // PRE: -
     // POS: lleva a cabo el turno del jugador, realiza las acciones para cada personaje
-    void jugar(Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
+    void jugar(Grafo*& tablero, Personaje** enemigos);
 
     // PRE: -
     // POS: devuelve true si el jugador ya no tiene pesonajes con vida, false de lo contrario
     bool todosMuertos();
+
+    // destructor
+    // PRE: -
+    // POS: libera la memoria pedida en el heap
+    ~Jugador();
 
 private:
     // PRE: -
@@ -78,7 +83,7 @@ private:
 
     // PRE: -
     // POS: muestra un segundo submenu por pantalla (por personaje) y ejecuta la opcion elegida por el jugador
-    void defenderAtacar(Personaje*& personaje, Grafo*& tablero, array<Personaje*,MAX_PERSONAJES> enemigos);
+    void defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos);
 
     // PRE: -
     // POS: muestra por pantalla las opciones de defensa, ataque o pasar opcion

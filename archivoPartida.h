@@ -54,7 +54,7 @@ private:
 
     // PRE: -
     // POS: carga los personajes en el archivo de guardado
-    void guardarPersonajes(array<Personaje*,MAX_PERSONAJES> personajes, short int cantPersonajes);
+    void guardarPersonajes(Personaje** personajes, short int cantPersonajes);
 
 };
 
