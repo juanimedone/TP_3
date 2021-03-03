@@ -106,9 +106,9 @@ array<int,2> Personaje::pedirCoordenadas() {
     static array<int,2> coords;
     string fila, columna;
 
-    cout << "\nFila: ";
+    cout << "\n Fila: ";
     getline(cin, fila);
-    cout << "\nColumna: ";
+    cout << "\n Columna: ";
     getline(cin, columna);
 
     while ( !esValida(fila, columna) ) {
@@ -162,7 +162,7 @@ bool Personaje::esValida(string& fila, string& columna) {
     bool filaEsNumero = all_of(fila.begin(), fila.end(), ::isdigit);
     bool columnaEsNumero = all_of(columna.begin(), columna.end(), ::isdigit);
 
-    return (filaEsNumero && columnaEsNumero && stoi(fila) <= MAX_FILA && stoi(fila) >= MIN_FILA && stoi(columna) <= MAX_COLUMNA && stoi(columna) >= MIN_COLUMNA);
+    return (filaEsNumero && columnaEsNumero && stoi(fila) < MAX_FILA && stoi(fila) >= MIN_FILA && stoi(columna) < MAX_COLUMNA && stoi(columna) >= MIN_COLUMNA);
 
 }
 

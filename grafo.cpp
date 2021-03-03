@@ -73,6 +73,8 @@ void Grafo::mostrar() {
 
     int indiceActual = 0;
 
+    cout << "\t\t MAPA DEL JUEGO \n\n " ;
+
     for (int i = 0; i < MAX_FILA; i++) {
 
         for (int j = 0; j < MAX_COLUMNA; j++) {
@@ -84,10 +86,12 @@ void Grafo::mostrar() {
             else
                 cout << actual->obtenerCodigo();
 
+            cout << " " ;
+
             indiceActual++;
         }
 
-        cout << endl;
+        cout << "\n ";
     }
 
 }

@@ -74,6 +74,10 @@ private:
     void mostrarReferencias();
 
     // PRE: -
+    // POS: imprime por pantalla los tipos de casillero y la letra asociada a cada uno
+    void mostrarReferenciasCasilleros();
+
+    // PRE: -
     // POS: imprime por pantalla quien es el ganador del juego
     void mostrarGanador();
 

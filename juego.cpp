@@ -119,25 +119,33 @@ void Juego::posicionarPersonajes() {
 
         for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
-            cout << " Jugador 1 \n" ;
+            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << " Jugador 1 \n\n" ;
             jugador1->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
 
-            cout << " Jugador 2 \n" ;
+            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << " Jugador 2 \n\n" ;
             jugador2->posicionarPersonaje(tablero, i);
+
+            limpiarPantalla();
         }
 
     else
         for (short int i = 0; i < MAX_PERSONAJES; i++) {
 
-            cout << " Jugador 2 \n" ;
+            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << " Jugador 2 \n\n" ;
             jugador2->posicionarPersonaje(tablero, i);
 
             limpiarPantalla();
 
-            cout << " Jugador 1 \n" ;
+            cout << "\n\t\t POSICIONAR PERSONAJES \n\n" ;
+            cout << " Jugador 1 \n\n" ;
             jugador1->posicionarPersonaje(tablero, i);
+
+            limpiarPantalla();
         }
 
 }
@@ -244,6 +252,21 @@ void Juego::mostrarReferencias() {
 
         cout << "\n Nombre: " << personajes[i]->obtenerNombre() << " -> " << personajes[i]->obtenerCodigo();
     }
+
+    mostrarReferenciasCasilleros();
+
+}
+
+
+void Juego::mostrarReferenciasCasilleros() {
+
+    cout << "\n\n\t Tipos de casillero \n "
+         << MONTANIA <<  ": Montania \n "
+         << PRECIPICIO <<  ": Precipicio \n "
+         << LAGO <<  ": Lago \n "
+         << VOLCAN <<  ": Volcan \n "
+         << CAMINO <<  ": Camino \n "
+         << VACIO <<  ": Vacio \n\n " ;
 
 }
 

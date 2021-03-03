@@ -72,9 +72,9 @@ const int ATACAR = 2;
 const short int GUARDAR_Y_SALIR = 1;
 
 // constantes del tablero
-const int MIN_FILA = 1;
+const int MIN_FILA = 0;
 const int MAX_FILA = 8;
-const int MIN_COLUMNA = 1;
+const int MIN_COLUMNA = 0;
 const int MAX_COLUMNA = 8;
 const int CANT_VERTICES = MAX_FILA * MAX_COLUMNA;
 const int VALOR_INVALIDO = -1;

@@ -47,7 +47,7 @@ void Jugador::posicionarPersonaje(Grafo*& tablero, short int i) {
 
     array<int,2> posicion{};
 
-    cout << " Personaje: " << personajes[i]->obtenerNombre() << "\n\n" ;
+    cout << " Personaje: " << personajes[i]->obtenerNombre() << "\n" ;
 
     posicion = personajes[i]->pedirCoordenadas();
 
