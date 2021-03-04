@@ -84,7 +84,7 @@ private:
 
     // PRE: -
     // POS: muestra el submenu de seleccionar personaje
-    void menuJuego(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
+    void menuJuego(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario);
 
     // PRE: -
     // POS: imprime por pantalla las opciones para la seleccion de los personajes
@@ -92,7 +92,11 @@ private:
 
     // PRE: -
     // POS: pide el personaje deseado, lo asigna al array de jugador y lo elimina del diccionario
-    void seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario, int& numPersonaje);
+    void seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<string,Personaje*>& diccionario);
+
+    // PRE: -
+    // POS: devuelve un puntero en otro espacio de memoria (heap) con los mismos datos que el personaje pasado por parametro
+    Personaje* clonarPersonaje(Personaje* personaje);
 
 };
 

@@ -71,6 +71,10 @@ public:
     // POS: devuelve true si el nodo solo tiene hijo derecho
     bool soloHijoDerecho();
 
+    // PRE: -
+    // POS: libera la memoria pedida en el heap
+    ~NodoDiccionarioABB();
+
 };
 
 
@@ -182,6 +186,13 @@ bool NodoDiccionarioABB<Clave, Valor>::soloHijoDerecho() {
 
 }
 
+
+template <typename Clave, typename Valor>
+NodoDiccionarioABB<Clave, Valor>::~NodoDiccionarioABB() {
+
+    delete valor;
+
+}
 
 
 #endif // NODODICCIONARIOABB_H

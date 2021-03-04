@@ -123,6 +123,9 @@ bool Jugador::todosMuertos() {
 
 Jugador::~Jugador() {
 
+    for (short int i = 0; i < cantPersonajes; i++)
+        delete personajes[i];
+
     delete [] personajes;
 
 }

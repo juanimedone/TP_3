@@ -30,9 +30,6 @@ void ArchivoPersonajes::procesarArchivo(DiccionarioABB<string, Personaje*>& dicc
 
     }
 
-    nuevoPersonaje = nullptr;
-    delete nuevoPersonaje;
-
 }
 
 
