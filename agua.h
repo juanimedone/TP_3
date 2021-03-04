@@ -38,11 +38,11 @@ public:
 
     // PRE: el vector parametro contiene tres personajes
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
-    void atacar(Personaje** enemigos) override;
+    void atacar(Personaje** enemigos, short int cantEnemigos) override;
 
     // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    void defender(Personaje** aliados, int cantPersonajes) override;
+    void defender(Personaje** aliados, short int cantPersonajes) override;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por un enemigo,

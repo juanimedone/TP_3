@@ -172,21 +172,23 @@ bool Personaje::esValida(string& fila, string& columna) {
 
 void Personaje::restarVida(Personaje*& enemigo) {
 
-    int vidaPerdida, vidaActual;
+    int vidaAnterior, vidaPerdida;
+    array<int,2> posicion{};
 
+    posicion = enemigo->obtenerPosicion();
+
+    vidaAnterior = enemigo->obtenerVida();
     vidaPerdida = enemigo->calcularAtkEntrante(this);
-    vidaActual = enemigo->obtenerVida();
 
-    if ( (vidaActual-vidaPerdida) < VIDA_MINIMA )
+    if ( (vidaAnterior - vidaPerdida) <= VIDA_NULA )
 
-        enemigo->asignarVida(VIDA_MINIMA);
+        vidaPerdida = vidaAnterior;
 
-    enemigo->asignarVida(vidaActual-vidaPerdida);
+    enemigo->asignarVida(vidaAnterior - vidaPerdida);
 
-    cout << "\nEl enemigo '" << enemigo->obtenerNombre() << "' fue atacado y sufrio " << vidaPerdida << " puntos de daño";
-
-    cout << "\nVida anterior: " << vidaActual - vidaPerdida << " -----> Vida actual: " << enemigo->obtenerVida() << "\n\n";
-
+    cout << "\n El enemigo '" << enemigo->obtenerNombre() << "' fue atacado en [" << posicion[0] << "," << posicion[1]
+         << "] y perdio " << vidaPerdida << " puntos de vida"
+         << "\n Vida anterior: " << vidaAnterior << " ---> Vida actual: " << vidaAnterior - vidaPerdida << endl;
 
 }
 
@@ -201,23 +203,23 @@ bool Personaje::energiaMaxima() {
 }
 
 
-int Personaje::calcularAtkEntranteTierra(Personaje* enemigo) {
+int Personaje::calcularAtkEntranteTierra(Personaje* atacante) {
 
     int danio;
-    array<int,2> posEnemigo = enemigo->obtenerPosicion();
+    array<int,2> posAtacante = atacante->obtenerPosicion();
 
-    int distanciaFila = abs(this->posicion[0] - posEnemigo[0]);
-    int distanciaColumna = abs(this->posicion[1] - posEnemigo[1]);
+    int distanciaFila = abs(posicion[0] - posAtacante[0]);
+    int distanciaColumna = abs(posicion[1] - posAtacante[1]);
 
     danio = ATK_BASE_TIERRA;
 
-    if (distanciaFila <= 2 && distanciaColumna <= 2)
+    if (distanciaFila <= DISTANCIA_CORTA && distanciaColumna <= DISTANCIA_CORTA)
 
-        danio *= 3;
+        danio *= TRIPLICAR_DANIO;
 
-    else if (distanciaFila <= 4 && distanciaColumna <= 4)
+    else if (distanciaFila <= DISTANCIA_MEDIA && distanciaColumna <= DISTANCIA_MEDIA)
 
-        danio *= 2;
+        danio *= DUPLICAR_DANIO;
 
     return danio;
 

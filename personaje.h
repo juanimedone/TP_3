@@ -103,11 +103,11 @@ public:
 
     // PRE: el vector enemigos contiene tres personajes
     // POS: de cumplirse los requisitos especificos de cada elemento, realiza el efecto de ataque correspondiente
-    virtual void atacar(Personaje** enemigos) = 0;
+    virtual void atacar(Personaje** enemigos, short int cantEnemigos) = 0;
 
     // PRE: -
     // POS: de cumplirse los requisitos de cada elemento, realiza el efecto de defensa correspondiente
-    virtual void defender(Personaje** aliados, int cantPersonajes) = 0;
+    virtual void defender(Personaje** aliados, short int cantPersonajes) = 0;
 
     // PRE: -
     // POS: devuelve el daño que recibiria el personaje al ser atacado por el atacante,
@@ -139,7 +139,7 @@ protected:
 
     // PRE: enemigo tiene que ser de tierra
     // POS: devuelve el danio que recibe el personaje de acuerdo a su distancia en el tablero con el atacante
-    int calcularAtkEntranteTierra(Personaje* enemigo);
+    int calcularAtkEntranteTierra(Personaje* atacante);
 
 };
 

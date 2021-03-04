@@ -41,43 +41,50 @@ void Agua::alimentar() {
 }
 
 
-void Agua::atacar(Personaje** enemigos) {
+void Agua::atacar(Personaje** enemigos, short int cantEnemigos) {
 
-    array<int,2> posEnemigo{}, input{};
+    array<int,2> posEnemigo{}, posAtacar{};
     bool hayEnemigos = false;
 
     if (energia < ENERGIA_ATK_AGUA)
 
-        cout << "\n\nLa energia actual es insuficiente para atacar. Valor requerido: " << ENERGIA_ATK_AGUA << endl;
+        cout << "\n La energia actual es insuficiente para atacar"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_ATK_AGUA << endl << endl;
 
     else {
 
-        cout << "\nInserte las coordenadas a las que desea atacar." << endl;
-        input = pedirCoordenadas();
+        short int i = 0;
 
-        energia -= ENERGIA_ATK_AGUA;
+        cout << "\n Ingrese las coordenadas a las que desea atacar" << endl;
+        posAtacar = pedirCoordenadas();
 
-        for (int i = 0; i < MAX_PERSONAJES; i++) {
+        while (i < cantEnemigos && !hayEnemigos) {
 
             posEnemigo = enemigos[i]->obtenerPosicion();
 
-            if (posEnemigo == input) {
+            if (posEnemigo == posAtacar) {
 
                 restarVida(enemigos[i]);
                 hayEnemigos = true;
             }
 
+            i++;
         }
 
+        energia -= ENERGIA_ATK_AGUA;
+
         if (!hayEnemigos)
-            cout << "\n'" << this->obtenerNombre() <<"' ataca a la posicion indicada, pero no habia enemigos ahi." << endl;
+
+            cout << "\n '" << nombre <<"' ataco a la posicion indicada [" << posAtacar[0] << "," << posAtacar[1]
+                 << "], pero no habia enemigos ahi" << endl;
 
     }
 
 }
 
 
-void Agua::defender(Personaje** aliados, int cantPersonajes) {
+void Agua::defender(Personaje** aliados, short int cantPersonajes) {
 
     int nuevaVidaPropia;
 
@@ -102,7 +109,7 @@ void Agua::defender(Personaje** aliados, int cantPersonajes) {
 
         mostrarMsjDefensa(nuevaVidaPropia);
 
-        for (int i = 0; i < cantPersonajes; i++)
+        for (short int i = 0; i < cantPersonajes; i++)
 
             if (aliados[i] != this)
                 curarAliado(aliados[i]);
@@ -114,10 +121,10 @@ void Agua::defender(Personaje** aliados, int cantPersonajes) {
 }
 
 
-int Agua::calcularAtkEntrante(Personaje* enemigo) {
+int Agua::calcularAtkEntrante(Personaje* atacante) {
 
     int danio;
-    string elemento = enemigo->obtenerElemento();
+    string elemento = atacante->obtenerElemento();
 
     if (elemento == COD_AGUA)
 
@@ -131,11 +138,10 @@ int Agua::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_FUEGO - MOD_ATK_FUEGO;
 
-    else if (elemento == COD_TIERRA){
+    else {
 
-        danio = calcularAtkEntranteTierra(enemigo);
+        danio = calcularAtkEntranteTierra(atacante);
         danio += MOD_ATK_TIERRA;
-
     }
 
     return (int) ( danio - danio * (MOD_ESCUDO * escudo) );

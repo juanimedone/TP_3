@@ -166,7 +166,7 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador1->jugar(tablero, jugador2->obtenerPersonajes() );
+                jugador1->jugar(tablero, jugador2->obtenerPersonajes(), jugador2->obtenerCantPersonajes() );
                 jugador2->chequearBajas(tablero);
                 pausar();
 
@@ -181,7 +181,7 @@ void Juego::cicloPrincipal() {
 
                 else {
 
-                    jugador2->jugar(tablero, jugador1->obtenerPersonajes() );
+                    jugador2->jugar(tablero, jugador1->obtenerPersonajes(), jugador1->obtenerCantPersonajes() );
                     jugador1->chequearBajas(tablero);
                     pausar();
                 }
@@ -199,7 +199,7 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador2->jugar(tablero, jugador1->obtenerPersonajes() );
+                jugador2->jugar(tablero, jugador1->obtenerPersonajes(), jugador1->obtenerCantPersonajes() );
                 jugador1->chequearBajas(tablero);
                 pausar();
 
@@ -214,7 +214,7 @@ void Juego::cicloPrincipal() {
 
                 else {
 
-                    jugador1->jugar(tablero, jugador2->obtenerPersonajes() );
+                    jugador1->jugar(tablero, jugador2->obtenerPersonajes(), jugador2->obtenerCantPersonajes() );
                     jugador2->chequearBajas(tablero);
                     pausar();
                 }

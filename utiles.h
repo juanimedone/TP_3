@@ -113,6 +113,12 @@ const int MOD_ATK_TIERRA = 20;
 const int ATK_BASE_AGUA = 20;
 const int MOD_ATK_AGUA = 10;
 
+// constantes de calcularAtkEntranteTierra
+const int DISTANCIA_CORTA = 2;
+const int DISTANCIA_MEDIA = 4;
+const int TRIPLICAR_DANIO = 3;
+const int DUPLICAR_DANIO = 2;
+
 // codigos de elemento
 const string COD_TIERRA = "tierra";
 const string COD_FUEGO = "fuego";

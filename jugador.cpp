@@ -91,7 +91,7 @@ void Jugador::chequearBajas(Grafo*& tablero) {
 }
 
 
-void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
+void Jugador::jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigos) {
 
     for (int i = 0; i < cantPersonajes; i++) {
 
@@ -113,7 +113,7 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos) {
         alimentarMover(personajes[i], tablero);
 
         cout << "\n\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
-        defenderAtacar(personajes[i], tablero, enemigos);
+        defenderAtacar(personajes[i], tablero, enemigos, cantEnemigos);
 
     }
 
@@ -225,7 +225,7 @@ void Jugador::validarMovimiento(Grafo*& tablero, array<int,2> posInicial, array<
 }
 
 
-void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos) {
+void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos, short int cantEnemigos) {
 
     mostrarOpcionesDA();
     pedirOpcion();
@@ -242,7 +242,7 @@ void Jugador::defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje**
             break;
 
         case ATACAR:
-            personaje->atacar(enemigos);
+            personaje->atacar(enemigos, cantEnemigos);
             break;
 
         case PASAR:
@@ -280,7 +280,7 @@ void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 
         posInicial = personaje->obtenerPosicion();
 
-        cout << "\n Inserte las coordenadas a las que desea volar " << endl;
+        cout << "\n Ingrese las coordenadas a las que desea volar " << endl;
         posFinal = personaje->pedirCoordenadas();
 
         while ( !tablero->estaVacio(posFinal) ) {

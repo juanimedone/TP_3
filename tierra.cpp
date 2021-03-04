@@ -44,22 +44,24 @@ void Tierra::alimentar() {
 }
 
 
-void Tierra::atacar(Personaje** enemigos) {
+void Tierra::atacar(Personaje** enemigos, short int cantEnemigos) {
 
     if (energia < ENERGIA_ATK_TIERRA)
 
-        cout << "\n\nLa energia actual es insuficiente para atacar. Valor requerido: " << ENERGIA_ATK_TIERRA << endl;
+        cout << "\n La energia actual es insuficiente para atacar"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_ATK_TIERRA << endl << endl;
 
     else
 
-        for (short int i = 0; i < MAX_PERSONAJES; i++)
+        for (short int i = 0; i < cantEnemigos; i++)
 
             restarVida(enemigos[i]);
 
 }
 
 
-void Tierra::defender(Personaje** aliados, int cantPersonajes) {
+void Tierra::defender(Personaje** aliados, short int cantPersonajes) {
 
     if (energia < ENERGIA_DEF_TIERRA)
 
@@ -99,8 +101,7 @@ int Tierra::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_FUEGO;
 
-    else if (elemento == COD_TIERRA)
-
+    else
         danio = calcularAtkEntranteTierra(enemigo);
 
 
@@ -112,7 +113,7 @@ int Tierra::calcularAtkEntrante(Personaje* enemigo) {
         danio -= danio * (MOD_ESCUDO * escudo);
 
 
-    return (int) danio;
+    return danio;
 
 }
 
@@ -132,7 +133,7 @@ void Tierra::aumentarEnergia() {
 
     cout << "\n\n '" << nombre << "' se ha alimentado correctamente de hierbas, suma " << nuevaEnergia << " punto/s de energia" << endl;
 
-    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << "\n";
+    cout << "\n Energia anterior: " << energia - nuevaEnergia << " -----> Energia actual: " << energia << endl;
 
 }
 

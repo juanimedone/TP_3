@@ -15,26 +15,21 @@ bool Aire::defensaActivada() {
 }
 
 
-void Aire::atacar(Personaje** enemigos) {
+void Aire::atacar(Personaje** enemigos, short int cantEnemigos) {
 
     if (energia < ENERGIA_ATK_AIRE)
 
-        cout << "\n\nLa energia actual es insuficiente para atacar. Valor requerido: " << ENERGIA_ATK_AIRE << endl;
+        cout << "\n La energia actual es insuficiente para atacar"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_ATK_AGUA << endl << endl;
 
     else {
 
-        energia -= ENERGIA_ATK_AIRE;
-
-        short int i = 0;
-
-        while (enemigos[i]) {
+        for (short int i = 0; i < cantEnemigos; ++i)
 
             restarVida(enemigos[i]);
 
-            i++;
-
-        }
-
+        energia -= ENERGIA_ATK_AIRE;
     }
 
 }
@@ -56,10 +51,10 @@ void Aire::alimentar() {
 }
 
 
-int Aire::calcularAtkEntrante(Personaje* enemigo) {
+int Aire::calcularAtkEntrante(Personaje* atacante) {
 
     int danio;
-    string elemento = enemigo->obtenerElemento();
+    string elemento = atacante->obtenerElemento();
 
     if (elemento == COD_AGUA)
 
@@ -73,8 +68,7 @@ int Aire::calcularAtkEntrante(Personaje* enemigo) {
 
         danio = ATK_BASE_FUEGO + MOD_ATK_FUEGO;
 
-    else if (elemento == COD_TIERRA)
-
+    else
         danio = ATK_BASE_TIERRA;
 
 

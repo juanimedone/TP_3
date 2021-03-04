@@ -48,7 +48,7 @@ public:
 
     // PRE: -
     // POS: lleva a cabo el turno del jugador, realiza las acciones para cada personaje
-    void jugar(Grafo*& tablero, Personaje** enemigos);
+    void jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigos);
 
     // PRE: -
     // POS: devuelve true si el jugador ya no tiene pesonajes con vida, false de lo contrario
@@ -83,7 +83,7 @@ private:
 
     // PRE: -
     // POS: muestra un segundo submenu por pantalla (por personaje) y ejecuta la opcion elegida por el jugador
-    void defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos);
+    void defenderAtacar(Personaje*& personaje, Grafo*& tablero, Personaje** enemigos, short int cantEnemigos);
 
     // PRE: -
     // POS: muestra por pantalla las opciones de defensa, ataque o pasar opcion

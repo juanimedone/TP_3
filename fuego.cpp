@@ -57,21 +57,34 @@ void Fuego::alimentar() {
 }
 
 
-void Fuego::atacar(Personaje** enemigos) {
+void Fuego::atacar(Personaje** enemigos, short int cantEnemigos) {
 
-    if (energia < ENERGIA_DEF_FUEGO)
+    if (energia < ENERGIA_ATK_FUEGO)
 
-        cout << "\n\nLa energia actual es insuficiente para atacar. Valor requerido: " << ENERGIA_DEF_FUEGO << endl;
+        cout << "\n La energia actual es insuficiente para atacar"
+                "\n Energia actual: " << energia <<
+                "\n Energia necesaria: " << ENERGIA_ATK_FUEGO << endl << endl;
 
     else {
 
-        int filaActual = posicion[0];
+        int filaAtacante = posicion[0];
+        int filaEnemigo;
+        bool hayEnemigos = false;
 
-        for (int i = 0; i < MAX_PERSONAJES; i++)
+        for (short int i = 0; i < cantEnemigos; i++) {
 
-            if (enemigos[i]->obtenerPosicion()[0] >= filaActual - 1 && enemigos[i]->obtenerPosicion()[0] <= filaActual + 1)
+            filaEnemigo = enemigos[i]->obtenerPosicion()[0];
+
+            if (filaEnemigo >= filaAtacante - 1 && filaEnemigo <= filaAtacante + 1) {
 
                 restarVida(enemigos[i]);
+                hayEnemigos = true;
+            }
+        }
+
+        if (!hayEnemigos)
+
+            cout << "\n '" << nombre <<"' realizo un ataque a sus filas adyacentes, pero no habia enemigos ahi" << endl;
 
         energia -= ENERGIA_ATK_FUEGO;
     }
@@ -79,7 +92,7 @@ void Fuego::atacar(Personaje** enemigos) {
 }
 
 
-void Fuego::defender(Personaje** aliados, int cantPersonajes) {
+void Fuego::defender(Personaje** aliados, short int cantPersonajes) {
 
 	int nuevaVida;
 
@@ -110,26 +123,25 @@ void Fuego::defender(Personaje** aliados, int cantPersonajes) {
 }
 
 
-int Fuego::calcularAtkEntrante(Personaje* enemigo) {
+int Fuego::calcularAtkEntrante(Personaje* atacante) {
 
     int danio;
-    string elemento = enemigo->obtenerElemento();
+    string elemento = atacante->obtenerElemento();
 
     if (elemento == COD_AGUA)
 
         danio = ATK_BASE_AGUA + MOD_ATK_AGUA;
 
-    else if(elemento == COD_AIRE)
+    else if (elemento == COD_AIRE)
 
         danio = ATK_BASE_AIRE - MOD_ATK_AIRE;
 
-    else if(elemento == COD_FUEGO)
+    else if (elemento == COD_FUEGO)
 
         danio = ATK_BASE_FUEGO;
 
-    else if(elemento == COD_TIERRA)
-
-        danio = calcularAtkEntranteTierra(enemigo);
+    else
+        danio = calcularAtkEntranteTierra(atacante);
 
 
     return (int) ( danio - danio * (MOD_ESCUDO * escudo) );
