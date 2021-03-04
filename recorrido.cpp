@@ -45,7 +45,6 @@ void Recorrido::mostrar() {
 
         cout << "-> [" << fila << "," << columna << "] " ;
 
-        i++;
     }
 
     cout << "\n\n Energia gastada: " << energiaGastada << endl;
