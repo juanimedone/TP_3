@@ -171,12 +171,8 @@ void MenuPrincipal::eliminarPersonaje(DiccionarioABB<string,Personaje*>& diccion
 
         if ( diccionario.contiene(nombre) ) {
 
-            eliminar = diccionario.obtenerValor(nombre);
-
             diccionario.eliminar(nombre);
             cout << "\n Se ha eliminado correctamente el personaje '" << nombre << "'";
-
-            delete eliminar;
 
         }
         else
