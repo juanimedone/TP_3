@@ -7,11 +7,16 @@ class Recorrido {
 
     // atributos
 private:
-    int energiaGastada = 0;
+    int energiaGastada;
     vector<int> caminoTomado;
 
     // metodos
 public:
+    // constructor
+    // PRE:
+    // POS: asigna valores iniciales nulos a los atributos
+    Recorrido();
+
     // PRE: -
     // POS: asigna el valor de energiaGastada para hacer el recorrido
     void asignarEnergiaGastada(int energiaGastada);

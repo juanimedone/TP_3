@@ -1,14 +1,9 @@
 #include "archivoPartida.h"
 
 
-ArchivoPartida::ArchivoPartida() {
+bool ArchivoPartida::hayPartidaGuardada() {
 
     archivoEntrada.open(PATH_ARCHIVO_PARTIDA);
-
-}
-
-
-bool ArchivoPartida::hayPartidaGuardada() {
 
     return archivoEntrada.is_open();
 
@@ -30,6 +25,8 @@ void ArchivoPartida::cargarPartida(Juego*& juego) {
 
     cargarPersonajes(tablero, jugador1);
     cargarPersonajes(tablero, jugador2);
+
+    archivoEntrada.close();
 
 }
 
@@ -53,6 +50,8 @@ void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
     personajes = juego->obtenerJugador2()->obtenerPersonajes();
     guardarPersonajes(personajes, cantPersonajes);
 
+    cout << "\n\n El archivo de la partida se ha guardado correctamente como " << PATH_ARCHIVO_PARTIDA << endl;
+
     archivoSalida.close();
 
 }
@@ -60,14 +59,8 @@ void ArchivoPartida::guardarPartida(Juego* juego, short int turno) {
 
 void ArchivoPartida::eliminarArchivo() {
 
-    remove(PATH_ARCHIVO_PARTIDA);
-
-}
-
-
-ArchivoPartida::~ArchivoPartida() {
-
-    archivoEntrada.close();
+    if (remove(PATH_ARCHIVO_PARTIDA) == 0)
+        cout << "\n\n Se ha eliminado el archivo " << PATH_ARCHIVO_PARTIDA << endl ;
 
 }
 

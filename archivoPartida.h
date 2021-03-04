@@ -16,16 +16,11 @@ private:
 
     // metodos
 public:
-    // constructor
     // PRE: -
-    // POS: abre el archivo de la partida guardada (si existe) con PATH_ARCHIVO_PARTIDA
-    ArchivoPartida();
-
-    // PRE: -
-    // POS: devuelve true si el archivo de la partida guardada abrio correctamente, false de lo contrario
+    // POS: devuelve true si hay un archivo de partida guardada y abrio correctamente, false de lo contrario
     bool hayPartidaGuardada();
 
-    // PRE: debe existir un archivo de partida guardada
+    // PRE: debe existir un archivo de partida guardada con el formato correspondiente
     // POS: prepara el juego para reaunudar la partida
     void cargarPartida(Juego*& juego);
 
@@ -36,11 +31,6 @@ public:
     // PRE: debe existir un archivo de partida guardada
     // POS: elimina el archivo .csv
     void eliminarArchivo();
-
-    // destructor
-    // PRE: -
-    // POS: cierra el archivo de entrada
-    ~ArchivoPartida();
 
 private:
     // PRE: los personajes deben haber sido guardados en el .csv con el formato correspondiente

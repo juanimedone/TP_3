@@ -1,6 +1,14 @@
 #include "recorrido.h"
 
 
+Recorrido::Recorrido() {
+
+    energiaGastada = ENERGIA_MINIMA;
+    caminoTomado.shrink_to_fit();
+
+}
+
+
 void Recorrido::asignarEnergiaGastada(int energiaGastada) {
 
     this->energiaGastada = energiaGastada;
@@ -24,14 +32,11 @@ void Recorrido::agregarPosicion(int indice) {
 
 void Recorrido::mostrar() {
 
-    int i = 0;
-
     reverse( caminoTomado.begin(), caminoTomado.end() );
 
-    cout << "\n\n Energia gastada: " << energiaGastada <<
-            "\n\n Recorrido: \n\n" ;
+    cout << "\n\n Recorrido: \n\n" ;
 
-    while (caminoTomado[i]) {
+    for (int i = 0; i < caminoTomado.size(); i++) {
 
         int fila, columna;
 
@@ -43,5 +48,8 @@ void Recorrido::mostrar() {
         i++;
     }
 
-    cout << endl;
+    cout << "\n\n Energia gastada: " << energiaGastada << endl;
 }
+
+
+

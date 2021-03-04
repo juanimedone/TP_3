@@ -173,11 +173,12 @@ void Jugador::pedirOpcion() {
 void Jugador::moverPersonaje(Personaje*& personaje, Grafo*& tablero) {
 
     array<int,2> posInicial{}, posFinal{};
-    int energiaNecesaria;
+    int energiaAnterior, energiaNecesaria;
     string elemento;
     Recorrido recorridoMin;
 
     posInicial = personaje->obtenerPosicion();
+    energiaAnterior = personaje->obtenerEnergia();
     elemento = personaje->obtenerElemento();
 
     cout << "\n Ingrese las coordenadas a donde desea moverse " << endl;
@@ -191,7 +192,13 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo*& tablero) {
     tablero->moverPersonaje(personaje, posInicial, posFinal);
     personaje->asignarPosicion(posFinal);
 
+    cout << "\n '" << personaje->obtenerNombre() << "' se ha movido de [" << posInicial[0] << "," << posInicial[1]
+         << "] a [" << posFinal[0] << "," << posFinal[1] << "]";
+
     recorridoMin.mostrar();
+
+    personaje->asignarEnergia(energiaAnterior - energiaNecesaria);
+    cout << "\n Energia anterior: " << energiaAnterior << " ---> Energia actual: " << energiaAnterior - energiaNecesaria << endl;
 
 }
 
