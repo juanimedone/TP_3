@@ -54,12 +54,8 @@ public:
     // POS: devuelve true si el jugador ya no tiene pesonajes con vida, false de lo contrario
     bool todosMuertos();
 
-    // destructor
-    // PRE: -
-    // POS: libera la memoria pedida en el heap
-    ~Jugador();
-
 private:
+
     // PRE: -
     // POS: muestra un primer submenu por pantalla (por personaje) y ejecuta la opcion elegida por el jugador
     void alimentarMover(Personaje*& personaje, Grafo*& tablero);

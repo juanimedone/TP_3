@@ -126,13 +126,6 @@ bool Jugador::todosMuertos() {
 }
 
 
-Jugador::~Jugador() {
-
-    delete [] personajes;
-
-}
-
-
 void Jugador::alimentarMover(Personaje*& personaje, Grafo*& tablero) {
 
     mostrarOpcionesAM();
@@ -307,20 +300,24 @@ void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 
 void Jugador::eliminarPersonaje(short int i, Grafo*& tablero) {
 
+    Personaje* eliminar;
     array<int,2> posicion{};
+
+    eliminar = personajes[i];
 
     posicion = personajes[i]->obtenerPosicion();
 
     tablero->eliminarPersonaje(posicion);
 
-    for (short int j = i; j < MAX_PERSONAJES - 1; j++)
+    for (short int j = i; j < cantPersonajes - 1; j++)
 
         personajes[j] = personajes[j+1];
 
 
-    personajes[MAX_PERSONAJES - 1] = nullptr;
-    delete personajes[MAX_PERSONAJES - 1];
+    personajes[cantPersonajes - 1] = nullptr;
+    delete personajes[cantPersonajes - 1];
 
+    delete eliminar;
     cantPersonajes--;
 
 }
