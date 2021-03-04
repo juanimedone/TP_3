@@ -255,7 +255,7 @@ void Juego::mostrarReferencias() {
         personajes[i]->mostrar();
 
 
-    cout << "\n\n Jugador 2\n" ;
+    cout << "\n Jugador 2\n" ;
 
     personajes = jugador2->obtenerPersonajes();
 

@@ -73,7 +73,7 @@ void Grafo::mostrar() {
 
     int indiceActual = 0;
 
-    cout << "\n\t\t MAPA DEL JUEGO \n\n\t " ;
+    cout << "\n\t\t MAPA DEL JUEGO \n\n\n\t " ;
 
     for (int i = 0; i < MAX_FILA; i++) {
 
