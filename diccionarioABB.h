@@ -9,6 +9,7 @@ class DiccionarioABB {
     // atributos
 private:
     NodoDiccionarioABB<Clave, Valor>* raiz = nullptr;     // constructor por defecto (crea un diccionario vacio)
+    int cantidad = 0;
 
     // metodos
 public:
@@ -27,6 +28,10 @@ public:
     // PRE: la clave y su valor correspondiente deben existir en el diccionario
     // POS: devuelve el valor asociado a la clave
     Valor obtenerValor(Clave clave);
+
+    // PRE: -
+    // POS: devuelve la cantidad de elementos que hay en el diccionario
+    int obtenerCantidad();
 
     // PRE: -
     // POS: muestra por pantalla todas las claves de menor a mayor
@@ -94,6 +99,8 @@ void DiccionarioABB<Clave, Valor>::insertar(Clave clave, Valor valor) {
 
     raiz = insertar(raiz, clave, valor);
 
+    cantidad++;
+
 }
 
 template <typename Clave, typename Valor>
@@ -122,6 +129,8 @@ template <typename Clave, typename Valor>
 void DiccionarioABB<Clave, Valor>::eliminar(Clave clave) {
 
     raiz = eliminar(raiz, clave);
+
+    cantidad--;
 
 }
 
@@ -270,6 +279,14 @@ Valor DiccionarioABB<Clave, Valor>:: obtenerValor(Clave clave) {
 
 
 template <typename Clave, typename Valor>
+int DiccionarioABB<Clave, Valor>::obtenerCantidad() {
+
+    return cantidad;
+
+}
+
+
+template <typename Clave, typename Valor>
 void DiccionarioABB<Clave, Valor>::imprimirEnOrden() {
 
     imprimirEnOrden(raiz);
@@ -318,7 +335,6 @@ void DiccionarioABB<Clave, Valor>::eliminarTodo(NodoDiccionarioABB<Clave, Valor>
     delete nodo;
 
 }
-
 
 
 #endif //DICCIONARIOABB_H

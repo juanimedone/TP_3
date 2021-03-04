@@ -56,6 +56,8 @@ void Agua::atacar(Personaje** enemigos, short int cantEnemigos) {
 
         short int i = 0;
 
+        cout << "\n '" << nombre << "' ataca a directo a una posicion especifica del tablero \n" ;
+
         cout << "\n Ingrese las coordenadas a las que desea atacar" << endl;
         posAtacar = pedirCoordenadas();
 

@@ -13,6 +13,9 @@ void Tierra::desactivarDefensa() {
 	escudo -= ESCUDO_DEF_TIERRA;
 	defensaActiva = false;
 
+	cout << "\n\n Se ha desactivado el escudo extra de '" << nombre << "' \n\n"
+	     << " Escudo anterior: " << escudo + ESCUDO_DEF_TIERRA << " ---> Escudo actual: " << escudo ;
+
 }
 
 
@@ -52,12 +55,14 @@ void Tierra::atacar(Personaje** enemigos, short int cantEnemigos) {
                 "\n Energia actual: " << energia <<
                 "\n Energia necesaria: " << ENERGIA_ATK_TIERRA << endl << endl;
 
-    else
+    else {
+
+        cout << "\n '" << nombre << "' ataca a todos los personajes enemigos del tablero con mayor o menor intensidad dependiendo de la cercania" << endl;
 
         for (short int i = 0; i < cantEnemigos; i++)
 
             restarVida(enemigos[i]);
-
+    }
 }
 
 
@@ -78,7 +83,7 @@ void Tierra::defender(Personaje** aliados, short int cantPersonajes) {
 
         cout << "\n Se ha aumentado el valor del escudo de '" << nombre << "' en " << ESCUDO_DEF_TIERRA << " por un turno \n"
              << "\n Escudo anterior: " << escudo - ESCUDO_DEF_TIERRA << " ---> Escudo actual: " << escudo
-             << "\n Energia anterior: " << energia + ENERGIA_DEF_TIERRA << " ---> Energia actual: " << energia << "\n\n";
+             << "\n Energia anterior: " << energia + ENERGIA_DEF_TIERRA << " ---> Energia actual: " << energia << endl;
     }
 
 }

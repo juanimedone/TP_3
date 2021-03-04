@@ -32,18 +32,18 @@ void Fuego::alimentar() {
 
     else {
 
-        cout << "\n '" << nombre << "' se ha alimentado correctamente de madera" ;
+        cout << "\n '" << nombre << "' se ha alimentado correctamente de madera" << endl;
 
         if (vidaMaxima()) {
 
-            cout << "\n\n El personaje tiene la maxima cantidad de vida (" << VIDA_MAXIMA << ") \n\n" ;
+            cout << "\n El personaje tiene la maxima cantidad de vida (" << VIDA_MAXIMA << ")" << endl;
 
             aumentarEnergia();
         }
 
         else if (energiaMaxima()) {
 
-            cout << "\n\n El personaje tiene la maxima cantidad de energia (" << ENERGIA_MAXIMA << ") \n\n" ;
+            cout << "\n El personaje tiene la maxima cantidad de energia (" << ENERGIA_MAXIMA << ")" << endl;
 
             aumentarVida();
         }
@@ -70,6 +70,8 @@ void Fuego::atacar(Personaje** enemigos, short int cantEnemigos) {
         int filaAtacante = posicion[0];
         int filaEnemigo;
         bool hayEnemigos = false;
+
+        cout << "\n '" << nombre << "' ataca a todos los personajes enemigos que se encuentren en filas adyacentes" << endl;
 
         for (short int i = 0; i < cantEnemigos; i++) {
 

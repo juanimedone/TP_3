@@ -166,24 +166,25 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador1->jugar(tablero, jugador2->obtenerPersonajes(), jugador2->obtenerCantPersonajes() );
-                jugador2->chequearBajas(tablero);
+                jugador1->jugar(tablero, jugador2);
                 pausar();
 
-                tablero->mostrar();
-                mostrarReferencias();
+                if ( !terminado() ) {
 
-                cout << "\n\t Turno Jugador 2 \n" ;
-                salir = jugador2->quiereSalir();
+                    tablero->mostrar();
+                    mostrarReferencias();
 
-                if (salir)
-                    turno = JUGADOR_2;
+                    cout << "\n\t Turno Jugador 2 \n";
+                    salir = jugador2->quiereSalir();
 
-                else {
+                    if (salir)
+                        turno = JUGADOR_2;
 
-                    jugador2->jugar(tablero, jugador1->obtenerPersonajes(), jugador1->obtenerCantPersonajes() );
-                    jugador1->chequearBajas(tablero);
-                    pausar();
+                    else {
+
+                        jugador2->jugar(tablero, jugador1);
+                        pausar();
+                    }
                 }
             }
         }
@@ -199,24 +200,25 @@ void Juego::cicloPrincipal() {
 
             if (!salir) {
 
-                jugador2->jugar(tablero, jugador1->obtenerPersonajes(), jugador1->obtenerCantPersonajes() );
-                jugador1->chequearBajas(tablero);
+                jugador2->jugar(tablero, jugador1);
                 pausar();
 
-                tablero->mostrar();
-                mostrarReferencias();
+                if ( !terminado() ) {
 
-                cout << "\n\t Turno Jugador 1 \n" ;
-                salir = jugador1->quiereSalir();
+                    tablero->mostrar();
+                    mostrarReferencias();
 
-                if (salir)
-                    turno = JUGADOR_1;
+                    cout << "\n\t Turno Jugador 1 \n" ;
+                    salir = jugador1->quiereSalir();
 
-                else {
+                    if (salir)
+                        turno = JUGADOR_1;
 
-                    jugador1->jugar(tablero, jugador2->obtenerPersonajes(), jugador2->obtenerCantPersonajes() );
-                    jugador2->chequearBajas(tablero);
-                    pausar();
+                    else {
+
+                        jugador1->jugar(tablero, jugador2);
+                        pausar();
+                    }
                 }
             }
         }
@@ -283,9 +285,9 @@ void Juego::mostrarReferenciasCasilleros() {
 void Juego::mostrarGanador() {
 
     if (jugador1->todosMuertos())
-        cout << "\n El jugador 2 ha ganado la partida \n" ;
+        cout << "\n\n Todos los personajes del jugador 1 han sido eliminados, el jugador 2 ha ganado la partida \n" ;
 
     else
-        cout << "\n El jugador 1 ha ganado la partida \n" ;
+        cout << "\n\n Todos los personajes del jugador 2 han sido eliminados, el jugador 1 ha ganado la partida \n" ;
 
 }

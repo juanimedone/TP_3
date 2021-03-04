@@ -26,10 +26,10 @@ void Recorrido::mostrar() {
 
     int i = 0;
 
-    reverse(caminoTomado.begin(), caminoTomado.end());
+    reverse( caminoTomado.begin(), caminoTomado.end() );
 
     cout << "\n\n Energia gastada: " << energiaGastada <<
-            "\n\n Recorrido: \n" ;
+            "\n\n Recorrido: \n\n" ;
 
     while (caminoTomado[i]) {
 
@@ -43,4 +43,5 @@ void Recorrido::mostrar() {
         i++;
     }
 
+    cout << endl;
 }

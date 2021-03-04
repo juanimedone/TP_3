@@ -38,10 +38,6 @@ public:
     void asignarPosicion(array<int,2> posicion);
 
     // PRE: -
-    // POS: asigna el simbolo que representa al personaje en el tablero
-    void asignarCodigo(char codigo);
-
-    // PRE: -
     // POS: devuelve el nombre del personaje
     string obtenerNombre();
 

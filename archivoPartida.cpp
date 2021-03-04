@@ -89,8 +89,7 @@ void ArchivoPartida::cargarPersonajes(Grafo* tablero, Jugador* jugador) {
         getline(archivoEntrada, vida, ',');
         getline(archivoEntrada, energia, ',');
         getline(archivoEntrada, fila, ',');
-        getline(archivoEntrada, columna, ',');
-        getline(archivoEntrada, codigo);
+        getline(archivoEntrada, columna);
 
         posicion = {stoi(fila), stoi(columna)};
         nuevoPersonaje = crearPersonaje(elemento, nombre, escudo, vida, energia, posicion, codigo);
@@ -125,7 +124,6 @@ Personaje* ArchivoPartida::crearPersonaje(const string& elemento, const string& 
     nuevoPersonaje->asignarVida( stoi(vida) );
     nuevoPersonaje->asignarEnergia( stoi(energia) );
     nuevoPersonaje->asignarPosicion(posicion);
-    nuevoPersonaje->asignarCodigo(codigo[0]);
 
     return nuevoPersonaje;
 
@@ -147,10 +145,8 @@ void ArchivoPartida::guardarPersonajes(Personaje** personajes, short int cantPer
         archivoSalida << personajes[i]->obtenerVida() << "," ;
         archivoSalida << personajes[i]->obtenerEnergia() << "," ;
         archivoSalida << fila << "," ;
-        archivoSalida << columna << ",";
-        archivoSalida << personajes[i]->obtenerCodigo();
+        archivoSalida << columna << "\n" ;
 
-        archivoSalida << "\n" ;
     }
 
 }

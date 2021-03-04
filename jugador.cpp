@@ -80,28 +80,19 @@ bool Jugador::quiereSalir() {
 }
 
 
-void Jugador::chequearBajas(Grafo*& tablero) {
+void Jugador::jugar(Grafo*& tablero, Jugador*& rival) {
 
-    for (short int i = 0; i < cantPersonajes; i++)
+    short int i = 0;
 
-        if (personajes[i]->obtenerVida() == VIDA_NULA)
+    while ( i < cantPersonajes && !rival->todosMuertos() ) {
 
-            eliminarPersonaje(i, tablero);
+        cout << "\n\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
 
-}
-
-
-void Jugador::jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigos) {
-
-    for (int i = 0; i < cantPersonajes; i++) {
-
-        cout << "\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
-
-        if (personajes[i]->obtenerElemento() == COD_AIRE)
+        if ( personajes[i]->obtenerElemento() == COD_AIRE )
 
             personajes[i]->aumentarEnergia();
 
-        else if (personajes[i]->obtenerElemento() == COD_FUEGO && personajes[i]->obtenerEnergia() == ENERGIA_MINIMA)
+        else if ( personajes[i]->obtenerElemento() == COD_FUEGO && personajes[i]->obtenerEnergia() == ENERGIA_MINIMA )
 
             personajes[i]->vidaPorCeroEnergia();
 
@@ -113,8 +104,11 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigo
         alimentarMover(personajes[i], tablero);
 
         cout << "\n\n Personaje: '" << personajes[i]->obtenerNombre() << "'" ;
-        defenderAtacar(personajes[i], tablero, enemigos, cantEnemigos);
+        defenderAtacar(personajes[i], tablero, rival->obtenerPersonajes(), rival->obtenerCantPersonajes());
 
+        rival->chequearBajas(tablero);
+
+        i++;
     }
 
 }
@@ -123,6 +117,14 @@ void Jugador::jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigo
 bool Jugador::todosMuertos() {
 
     return (cantPersonajes == 0);
+
+}
+
+
+Jugador::~Jugador() {
+
+    delete [] personajes;
+
 }
 
 
@@ -176,8 +178,10 @@ void Jugador::moverPersonaje(Personaje*& personaje, Grafo*& tablero) {
     Recorrido recorridoMin;
 
     posInicial = personaje->obtenerPosicion();
-    posFinal = personaje->pedirCoordenadas();
     elemento = personaje->obtenerElemento();
+
+    cout << "\n Ingrese las coordenadas a donde desea moverse " << endl;
+    posFinal = personaje->pedirCoordenadas();
 
     recorridoMin = tablero->caminoMinimo(posInicial, posFinal, elemento);
     energiaNecesaria = recorridoMin.obtenerEnergiaGastada();
@@ -200,13 +204,13 @@ void Jugador::validarMovimiento(Grafo*& tablero, array<int,2> posInicial, array<
 
         if ( !tablero->estaVacio(posFinal) )
 
-            cout << "\n La posicion [" << posFinal[0] << "," << posFinal[1] << "] se encuentra ocupada por " <<
-                 tablero->obtenerPersonaje(posFinal)->obtenerNombre() << "\n\n Reingrese las coordenadas \n" ;
+            cout << "\n La posicion [" << posFinal[0] << "," << posFinal[1] << "] se encuentra ocupada por '" <<
+                 tablero->obtenerPersonaje(posFinal)->obtenerNombre() << "'\n\n Reingrese las coordenadas a donde desea moverse\n" ;
 
         else
             cout << "\n El personaje " << personaje->obtenerNombre() << " no posee la energia necesaria para llegar a ["
-                 << posFinal[0] << "," << posFinal[1] << "] \n\n Energia requerida: " << energiaNecesaria <<
-                 "\n Energia actual: " << personaje->obtenerEnergia() << "\n\n Reingrese las coordenadas \n" ;
+                 << posFinal[0] << "," << posFinal[1] << "] \n\n Energia necesaria: " << energiaNecesaria <<
+                 "\n Energia actual: " << personaje->obtenerEnergia() << "\n\n Reingrese las coordenadas a donde desea moverse \n" ;
 
         posFinal = personaje->pedirCoordenadas();
 
@@ -265,7 +269,7 @@ void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 
         cout << "\n La energia actual es insuficiente para defender \n"
                 "\n Energia actual: " << personaje->obtenerEnergia() <<
-                "\n Energia necesaria: " << ENERGIA_DEF_AIRE << "\n\n";
+                "\n Energia necesaria: " << ENERGIA_DEF_AIRE << endl;
 
     else {
 
@@ -298,6 +302,22 @@ void Jugador::defensaAire(Personaje*& personaje, Grafo*& tablero) {
 }
 
 
+void Jugador::chequearBajas(Grafo*& tablero) {
+
+    short int i = 0;
+
+    while (i < cantPersonajes)
+
+        if (personajes[i]->obtenerVida() == VIDA_NULA)
+
+            eliminarPersonaje(i, tablero);
+
+        else
+            i++;
+
+}
+
+
 void Jugador::eliminarPersonaje(short int i, Grafo*& tablero) {
 
     Personaje* eliminar;
@@ -305,7 +325,7 @@ void Jugador::eliminarPersonaje(short int i, Grafo*& tablero) {
 
     eliminar = personajes[i];
 
-    posicion = personajes[i]->obtenerPosicion();
+    posicion = eliminar->obtenerPosicion();
 
     tablero->eliminarPersonaje(posicion);
 
@@ -317,10 +337,16 @@ void Jugador::eliminarPersonaje(short int i, Grafo*& tablero) {
     personajes[cantPersonajes - 1] = nullptr;
     delete personajes[cantPersonajes - 1];
 
+    cout << "\n Se ha eliminado el personaje enemigo '" << eliminar->obtenerNombre() << "' de la posicion [" << posicion[0]
+         << "," << posicion[1] << "]" << endl;
+
     delete eliminar;
     cantPersonajes--;
 
 }
+
+
+
 
 
 

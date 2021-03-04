@@ -43,16 +43,16 @@ public:
     bool quiereSalir();
 
     // PRE: -
-    // POS: chequea si hay personajes con VIDA_NULA y de ser asi los elimina
-    void chequearBajas(Grafo*& tablero);
-
-    // PRE: -
     // POS: lleva a cabo el turno del jugador, realiza las acciones para cada personaje
-    void jugar(Grafo*& tablero, Personaje** enemigos, short int cantEnemigos);
+    void jugar(Grafo*& tablero, Jugador*& rival);
 
     // PRE: -
     // POS: devuelve true si el jugador ya no tiene pesonajes con vida, false de lo contrario
     bool todosMuertos();
+
+    // PRE: -
+    // POS: libera la memoria pedida en el heap
+    ~Jugador();
 
 private:
 
@@ -89,6 +89,10 @@ private:
     // POS: si tiene la energia necesaria para volar, se posiciona al personaje en las coordenadas ingresadas por el
     //      usuario, de ser invalidas las coordenadas o no tener energia suficiente, se imprime un mensaje
     void defensaAire(Personaje*& personaje, Grafo*& tablero);
+
+    // PRE: -
+    // POS: chequea si hay personajes con VIDA_NULA y de ser asi los elimina
+    void chequearBajas(Grafo*& tablero);
 
     // PRE: -
     // POS: elimina el personaje con indice i del array de personajes y del tablero

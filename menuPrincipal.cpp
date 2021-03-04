@@ -61,14 +61,19 @@ void MenuPrincipal::interfazPrincipal(Juego* juego, DiccionarioABB<string,Person
 
             case COMENZAR_JUEGO:
 
-                cout << "\n\n\t\t CARGAR PERSONAJES \n" ;
-                cargarPersonajes(juego->obtenerJugador1(), juego->obtenerJugador2(), diccionario);
+                if (diccionario.obtenerCantidad() < CANT_PERSONAJES_NECESARIA)
+                    cout << "\n\n Se necesita un minimo de " << CANT_PERSONAJES_NECESARIA <<
+                            " personajes cargados en el diccionario para poder comenzar la partida" << endl;
 
-                if (opcion != SALIR_JUEGO)
-                    juego->iniciarPartida();
-                opcion = SALIR;
+                else {
+                    cout << "\n\n\t\t CARGAR PERSONAJES \n" ;
+                    cargarPersonajes(juego->obtenerJugador1(), juego->obtenerJugador2(), diccionario);
 
-                break;
+                    if (opcion != SALIR_JUEGO)
+                        juego->iniciarPartida();
+                    opcion = SALIR;
+                }
+                    break;
 
             case SALIR:
                 break;
@@ -396,8 +401,6 @@ void MenuPrincipal::seleccionarPersonaje(Jugador*& jugador, DiccionarioABB<strin
     }
 
     nuevoPersonaje = diccionario.obtenerValor(nombre);
-
-    nuevoPersonaje->asignarCodigo( nuevoPersonaje->obtenerNombre()[0] );
 
     jugador->asignarPersonaje(nuevoPersonaje);
     cout << "\n Se ha agregado correctamente el personaje '" << nombre << "' \n\n" ;

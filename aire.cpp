@@ -25,6 +25,8 @@ void Aire::atacar(Personaje** enemigos, short int cantEnemigos) {
 
     else {
 
+        cout << "\n '" << nombre << "' ataca a todos los personajes enemigos del tablero" << endl;
+
         for (short int i = 0; i < cantEnemigos; ++i)
 
             restarVida(enemigos[i]);

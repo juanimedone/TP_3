@@ -190,11 +190,11 @@ Recorrido Grafo::dijkstra(int origen, int destino, int matrizPesos[CANT_VERTICES
 
         for (int j = 0; j < CANT_VERTICES; j++) {
 
-            int minDist = pesosMinimos[posMin] + matrizPesos[posMin][j];
+            int pesoMin = pesosMinimos[posMin] + matrizPesos[posMin][j];
 
-            if ( !visitados[j] && pesosMinimos[posMin] != INFINITO && minDist < pesosMinimos[j] ) {
+            if ( !visitados[j] && pesosMinimos[posMin] != INFINITO && pesoMin < pesosMinimos[j] ) {
 
-                pesosMinimos[j] = minDist;
+                pesosMinimos[j] = pesoMin;
                 rutaMinima[j] = posMin;
             }
         }

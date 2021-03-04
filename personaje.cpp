@@ -10,6 +10,7 @@ Personaje::Personaje(string nombre) {
     vida = rand() % RANGO_VIDA + VIDA_MINIMA;
     energia = rand() % RANGO_ENERGIA + ENERGIA_MINIMA;
     posicion = COORD_INVALIDA;
+    codigo = nombre[0];
 
 }
 
@@ -38,13 +39,6 @@ void Personaje::asignarEnergia(int energia) {
 void Personaje::asignarPosicion(array<int,2> posicion) {
 
     this->posicion = posicion;
-
-}
-
-
-void Personaje::asignarCodigo(char codigo) {
-
-    this->codigo = codigo;
 
 }
 

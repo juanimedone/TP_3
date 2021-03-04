@@ -129,5 +129,6 @@ const string COD_AGUA = "agua";
 const int CANT_JUGADORES = 2;
 const int JUGADOR_1 = 1;
 const int JUGADOR_2 = 2;
+const int CANT_PERSONAJES_NECESARIA = MAX_PERSONAJES * CANT_JUGADORES;
 
 #endif //TP_3_UTILES_H

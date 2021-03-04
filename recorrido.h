@@ -7,7 +7,7 @@ class Recorrido {
 
     // atributos
 private:
-    int energiaGastada;
+    int energiaGastada = 0;
     vector<int> caminoTomado;
 
     // metodos
