@@ -101,21 +101,19 @@ array<int,2> Personaje::pedirCoordenadas() {
     static array<int,2> coords;
     string fila, columna;
 
-    fflush(stdin);
-
     cout << "\n Fila: ";
-    getline(cin, fila);
+    cin >> fila;
     cout << " Columna: ";
-    getline(cin, columna);
+    cin >> columna;
 
     while ( !esValida(fila, columna) ) {
 
         cout << "\n\n Valores invalidos. Ingrese solo numeros enteros entre 0 y 7." << endl;
 
         cout << "\n Fila: ";
-        getline(cin, fila);
+        cin >> fila;
         cout << " Columna: ";
-        getline(cin, columna);
+        cin >> columna;
     }
 
     coords = {stoi(fila), stoi(columna)};
