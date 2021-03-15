@@ -271,7 +271,7 @@ NodoDiccionarioABB<Clave, Valor>* DiccionarioABB<Clave, Valor>::buscar(NodoDicci
 
 
 template <typename Clave, typename Valor>
-Valor DiccionarioABB<Clave, Valor>:: obtenerValor(Clave clave) {
+Valor DiccionarioABB<Clave, Valor>::obtenerValor(Clave clave) {
 
     return buscar(raiz, clave)->obtenerValor();
 
